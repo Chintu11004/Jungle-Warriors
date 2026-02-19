@@ -1,0 +1,1 @@
+Pull the repo to your computer, then open the "Jungle Warrior" subfolder for the actual project. In the github root, miscellanous files or folders will be used for storage.
