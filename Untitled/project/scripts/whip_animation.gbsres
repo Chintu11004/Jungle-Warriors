@@ -1,0 +1,208 @@
+{
+  "_resourceType": "script",
+  "id": "ca046432-c0cf-4969-b7c4-5091b396863d",
+  "name": "Whip Animation",
+  "description": "Play Whip Animation",
+  "variables": {},
+  "actors": {},
+  "symbol": "script_17",
+  "script": [
+    {
+      "command": "EVENT_SET_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "left",
+          "up",
+          "down",
+          "right",
+          "a"
+        ],
+        "override": true,
+        "__scriptTabs": "press",
+        "__collapse": true
+      },
+      "children": {
+        "true": []
+      },
+      "id": "5a27d3da-67af-4f10-86c1-422e827a8f97"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "Whip Animation",
+        "loopAnim": false,
+        "__collapse": true
+      },
+      "id": "3dc1b901-ae5e-4f8d-9c64-c65df3796349"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_FRAME",
+      "args": {
+        "actorId": "$self$",
+        "frame": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "3c2fe066-0d9e-4c53-a5c0-99867740b6f8"
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": {
+          "type": "number",
+          "value": 0.1
+        },
+        "frames": {
+          "type": "number",
+          "value": 5
+        },
+        "units": "frames",
+        "__collapse": false
+      },
+      "id": "71aff847-ace5-4c02-9069-ac90f9abb616"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_FRAME",
+      "args": {
+        "actorId": "$self$",
+        "frame": {
+          "type": "number",
+          "value": 1
+        },
+        "__collapse": true
+      },
+      "id": "e63a708a-d356-47c9-b461-5edcc5855caa"
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": {
+          "type": "number",
+          "value": 0.5
+        },
+        "frames": {
+          "type": "number",
+          "value": 5
+        },
+        "units": "frames",
+        "__collapse": false
+      },
+      "id": "4795927b-1b85-4500-b35c-a6991b8de001"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_FRAME",
+      "args": {
+        "actorId": "$self$",
+        "frame": {
+          "type": "number",
+          "value": 2
+        },
+        "__collapse": true
+      },
+      "id": "2effe8c9-c39d-44da-abf1-2dc9d3fd3a15"
+    },
+    {
+      "command": "EVENT_LAUNCH_PROJECTILE",
+      "args": {
+        "__section": "projectile",
+        "spriteSheetId": "16b3604a-df34-48b9-b1f3-8b55b32f3c8f",
+        "spriteStateId": "",
+        "actorId": "$self$",
+        "x": 12,
+        "y": 0,
+        "directionType": "actor",
+        "otherActorId": "$self$",
+        "direction": "right",
+        "angle": 0,
+        "angleVariable": "V0",
+        "targetActorId": "$self$",
+        "speed": 4,
+        "animSpeed": 127,
+        "lifeTime": 0.07,
+        "initialOffset": 0,
+        "loopAnim": false,
+        "destroyOnHit": false,
+        "collisionGroup": "1",
+        "collisionMask": [
+          "2",
+          "3"
+        ]
+      },
+      "id": "94adfa26-37ea-438b-959f-e410713734a9"
+    },
+    {
+      "command": "EVENT_LAUNCH_PROJECTILE",
+      "args": {
+        "__section": "projectile",
+        "spriteSheetId": "fa959c50-bac4-4cac-9096-4da9a252e55f",
+        "spriteStateId": "",
+        "actorId": "$self$",
+        "x": 24,
+        "y": 8,
+        "directionType": "actor",
+        "otherActorId": "$self$",
+        "direction": "right",
+        "angle": 0,
+        "angleVariable": "V0",
+        "targetActorId": "$self$",
+        "speed": 2,
+        "animSpeed": 15,
+        "lifeTime": 2,
+        "initialOffset": 0,
+        "loopAnim": false,
+        "destroyOnHit": true,
+        "collisionGroup": "1",
+        "collisionMask": [
+          "2",
+          "3"
+        ],
+        "__collapse": false,
+        "__comment": false
+      },
+      "id": "a8b48442-463e-43d3-8443-bc9c7d8cdaf8"
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": {
+          "type": "number",
+          "value": 0.5
+        },
+        "frames": {
+          "type": "number",
+          "value": 15
+        },
+        "units": "frames",
+        "__collapse": false
+      },
+      "id": "146b50f6-5dc0-4819-a504-7c7277bf586e"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "1bf31a5e-fb00-4da7-a805-8406b435003a"
+    },
+    {
+      "command": "EVENT_REMOVE_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "left",
+          "up",
+          "down",
+          "right",
+          "a"
+        ],
+        "__collapse": true
+      },
+      "id": "23fa44a7-22a7-4ef3-bf3e-29b3b9c759d2"
+    }
+  ]
+}
