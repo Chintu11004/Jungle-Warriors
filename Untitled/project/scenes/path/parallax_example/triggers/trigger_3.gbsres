@@ -14,9 +14,10 @@
       "command": "EVENT_ROPE_SWING",
       "args": {
         "rope_anchor_x": 19,
-        "rope_anchor_y": 3,
-        "rope_length": 7,
-        "rope_max_angle": 45
+        "rope_anchor_y": 1,
+        "rope_length": 10,
+        "rope_max_angle": 60,
+        "rope_swing_speed_factor": 3
       },
       "id": "d8bffadb-5ad6-4a39-a24d-db16f3480edf"
     }

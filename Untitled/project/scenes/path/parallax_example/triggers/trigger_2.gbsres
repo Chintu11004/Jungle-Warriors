@@ -9,19 +9,7 @@
   "prefabScriptOverrides": {},
   "width": 1,
   "height": 1,
-  "script": [
-    {
-      "command": "EVENT_ROPE_SWING",
-      "args": {
-        "rope_anchor_x": 19,
-        "rope_anchor_y": 3,
-        "rope_length": 7,
-        "rope_max_angle": 45,
-        "__collapse": false
-      },
-      "id": "76059ebb-4579-4a4d-ad9b-4bd35ae4aacc"
-    }
-  ],
+  "script": [],
   "leaveScript": [],
   "_index": 1
 }

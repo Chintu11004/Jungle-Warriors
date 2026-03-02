@@ -176,21 +176,6 @@
 
 typedef enum
 {
-    FALL_STATE = 0,
-    GROUND_STATE,
-    JUMP_STATE,
-    DASH_STATE,
-    LADDER_STATE,
-    WALL_STATE,
-    KNOCKBACK_STATE,
-    BLANK_STATE,
-    RUN_STATE,
-    FLOAT_STATE,
-    ROPE_STATE,
-} state_e;
-
-typedef enum
-{
     FALL_INIT = 0,
     FALL_END,
     GROUND_INIT,
@@ -311,6 +296,7 @@ WORD plat_rope_theta;          // curr angle in rope swing
 UBYTE plat_rope_block_length;  // length of rope in terms of blocks
 UBYTE plat_rope_max_angle;     // the max angle the rope can get to
 INT16 plat_rope_ang_vel;       // angular velocity of the object
+UBYTE plat_rope_swing_speed;   // controls the swing speed of the rope
 
 // Solid actors
 actor_t *plat_attached_actor;  // The last actor the player hit, and that they were attached to
@@ -446,10 +432,11 @@ inline UBYTE dash_input_pressed(void)
 
 #endif
 
-void rope_trigger_enter(UWORD anchor_x, UWORD anchor_y, UBYTE block_length, UBYTE max_angle_degrees) BANKED{
-    plat_rope_anchor_x = TILE_TO_SUBPX(anchor_x);// + 128; // we want midpoitn of a block
+void rope_trigger_enter(UWORD anchor_x, UWORD anchor_y, UBYTE block_length, UBYTE max_angle_degrees, UBYTE swing_speed) BANKED{
+    plat_rope_anchor_x = TILE_TO_SUBPX(anchor_x);// + 128; // we want midpoint of a block
     plat_rope_anchor_y = TILE_TO_SUBPX(anchor_y);
     plat_rope_block_length = block_length;
+    plat_rope_swing_speed = swing_speed;
     
     // Convert degrees (30-90) to sine wave array index (0-64)
     // Formula: array_index = (degrees * 256) / 360 = (degrees * 64) / 90
@@ -2594,6 +2581,8 @@ static void state_enter_rope(void) {
     plat_rope_prev_x = PLAYER.pos.x;
     plat_rope_prev_y = PLAYER.pos.y;
 
+    plat_rope_ang_vel = 0;
+
     plat_callback_execute(ROPE_INIT);
 }
 
@@ -2611,6 +2600,10 @@ static void state_update_rope(void) {
         // plat_vel_x = (WORD)CLAMP(release_vel_x, WORD_MIN, WORD_MAX);
         // plat_vel_y = (WORD)CLAMP(release_vel_y, WORD_MIN, WORD_MAX);
         plat_next_state = FALL_STATE;
+        plat_rope_block_length = 0;
+        plat_rope_theta = 0;
+        plat_rope_anchor_x = 0;
+        plat_rope_anchor_y = 0;
         return;
     }
 
@@ -2624,11 +2617,11 @@ static void state_update_rope(void) {
     WORD dx = (WORD)(((INT32)TILE_TO_SUBPX(plat_rope_block_length) * SIN(currAngleIdx)) >> 7);
     WORD dy = (WORD)(((INT32)TILE_TO_SUBPX(plat_rope_block_length) * COS(currAngleIdx)) >> 7);
     
-    PLAYER.pos.x = 1024;//plat_rope_anchor_x;// + dx;
-    PLAYER.pos.y = plat_rope_anchor_y;// + dy;
+    PLAYER.pos.x = plat_rope_anchor_x + dx;
+    PLAYER.pos.y = plat_rope_anchor_y + dy;
 
     // now we update theta, angular velocity and all
-    WORD ang_accel = - (SIN(currAngleIdx))/ plat_rope_block_length;
+    WORD ang_accel = - (SIN(currAngleIdx))/ (plat_rope_block_length * plat_rope_swing_speed);
     // we have 4 more precision values in ang_accel
     plat_rope_ang_vel += ang_accel;
     plat_rope_theta += plat_rope_ang_vel;

@@ -128,7 +128,7 @@
   "playerHit1Script": [],
   "playerHit2Script": [],
   "playerHit3Script": [],
-  "collisions": "00153+0f!004f+0f!004f+0f!004f+0f!0046+10!0f4+004+0f!0046+10!008+0f!0046+10!004f+10!004f+10!004f+10!0045+0f50+00f0+",
+  "collisions": "0028a+10!0f4+004b+10!004f+10!004f+10!004f+10!004f+10!0045+0f50+00f0+",
   "autoFadeEventCollapse": true,
   "playerSpriteSheetId": "c91b8ed9-7012-42b0-ace7-b8bb32a9b64d"
 }

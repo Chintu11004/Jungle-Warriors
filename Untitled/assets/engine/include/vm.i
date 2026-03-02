@@ -1819,4 +1819,28 @@ OP_VM_PRINT_OVERLAY     = 0x8D
 
 ; --- CUSTOM ------------------------------------------
 ; @section Custom
-; (rope swing now uses VM_INVOKE — no custom opcode needed)
+
+;-- Starts a rope swing and blocks the script until the player releases.
+; Internally uses VM_INVOKE with rope_swing_update so the script yields
+; each frame and resumes once plat_state leaves ROPE_STATE.
+;
+; @param ANCHOR_X    Rope pivot X in tiles.
+; @param ANCHOR_Y    Rope pivot Y in tiles.
+; @param LENGTH      Rope length in tiles (1–20).
+; @param MAX_ANGLE   Maximum swing angle in degrees (30–90).
+; @param SWING_SPEED Swing speed factor (1–5, higher = slower).
+;
+; Stack frame inside rope_swing_update (PARAMS = .ARG4 = -5):
+;   stack_frame[0] = ANCHOR_X     (first pushed, deepest)
+;   stack_frame[1] = ANCHOR_Y
+;   stack_frame[2] = LENGTH
+;   stack_frame[3] = MAX_ANGLE
+;   stack_frame[4] = SWING_SPEED  (last pushed, top = ARG0)
+.macro VM_ROPE_SWING ANCHOR_X, ANCHOR_Y, LENGTH, MAX_ANGLE, SWING_SPEED
+        VM_PUSH_CONST ANCHOR_X
+        VM_PUSH_CONST ANCHOR_Y
+        VM_PUSH_CONST LENGTH
+        VM_PUSH_CONST MAX_ANGLE
+        VM_PUSH_CONST SWING_SPEED
+        VM_INVOKE BANK(ROPE_SWING), _rope_swing_update, 5, .ARG4
+.endm

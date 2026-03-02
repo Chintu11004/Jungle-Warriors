@@ -31,21 +31,35 @@ export const fields = [
     min: 30,
     max: 90,
   },
+  {
+    key: "rope_swing_speed_factor",
+    label: "Swing Speed factor (1/n)",
+    type: "number",
+    defaultValue: 1,
+    min: 1,
+    max: 5,
+  },
 ];
 
 export const compile = (input, helpers) => {
-  const { _callNative, _stackPushConst, _stackPop } = helpers;
-  
-  // Push parameters to stack in reverse order (right to left)
-  // They will be popped as: anchor_x, anchor_y, length, max_angle_degrees
-  _stackPushConst(input.rope_max_angle || 45);  // degrees (30-90)
-  _stackPushConst(input.rope_length || 5);
-  _stackPushConst(input.rope_anchor_y || 0);
-  _stackPushConst(input.rope_anchor_x || 0);
-  
-  // Call rope_swing_enter which will convert degrees to sine array index
-  _callNative("rope_swing_enter");
+  const { _invoke, _stackPushConst } = helpers;
 
-  // _callNative does not pop its arguments — restore stack balance
-  _stackPop(4);
+  // Push in forward order so stack_frame[0]=anchor_x, [1]=anchor_y, etc.
+  // The VM convention: PARAMS = -(N args), stack_frame[0] = first pushed (deepest).
+  // stack_frame layout inside rope_swing_update:
+  //   [0] anchor_x       (first pushed, deepest)
+  //   [1] anchor_y
+  //   [2] length
+  //   [3] max_angle
+  //   [4] speed_factor   (last pushed, top = ARG0)
+  _stackPushConst(input.rope_anchor_x || 0);              // stack_frame[0]
+  _stackPushConst(input.rope_anchor_y || 0);              // stack_frame[1]
+  _stackPushConst(input.rope_length || 5);                // stack_frame[2]
+  _stackPushConst(input.rope_max_angle || 45);            // stack_frame[3]
+  _stackPushConst(input.rope_swing_speed_factor || 1);    // stack_frame[4]
+
+  // VM_INVOKE calls rope_swing_update every frame until it returns TRUE.
+  // popCount=5 tells the VM to pop the 5 stack slots when done.
+  // PARAMS=-5 (.ARG4) so stack_frame = stack_ptr - 5, pointing at the first pushed arg.
+  _invoke("rope_swing_update", 5, -5);
 };

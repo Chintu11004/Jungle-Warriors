@@ -2,55 +2,40 @@
 #include "vm.h"
 #include "states/platform.h"
 #include "rope_swing.h"
-#include "trigger.h"
 #include "math.h"
 
 BANKREF(ROPE_SWING)
 
 /*
-    rope_swing_update — called by VM_INVOKE every frame until done.
+    rope_swing_update — called by VM_INVOKE every frame.
 
-    stack_frame layout (set by eventRopeSwing.js):
-        stack_frame[0] = frames   (pushed last  → ARG0, used as countdown)
-        stack_frame[1] = blocks   (pushed first → ARG1, repurposed as subpx/frame)
+    stack_frame layout (PARAMS = .ARG4 = -5, so stack_frame[0] = first pushed):
+        stack_frame[0] = anchor_x       (first pushed, deepest)
+        stack_frame[1] = anchor_y
+        stack_frame[2] = length
+        stack_frame[3] = max_angle
+        stack_frame[4] = speed_factor   (last pushed, top = ARG0)
 
-    On start==TRUE  : initialise counter & per-frame displacement, snap to trigger edge.
-    On start==FALSE : move player, decrement counter.
-    Returns TRUE when counter reaches zero (VM pops the 2 stack slots).
+    On start == TRUE : initialise the rope state.
+    Each frame       : yield (waitable = 1) and return FALSE while still swinging.
+    Returns TRUE     : once the player has left ROPE_STATE — VM then pops the 5 stack slots.
 */
-// UBYTE rope_swing_update(void * THIS_void, UBYTE start, UWORD * stack_frame) OLDCALL BANKED {
-//     SCRIPT_CTX * THIS = (SCRIPT_CTX *)THIS_void;
+UBYTE rope_swing_update(void *THIS_void, UBYTE start, UWORD *stack_frame) OLDCALL BANKED {
+    SCRIPT_CTX *THIS = (SCRIPT_CTX *)THIS_void;
 
-//     if (start) {
-//         UWORD frames = stack_frame[0];
-//         UWORD blocks = stack_frame[1];
+    if (start) {
+        UWORD anchor_x      = stack_frame[0];
+        UWORD anchor_y      = stack_frame[1];
+        UBYTE block_length  = (UBYTE)stack_frame[2];
+        UBYTE max_angle     = (UBYTE)stack_frame[3];
+        UBYTE speed_factor  = (UBYTE)stack_frame[4];
+        rope_trigger_enter(anchor_x, anchor_y, block_length, max_angle, speed_factor);
+    }
 
-//         /* Snap player to right edge of the trigger that launched this script */
-//         //trigger_t *trig = &triggers[last_trigger];
-//         //PLAYER.pos.x = TILE_TO_SUBPX(trig->right);
+    if (plat_state != ROPE_STATE) {
+        return TRUE;
+    }
 
-//         /* Replace blocks slot with sub-pixel displacement per frame */
-//         stack_frame[1] = (UWORD)(TILE_TO_SUBPX(blocks) / frames);
-//     }
-
-//     /* Move player one step */
-//     PLAYER.pos.x += (INT16)stack_frame[1];
-
-//     /* Release the auto-lock each frame so player input is still processed */
-//     if (THIS->lock_count > 0) {
-//         THIS->lock_count--;
-//         vm_lock_state--;
-//     }
-
-//     stack_frame[0]--;
-
-//     if (stack_frame[0] == 0) return TRUE;   /* done — VM pops the 2 stack slots */
-
-//     THIS->waitable = 1;
-//     return FALSE;   /* not done — VM_INVOKE rewinds PC for next frame */
-// }*/
-
-void rope_swing_enter(SCRIPT_CTX *THIS, INT16 anchor_x, INT16 anchor_y, INT16 length, INT16 max_angle) OLDCALL BANKED {
-    // Trigger the rope state transition
-    rope_trigger_enter(anchor_x, anchor_y, length, max_angle);
+    THIS->waitable = 1;
+    return FALSE;
 }
