@@ -102,6 +102,11 @@
       "symbol": "var_weapon_cooldown"
     },
     {
+      "id": "20",
+      "name": "haha",
+      "symbol": "var_haha"
+    },
+    {
       "id": "871ea302-1cc1-463c-b9d7-530aac38fe81__L0",
       "name": "Spoken to gardener",
       "symbol": "var_spoken_to_gardener"

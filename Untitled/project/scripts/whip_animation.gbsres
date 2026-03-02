@@ -60,7 +60,7 @@
           "value": 5
         },
         "units": "frames",
-        "__collapse": false
+        "__collapse": true
       },
       "id": "71aff847-ace5-4c02-9069-ac90f9abb616"
     },
@@ -88,7 +88,7 @@
           "value": 5
         },
         "units": "frames",
-        "__collapse": false
+        "__collapse": true
       },
       "id": "4795927b-1b85-4500-b35c-a6991b8de001"
     },
@@ -129,7 +129,8 @@
         "collisionMask": [
           "2",
           "3"
-        ]
+        ],
+        "__collapse": true
       },
       "id": "94adfa26-37ea-438b-959f-e410713734a9"
     },
@@ -159,7 +160,7 @@
           "2",
           "3"
         ],
-        "__collapse": false,
+        "__collapse": true,
         "__comment": false
       },
       "id": "a8b48442-463e-43d3-8443-bc9c7d8cdaf8"
@@ -176,7 +177,7 @@
           "value": 15
         },
         "units": "frames",
-        "__collapse": false
+        "__collapse": true
       },
       "id": "146b50f6-5dc0-4819-a504-7c7277bf586e"
     },
@@ -203,6 +204,28 @@
         "__collapse": true
       },
       "id": "23fa44a7-22a7-4ef3-bf3e-29b3b9c759d2"
+    },
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "atan2",
+          "valueA": {
+            "type": "constant",
+            "value": ""
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
+        },
+        "__collapseElse": true
+      },
+      "children": {
+        "true": [],
+        "false": []
+      },
+      "id": "548ad215-95f7-477e-a5e4-832c850f1baa"
     }
   ]
 }

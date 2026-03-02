@@ -1,0 +1,26 @@
+{
+  "_resourceType": "trigger",
+  "id": "75eda360-b1ac-46ae-948c-bacf4bdbb3ba",
+  "name": "",
+  "prefabId": "",
+  "x": 15,
+  "y": 7,
+  "symbol": "trigger_43",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 1,
+  "script": [
+    {
+      "command": "EVENT_ROPE_SWING",
+      "args": {
+        "rope_anchor_x": 19,
+        "rope_anchor_y": 3,
+        "rope_length": 7,
+        "rope_max_angle": 45
+      },
+      "id": "d8bffadb-5ad6-4a39-a24d-db16f3480edf"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 2
+}

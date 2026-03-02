@@ -6,7 +6,7 @@
   "name": "path/Parallax Example",
   "symbol": "scene_parallax_example",
   "x": 472,
-  "y": 536,
+  "y": 560,
   "width": 80,
   "height": 18,
   "backgroundId": "b48f4eda-5654-4760-b8a9-4fd3f7e7ed5e",
@@ -112,12 +112,23 @@
         "customEventId": "92dbf5f0-ecc4-4fad-b816-b2a45db599ca"
       },
       "id": "2a7ec398-3da4-4df0-879d-8bbfcd32c099"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "20",
+        "value": {
+          "type": "number",
+          "value": -1
+        }
+      },
+      "id": "9421e3ef-283b-474b-a381-b04a0035bf3d"
     }
   ],
   "playerHit1Script": [],
   "playerHit2Script": [],
   "playerHit3Script": [],
-  "collisions": "00460+0f50+00f0+",
+  "collisions": "00153+0f!004f+0f!004f+0f!004f+0f!0046+10!0f4+004+0f!0046+10!008+0f!0046+10!004f+10!004f+10!004f+10!0045+0f50+00f0+",
   "autoFadeEventCollapse": true,
   "playerSpriteSheetId": "c91b8ed9-7012-42b0-ace7-b8bb32a9b64d"
 }
