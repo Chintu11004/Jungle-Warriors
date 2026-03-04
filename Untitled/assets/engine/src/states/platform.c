@@ -2603,11 +2603,14 @@ static void state_update_rope(void) {
         UWORD len_subpx = TILE_TO_SUBPX(plat_rope_block_length);
         int32_t vx = ((int32_t)len_subpx * COS(curr_angle_idx) * plat_rope_ang_vel) >> 10;
         int32_t vy = -((int32_t)len_subpx * SIN(curr_angle_idx) * plat_rope_ang_vel) >> 10;
-        plat_vel_x = -2560;//(WORD)CLAMP(vx, WORD_MIN, WORD_MAX);
+        plat_vel_x = (WORD)CLAMP(vx, WORD_MIN, WORD_MAX);
         plat_vel_y = (WORD)CLAMP(vy, WORD_MIN, WORD_MAX);
-        
-        //dir = (plat_vel_x < 0) ? -1 : 1;
-        //plat_delta_x +=plat_vel_x;
+
+        // Lock out horizontal input for a few frames so turn/air deceleration
+        // cannot immediately fight the launch velocity before it is applied.
+        plat_nocontrol_h_timer = WALL_JUMP_NO_CONTROL_H_FRAMES;
+        if (plat_vel_x < 0)
+            PLAYER.dir = DIR_LEFT;
 
         plat_next_state = FALL_STATE;
         plat_rope_block_length = 0;
