@@ -297,6 +297,7 @@ UBYTE plat_rope_block_length;  // length of rope in terms of blocks
 UBYTE plat_rope_max_angle;     // the max angle the rope can get to
 INT16 plat_rope_ang_vel;       // angular velocity of the object
 UBYTE plat_rope_swing_speed;   // controls the swing speed of the rope
+UBYTE plat_rope_actor;         // the actor id for the rope actor
 
 // Solid actors
 actor_t *plat_attached_actor;  // The last actor the player hit, and that they were attached to
@@ -432,11 +433,12 @@ inline UBYTE dash_input_pressed(void)
 
 #endif
 
-void rope_trigger_enter(UWORD anchor_x, UWORD anchor_y, UBYTE block_length, UBYTE max_angle_degrees, UBYTE swing_speed) BANKED{
+void rope_trigger_enter(UWORD anchor_x, UWORD anchor_y, UBYTE block_length, UBYTE max_angle_degrees, UBYTE swing_speed, UBYTE actor_idx) BANKED{
     plat_rope_anchor_x = TILE_TO_SUBPX(anchor_x);// + 128; // we want midpoint of a block
     plat_rope_anchor_y = TILE_TO_SUBPX(anchor_y);
     plat_rope_block_length = block_length;
     plat_rope_swing_speed = swing_speed;
+    plat_rope_actor = actor_idx;
     
     // Convert degrees (30-90) to sine wave array index (0-64)
     // Formula: array_index = (degrees * 256) / 360 = (degrees * 64) / 90
@@ -2583,6 +2585,7 @@ static void state_enter_rope(void) {
 
     plat_rope_ang_vel = 0;
 
+    actor_set_anim(&actors[plat_rope_actor], 0);
     plat_callback_execute(ROPE_INIT);
 }
 
@@ -2592,13 +2595,20 @@ static void state_exit_rope(void) {
 
 static void state_update_rope(void) {
     if (INPUT_PRESSED(INPUT_PLATFORM_JUMP)) {
-        // Launch player with the velocity from the last frame's rope displacement.
-        // release_dx_subpx = (INT16)(PLAYER.pos.x - plat_rope_prev_x);
-        // release_dy_subpx = (INT16)(PLAYER.pos.y - plat_rope_prev_y);
-        // release_vel_x = ((int32_t)release_dx_subpx) << 7;
-        // release_vel_y = ((int32_t)release_dy_subpx) << 7;
-        // plat_vel_x = (WORD)CLAMP(release_vel_x, WORD_MIN, WORD_MAX);
-        // plat_vel_y = (WORD)CLAMP(release_vel_y, WORD_MIN, WORD_MAX);
+        // // Launch player tangentially using v = L * omega (see ROPE_SWING_MATH.md §7).
+        // // Must use theta/omega *before* we zero them; displacement method fails because
+        // // at jump-press time PLAYER.pos == plat_rope_prev (both from prior frame).
+        WORD curr_angle_idx = (plat_rope_theta >> 4);
+        curr_angle_idx = (curr_angle_idx < 0) ? 256 + curr_angle_idx : curr_angle_idx;
+        UWORD len_subpx = TILE_TO_SUBPX(plat_rope_block_length);
+        int32_t vx = ((int32_t)len_subpx * COS(curr_angle_idx) * plat_rope_ang_vel) >> 10;
+        int32_t vy = -((int32_t)len_subpx * SIN(curr_angle_idx) * plat_rope_ang_vel) >> 10;
+        plat_vel_x = -2560;//(WORD)CLAMP(vx, WORD_MIN, WORD_MAX);
+        plat_vel_y = (WORD)CLAMP(vy, WORD_MIN, WORD_MAX);
+        
+        //dir = (plat_vel_x < 0) ? -1 : 1;
+        //plat_delta_x +=plat_vel_x;
+
         plat_next_state = FALL_STATE;
         plat_rope_block_length = 0;
         plat_rope_theta = 0;
@@ -2619,6 +2629,20 @@ static void state_update_rope(void) {
     
     PLAYER.pos.x = plat_rope_anchor_x + dx;
     PLAYER.pos.y = plat_rope_anchor_y + dy;
+
+    plat_rope_prev_x = PLAYER.pos.x;
+    plat_rope_prev_y = PLAYER.pos.y;
+
+    // update rope actor sprite frame from swing angle
+    WORD signed_idx = (plat_rope_theta >> 4);
+    if (signed_idx < -(WORD)plat_rope_max_angle) signed_idx = -(WORD)plat_rope_max_angle;
+    if (signed_idx >  (WORD)plat_rope_max_angle) signed_idx =  (WORD)plat_rope_max_angle;
+    UBYTE rope_frame = (UBYTE)(
+        (INT32)(signed_idx + (WORD)plat_rope_max_angle) * 28
+        / (2 * (WORD)plat_rope_max_angle)
+    );
+    actors[plat_rope_actor].frame =
+        actors[plat_rope_actor].frame_start + rope_frame;
 
     // now we update theta, angular velocity and all
     WORD ang_accel = - (SIN(currAngleIdx))/ (plat_rope_block_length * plat_rope_swing_speed);

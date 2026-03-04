@@ -29,7 +29,8 @@ UBYTE rope_swing_update(void *THIS_void, UBYTE start, UWORD *stack_frame) OLDCAL
         UBYTE block_length  = (UBYTE)stack_frame[2];
         UBYTE max_angle     = (UBYTE)stack_frame[3];
         UBYTE speed_factor  = (UBYTE)stack_frame[4];
-        rope_trigger_enter(anchor_x, anchor_y, block_length, max_angle, speed_factor);
+        UBYTE actor_idx     = (UBYTE)stack_frame[5];
+        rope_trigger_enter(anchor_x, anchor_y, block_length, max_angle, speed_factor, actor_idx);
     }
 
     if (plat_state != ROPE_STATE) {

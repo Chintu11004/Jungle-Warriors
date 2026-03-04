@@ -1835,12 +1835,14 @@ OP_VM_PRINT_OVERLAY     = 0x8D
 ;   stack_frame[1] = ANCHOR_Y
 ;   stack_frame[2] = LENGTH
 ;   stack_frame[3] = MAX_ANGLE
-;   stack_frame[4] = SWING_SPEED  (last pushed, top = ARG0)
-.macro VM_ROPE_SWING ANCHOR_X, ANCHOR_Y, LENGTH, MAX_ANGLE, SWING_SPEED
+;   stack_frame[4] = SWING_SPEED 
+;   stack_frame[4] = ACTOR  (last pushed, top = ARG0)
+.macro VM_ROPE_SWING ANCHOR_X, ANCHOR_Y, LENGTH, MAX_ANGLE, SWING_SPEED, ACTOR_IDX
         VM_PUSH_CONST ANCHOR_X
         VM_PUSH_CONST ANCHOR_Y
         VM_PUSH_CONST LENGTH
         VM_PUSH_CONST MAX_ANGLE
         VM_PUSH_CONST SWING_SPEED
-        VM_INVOKE BANK(ROPE_SWING), _rope_swing_update, 5, .ARG4
+        VM_PUSH_CONST ACTOR_IDX
+        VM_INVOKE BANK(ROPE_SWING), _rope_swing_update, 6, .ARG5
 .endm

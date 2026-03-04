@@ -39,10 +39,16 @@ export const fields = [
     min: 1,
     max: 5,
   },
+  {
+    key: "rope_actor",
+    label: "Rope Actor",
+    type: "actor",
+    defaultValue: "$self$",
+  },
 ];
 
 export const compile = (input, helpers) => {
-  const { _invoke, _stackPushConst } = helpers;
+  const { _invoke, _stackPushConst, actorPushById } = helpers;
 
   // Push in forward order so stack_frame[0]=anchor_x, [1]=anchor_y, etc.
   // The VM convention: PARAMS = -(N args), stack_frame[0] = first pushed (deepest).
@@ -51,15 +57,17 @@ export const compile = (input, helpers) => {
   //   [1] anchor_y
   //   [2] length
   //   [3] max_angle
-  //   [4] speed_factor   (last pushed, top = ARG0)
+  //   [4] speed_factor
+  //   [5] actor_idx     (resolved from actor UUID by actorPushById)
   _stackPushConst(input.rope_anchor_x || 0);              // stack_frame[0]
   _stackPushConst(input.rope_anchor_y || 0);              // stack_frame[1]
   _stackPushConst(input.rope_length || 5);                // stack_frame[2]
   _stackPushConst(input.rope_max_angle || 45);            // stack_frame[3]
   _stackPushConst(input.rope_swing_speed_factor || 1);    // stack_frame[4]
+  actorPushById(input.rope_actor);                       // stack_frame[5] - resolves actor UUID to index
 
   // VM_INVOKE calls rope_swing_update every frame until it returns TRUE.
-  // popCount=5 tells the VM to pop the 5 stack slots when done.
-  // PARAMS=-5 (.ARG4) so stack_frame = stack_ptr - 5, pointing at the first pushed arg.
-  _invoke("rope_swing_update", 5, -5);
+  // popCount=6 tells the VM to pop the 6 stack slots when done.
+  // PARAMS=-6 so stack_frame = stack_ptr - 6, pointing at the first pushed arg.
+  _invoke("rope_swing_update", 6, -6);
 };

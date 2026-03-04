@@ -22,6 +22,6 @@ extern state_e plat_next_state;
 
 void platform_init(void) BANKED;
 void platform_update(void) BANKED;
-void rope_trigger_enter(UWORD anchor_x, UWORD anchor_y, UBYTE block_length, UBYTE max_angle_degrees, UBYTE swing_speed) BANKED;
+void rope_trigger_enter(UWORD anchor_x, UWORD anchor_y, UBYTE block_length, UBYTE max_angle_degrees, UBYTE swing_speed, UBYTE actor_idx) BANKED;
 
 #endif
