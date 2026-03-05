@@ -103,10 +103,18 @@
         "musicId": "9aac47ff-51d7-48bf-9f15-1ce01b3872a4",
         "loop": true
       }
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "92dbf5f0-ecc4-4fad-b816-b2a45db599ca"
+      },
+      "id": "faa91891-fbde-46b6-a28e-186ac97117e1"
     }
   ],
   "playerHit1Script": [],
   "playerHit2Script": [],
   "playerHit3Script": [],
-  "collisions": "00460+0f50+00f0+"
+  "collisions": "001e8+10!004f+10!004f+10!004f+10!0f3+004c+10!004f+10!004f+10!004f+10!0047+0f50+00f0+",
+  "playerSpriteSheetId": "c91b8ed9-7012-42b0-ace7-b8bb32a9b64d"
 }

@@ -1,0 +1,55 @@
+{
+  "_resourceType": "script",
+  "id": "92dbf5f0-ecc4-4fad-b816-b2a45db599ca",
+  "name": "Script 15",
+  "description": "Whip Attack\n",
+  "variables": {},
+  "actors": {},
+  "symbol": "script_15",
+  "script": [
+    {
+      "command": "EVENT_SET_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "b"
+        ],
+        "override": true,
+        "__scriptTabs": "press",
+        "__collapse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_RATE_LIMIT",
+            "args": {
+              "variable": "19",
+              "time": {
+                "type": "number",
+                "value": 1
+              },
+              "frames": {
+                "type": "number",
+                "value": 1
+              },
+              "__collapse": false
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_CALL_CUSTOM_EVENT",
+                  "args": {
+                    "customEventId": "ca046432-c0cf-4969-b7c4-5091b396863d",
+                    "$actor[0]$": "player"
+                  },
+                  "id": "615fee33-ebb6-4c75-bc92-9c067acbceb2"
+                }
+              ]
+            },
+            "id": "fe87d041-6e2f-4cb1-8ac8-b46b16bfa0d1"
+          }
+        ]
+      },
+      "id": "4aa0822b-7b16-4ada-9d61-f62c334cd9da"
+    }
+  ]
+}
