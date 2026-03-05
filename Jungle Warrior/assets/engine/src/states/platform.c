@@ -2597,6 +2597,7 @@ static void state_exit_run(void) {
 // ROPE_STATE
 
 extern UBYTE plat_rope_mask;
+#define RELEASE_AND_INIT_FACTOR 9
 
 static void state_enter_rope(void) {
     // phase 192 == 270 degrees; SIN(192) = -127, so theta starts at -max_angle
@@ -2611,7 +2612,7 @@ static void state_enter_rope(void) {
         int32_t v_tan = (int32_t)plat_vel_x * COS(idx) - (int32_t)plat_vel_y * SIN(idx);
         // Match release formula scaling: plat_vel = (L * COS * ω) >> 10  =>  ω = (v_tan/127) * 1024 / L
         int32_t omega = (len_subpx != 0)
-            ? (int32_t)((v_tan * 1024 / 127) / (int32_t)len_subpx) >> 10
+            ? (int32_t)(((v_tan << RELEASE_AND_INIT_FACTOR) / 127) / (int32_t)len_subpx) >> RELEASE_AND_INIT_FACTOR
             : 0;
         plat_rope_ang_vel = (INT16)CLAMP(omega, WORD_MIN, WORD_MAX);
     }
@@ -2635,8 +2636,8 @@ static void state_update_rope(void) {
         WORD curr_angle_idx = (plat_rope_theta >> 4);
         curr_angle_idx = (curr_angle_idx < 0) ? 256 + curr_angle_idx : curr_angle_idx;
         UWORD len_subpx = TILE_TO_SUBPX(plat_rope_block_length);
-        int32_t vx = ((int32_t)len_subpx * COS(curr_angle_idx) * plat_rope_ang_vel) >> 10;
-        int32_t vy = -((int32_t)len_subpx * SIN(curr_angle_idx) * plat_rope_ang_vel) >> 10;
+        int32_t vx = ((int32_t)len_subpx * COS(curr_angle_idx) * plat_rope_ang_vel) >> RELEASE_AND_INIT_FACTOR;
+        int32_t vy = -((int32_t)len_subpx * SIN(curr_angle_idx) * plat_rope_ang_vel) >> RELEASE_AND_INIT_FACTOR;
         plat_vel_x = (WORD)CLAMP(vx, WORD_MIN, WORD_MAX);
         plat_vel_y = (WORD)CLAMP(vy, WORD_MIN, WORD_MAX);
 
