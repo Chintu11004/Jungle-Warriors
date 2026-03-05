@@ -300,6 +300,9 @@ UBYTE plat_rope_max_angle;     // the max angle the rope can get to
 INT16 plat_rope_ang_vel;       // angular velocity of the object
 UBYTE plat_rope_swing_speed;   // controls the swing speed of the rope
 UBYTE plat_rope_actor;         // the actor id for the rope actor
+#define PLAT_ROPE_RESET_MAX 5
+rope_actor_t plat_rope_resetPositions_array[PLAT_ROPE_RESET_MAX];
+UBYTE plat_rope_array_size;
 
 // Solid actors
 actor_t *plat_attached_actor;  // The last actor the player hit, and that they were attached to
@@ -349,6 +352,7 @@ void plat_state_script_attach(SCRIPT_CTX *THIS) OLDCALL BANKED;
 void plat_state_script_detach(SCRIPT_CTX *THIS) OLDCALL BANKED;
 void plat_callback_reset(void);
 static void plat_callback_execute(UBYTE i);
+static int reset_rope_actor_position(rope_actor_t *rope);
 
 #ifdef FEAT_PLATFORM_DROP_THROUGH
 
@@ -756,7 +760,20 @@ void platform_update(void) BANKED
     // Dash Input Check
     plat_dash_pressed = dash_input_pressed();
 #endif
-
+    
+    if (plat_rope_array_size != 0) {
+        UBYTE i = 0;
+        while (i < plat_rope_array_size) {
+            if (reset_rope_actor_position(&plat_rope_resetPositions_array[i]) == -1) {
+                // shift remaining entries down and decrement size
+                for (UBYTE j = i; j + 1 < plat_rope_array_size; j++)
+                    plat_rope_resetPositions_array[j] = plat_rope_resetPositions_array[j + 1];
+                plat_rope_array_size--;
+            } else {
+                i++;
+            }
+        }
+    }
     // B. STATE MACHINE =======================================================
 
     switch (plat_state)
@@ -2620,10 +2637,21 @@ static void state_update_rope(void) {
             PLAYER.dir = DIR_LEFT;
 
         plat_next_state = FALL_STATE;
-        plat_rope_block_length = 0;
-        plat_rope_theta = 0;
         plat_rope_anchor_x = 0;
         plat_rope_anchor_y = 0;
+
+        // add rope to the plat_rope_resetPositions_array for post-exit swing animation
+        if (plat_rope_array_size < PLAT_ROPE_RESET_MAX) {
+            plat_rope_resetPositions_array[plat_rope_array_size].rope_theta = plat_rope_theta;
+            plat_rope_resetPositions_array[plat_rope_array_size].rope_ang_vel = plat_rope_ang_vel;
+            plat_rope_resetPositions_array[plat_rope_array_size].rope_max_angle = plat_rope_max_angle;
+            plat_rope_resetPositions_array[plat_rope_array_size].rope_block_length_swing_speed = plat_rope_block_length * plat_rope_swing_speed;
+            plat_rope_resetPositions_array[plat_rope_array_size].rope_actor_index = plat_rope_actor;
+            plat_rope_array_size++;
+        }
+
+        plat_rope_theta = 0;
+        plat_rope_block_length = 0;
         return;
     }
 
@@ -2647,18 +2675,36 @@ static void state_update_rope(void) {
     WORD signed_idx = (plat_rope_theta >> 4);
     if (signed_idx < -(WORD)plat_rope_max_angle) signed_idx = -(WORD)plat_rope_max_angle;
     if (signed_idx >  (WORD)plat_rope_max_angle) signed_idx =  (WORD)plat_rope_max_angle;
-    UBYTE rope_frame = (UBYTE)(
-        (INT32)(signed_idx + (WORD)plat_rope_max_angle) * 28
-        / (2 * (WORD)plat_rope_max_angle)
-    );
-    actors[plat_rope_actor].frame =
-        actors[plat_rope_actor].frame_start + rope_frame;
+    UBYTE rope_frame = (UBYTE)((INT32)(signed_idx + (WORD)plat_rope_max_angle) * 28 / (2 * (WORD)plat_rope_max_angle));
+    actors[plat_rope_actor].frame = actors[plat_rope_actor].frame_start + rope_frame;
 
     // now we update theta, angular velocity and all
     WORD ang_accel = - (SIN(currAngleIdx))/ (plat_rope_block_length * plat_rope_swing_speed);
     // we have 4 more precision values in ang_accel
     plat_rope_ang_vel += ang_accel;
     plat_rope_theta += plat_rope_ang_vel;
+}
+
+static int reset_rope_actor_position(rope_actor_t *rope) {
+    WORD currAngleIdx = (rope->rope_theta >> 4);
+    currAngleIdx = (currAngleIdx < 0) ? 256 + currAngleIdx : currAngleIdx;
+
+    // update rope actor sprite frame from swing angle
+    WORD signed_idx = (rope->rope_theta >> 4);
+    if (signed_idx < -(WORD)rope->rope_max_angle) signed_idx = -(WORD)rope->rope_max_angle;
+    if (signed_idx >  (WORD)rope->rope_max_angle) signed_idx =  (WORD)rope->rope_max_angle;
+    UBYTE rope_frame = (UBYTE)((INT32)(signed_idx + (WORD)rope->rope_max_angle) * 28 / (2 * (WORD)rope->rope_max_angle));
+    if (rope_frame == 0) {
+        return -1;  /* pop entry - rope has returned to frame_start */
+    }
+    actors[rope->rope_actor_index].frame = actors[rope->rope_actor_index].frame_start + rope_frame;
+
+    /* advance physics: theta and angular velocity */
+    WORD ang_accel = -(SIN(currAngleIdx)) / (rope->rope_block_length_swing_speed);
+    rope->rope_ang_vel += ang_accel;
+    rope->rope_theta += rope->rope_ang_vel;
+
+    return 0;
 }
 
 // End of State Machine Functions ---------------------------------------------

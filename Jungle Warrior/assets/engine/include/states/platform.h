@@ -17,6 +17,14 @@ typedef enum {
     ROPE_STATE,
 } state_e;
 
+typedef struct {
+    WORD rope_theta;
+    INT16 rope_ang_vel;
+    UBYTE rope_max_angle;
+    UBYTE rope_block_length_swing_speed;
+    UBYTE rope_actor_index;
+} rope_actor_t;
+
 extern state_e plat_state;
 extern state_e plat_next_state;
 
