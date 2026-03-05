@@ -1,8 +1,8 @@
 {
   "_resourceType": "settings",
-  "startSceneId": "382961a1-e615-4b92-92a7-f1a791b50b7a",
+  "startSceneId": "896aee79-9b53-4ac1-b41f-b1ddf96da7ff",
   "startX": 0,
-  "startY": 0,
+  "startY": 10,
   "startMoveSpeed": 1,
   "startAnimSpeed": 15,
   "startDirection": "right",

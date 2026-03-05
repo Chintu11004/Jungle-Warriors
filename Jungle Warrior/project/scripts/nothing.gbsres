@@ -1,0 +1,10 @@
+{
+  "_resourceType": "script",
+  "id": "faa1837f-44c6-467f-b7fd-b51763fcd3c3",
+  "name": "nothing",
+  "description": "do nothing",
+  "variables": {},
+  "actors": {},
+  "symbol": "script_16",
+  "script": []
+}
