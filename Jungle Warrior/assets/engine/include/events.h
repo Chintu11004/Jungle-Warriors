@@ -11,6 +11,7 @@ typedef struct script_event_t {
 
 extern script_event_t input_events[8];
 extern UBYTE input_slots[8]; 
+extern UBYTE plat_rope_mask;
 
 typedef struct timer_time_t {
     UBYTE value, remains;
@@ -26,5 +27,4 @@ void events_update(void) NONBANKED;
 
 void timers_init(UBYTE preserve) BANKED;
 void timers_update(void) NONBANKED;
-
 #endif

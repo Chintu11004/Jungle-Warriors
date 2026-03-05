@@ -18,7 +18,8 @@
         "rope_length": 11,
         "rope_max_angle": 60,
         "rope_swing_speed_factor": 3,
-        "rope_actor": "7337347f-c586-4e7e-a769-97f720425b29"
+        "rope_actor": "7337347f-c586-4e7e-a769-97f720425b29",
+        "__collapse": true
       },
       "id": "73851834-df59-4065-ae07-362a423f5410"
     }

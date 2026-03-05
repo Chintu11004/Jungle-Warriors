@@ -18,6 +18,8 @@
 #include "macro.h"
 #include "rope_swing.h"
 #include "sincos.h"
+//======CUSTOM======
+#include <gbdk/platform.h>
 
 // Feature Flags --------------------------------------------------------------
 // Optional feature flags, set in 'state_defines.h'
@@ -2577,6 +2579,8 @@ static void state_exit_run(void) {
 
 // ROPE_STATE
 
+extern UBYTE plat_rope_mask;
+
 static void state_enter_rope(void) {
     // phase 192 == 270 degrees; SIN(192) = -127, so theta starts at -max_angle
     plat_rope_theta = -plat_rope_max_angle << 4;
@@ -2586,10 +2590,13 @@ static void state_enter_rope(void) {
     plat_rope_ang_vel = 0;
 
     actor_set_anim(&actors[plat_rope_actor], 0);
+    // set the mask
+    plat_rope_mask = J_A | J_SELECT | J_START;
     plat_callback_execute(ROPE_INIT);
 }
 
 static void state_exit_rope(void) {
+    plat_rope_mask = 0;
     plat_callback_execute(ROPE_END);
 }
 

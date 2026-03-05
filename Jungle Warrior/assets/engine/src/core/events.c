@@ -5,8 +5,12 @@
 #include "events.h"
 #include "input.h"
 
+// =======CUSTOM========
+#include "states/platform.h"
+
 script_event_t input_events[8];
 UBYTE input_slots[8];
+UBYTE plat_rope_mask;
 
 script_event_t timer_events[MAX_CONCURRENT_TIMERS];
 timer_time_t timer_values[MAX_CONCURRENT_TIMERS];
@@ -22,6 +26,12 @@ void events_init(UBYTE preserve) BANKED {
 }
 
 void events_update(void) NONBANKED {
+    // add platformer mask
+    if (plat_rope_mask) {
+        joy &= plat_rope_mask;
+        joy_pressed &= plat_rope_mask;    
+    }
+    
     UBYTE * slot_ptr = input_slots;
     for (UBYTE tmp = joy, key = 1; (tmp); tmp = tmp >> 1, key = key << 1, slot_ptr++) {
         if (tmp & 1) {
