@@ -2604,7 +2604,17 @@ static void state_enter_rope(void) {
     plat_rope_prev_x = PLAYER.pos.x;
     plat_rope_prev_y = PLAYER.pos.y;
 
-    plat_rope_ang_vel = 0;
+    // Seed angular velocity from approach: ω = v_tangent / L, with v_tangent = vx·cos(θ) - vy·sin(θ) at θ = -max_angle
+    {
+        UBYTE idx = (UBYTE)(256 - plat_rope_max_angle);  // sine table index for -max_angle
+        UWORD len_subpx = TILE_TO_SUBPX(plat_rope_block_length);
+        int32_t v_tan = (int32_t)plat_vel_x * COS(idx) - (int32_t)plat_vel_y * SIN(idx);
+        // Match release formula scaling: plat_vel = (L * COS * ω) >> 10  =>  ω = (v_tan/127) * 1024 / L
+        int32_t omega = (len_subpx != 0)
+            ? (int32_t)((v_tan * 1024 / 127) / (int32_t)len_subpx) >> 10
+            : 0;
+        plat_rope_ang_vel = (INT16)CLAMP(omega, WORD_MIN, WORD_MAX);
+    }
 
     actor_set_anim(&actors[plat_rope_actor], 0);
     // set the mask
@@ -2619,9 +2629,9 @@ static void state_exit_rope(void) {
 
 static void state_update_rope(void) {
     if (INPUT_PRESSED(INPUT_PLATFORM_JUMP)) {
-        // // Launch player tangentially using v = L * omega (see ROPE_SWING_MATH.md §7).
-        // // Must use theta/omega *before* we zero them; displacement method fails because
-        // // at jump-press time PLAYER.pos == plat_rope_prev (both from prior frame).
+        // Launch player tangentially using v = L * omega
+        // ust use theta/omega *before* we zero them; displacement method fails because
+        // at jump-press time PLAYER.pos == plat_rope_prev (both from prior frame).
         WORD curr_angle_idx = (plat_rope_theta >> 4);
         curr_angle_idx = (curr_angle_idx < 0) ? 256 + curr_angle_idx : curr_angle_idx;
         UWORD len_subpx = TILE_TO_SUBPX(plat_rope_block_length);
