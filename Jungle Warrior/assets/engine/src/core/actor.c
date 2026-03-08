@@ -17,6 +17,7 @@
 #include "ui.h"
 #include "vm.h"
 #include "macro.h"
+#include "shadow.h"
 
 #ifdef STRICT
     #include <gb/bgb_emu.h>
@@ -64,6 +65,35 @@ UBYTE allocated_sprite_tiles;
 UBYTE allocated_hardware_sprites;
 
 static void deactivate_actor_impl(actor_t *actor);
+
+/* Per-sub-sprite clipped metasprite renderer. Matches __move_metasprite
+ * assembly behavior: dy/dx are cumulative deltas (not absolute), no +16/+8
+ * added. Uses INT16 to detect out-of-uint8_t range and hides ghosts.
+ * MUST be NONBANKED (bank 0) — SWITCH_ROM unmaps bank 255. */
+UBYTE move_metasprite_clipped(const metasprite_t *metasprite, UBYTE base_tile, UBYTE base_sprite, INT16 x, INT16 y) NONBANKED {
+    OAM_item_t *shadow = (OAM_item_t *)((UWORD)__render_shadow_OAM << 8);
+    const metasprite_t *m = metasprite;
+    UBYTE slot = base_sprite;
+    UBYTE count = 0;
+
+    while (slot < MAX_HARDWARE_SPRITES && m->dy != metasprite_end) {
+        y += (INT16)m->dy;
+        x += (INT16)m->dx;
+
+        if ((UWORD)y < 256u && (UWORD)x < 256u) {
+            shadow[slot].y = (UBYTE)y;
+            shadow[slot].x = (UBYTE)x;
+            shadow[slot].tile = base_tile + m->dtile;
+            shadow[slot].prop = m->props;
+        } else {
+            shadow[slot].y = 0u;
+        }
+        slot++;
+        count++;
+        m++;
+    }
+    return count;
+}
 
 void actors_init(void) BANKED {
     actors_active_tail = actors_active_head = actors_inactive_head = NULL;
@@ -223,32 +253,33 @@ void actors_render(void) NONBANKED {
         }
     }
     
-    // Render all actors
+    // Render all actors (per-sub-sprite clipped for large metasprites like ropes)
     for (actor = PLAYER.prev; (actor); actor = actor->prev){
         if (CHK_FLAG(actor->flags, ACTOR_FLAG_HIDDEN | ACTOR_FLAG_DISABLED)) {
            continue;
         }
         
+        INT16 ax, ay;
         if (CHK_FLAG(actor->flags, ACTOR_FLAG_PINNED)) {
-            screen_x = SUBPX_TO_PX(actor->pos.x);
-            screen_y = SUBPX_TO_PX(actor->pos.y);
+            ax = (INT16)SUBPX_TO_PX(actor->pos.x);
+            ay = (INT16)SUBPX_TO_PX(actor->pos.y);
         } else {
-            screen_x = SUBPX_TO_PX(actor->pos.x) - draw_scroll_x;
-            screen_y = SUBPX_TO_PX(actor->pos.y) - draw_scroll_y;
+            ax = (INT16)SUBPX_TO_PX(actor->pos.x) - draw_scroll_x;
+            ay = (INT16)SUBPX_TO_PX(actor->pos.y) - draw_scroll_y;
         }
 
-        if (((window_hide_actors) && (((screen_x + 8) > WX_REG) && ((screen_y - 8) > WY_REG)))) {
+        if (((window_hide_actors) && (((ax + 8) > WX_REG) && ((ay - 8) > WY_REG)))) {
             continue;
         }
         SWITCH_ROM(actor->sprite.bank);
         spritesheet_t *sprite = actor->sprite.ptr;
 
-        allocated_hardware_sprites += move_metasprite(
+        allocated_hardware_sprites += move_metasprite_clipped(
             *(sprite->metasprites + actor->frame),
             actor->base_tile,
             allocated_hardware_sprites,
-            screen_x,
-            screen_y
+            ax,
+            ay
         );
     }
 
@@ -308,6 +339,7 @@ static void activate_actor_impl(actor_t *actor) {
         UBYTE screen_tile16_x_end = screen_tile16_x + ACTOR_BOUNDS_TILE16 + SCREEN_TILE16_W;
         UBYTE screen_tile16_y = PX_TO_TILE16(draw_scroll_y) + TILE16_OFFSET;
         UBYTE screen_tile16_y_end = screen_tile16_y + ACTOR_BOUNDS_TILE16 + SCREEN_TILE16_H;
+        
         if (
             // Actor right edge < screen left edge
             (actor_tile16_x < screen_tile16_x) ||
