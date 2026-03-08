@@ -32,6 +32,8 @@
 #define SCREEN_TILE16_H            9u
 #define ACTOR_BOUNDS_TILE16        6u
 #define ACTOR_BOUNDS_TILE16_HALF   3u
+#define ROPE_MARGIN_TILE16         4u   /* blocks around viewport where rope stays enabled */
+#define ROPE_ACTIVATION_TILES      8u   /* tiles rope extends from origin (for early activation) */
 
 BANKREF(ACTOR)
 
@@ -169,15 +171,24 @@ void actors_update(void) BANKED {
                 // Actor top edge > screen bottom edge
                 (actor_tile16_y > screen_tile16_y_end)
             ) {
-                // Deactivate if offscreen
                 actor_t * prev = actor->prev;
                 if (!VM_ISLOCKED()) {
                     if (actor == &PLAYER || CHK_FLAG(actor_flags, ACTOR_FLAG_PERSISTENT)) {
                         SET_FLAG(actor->flags, ACTOR_FLAG_DISABLED);
+                    } else if ((actor == &actors[1] || actor == &actors[2])) {
+                        /* Rope: use 4-block margin, stay active, only set DISABLED when far offscreen */
+                        if (actor_tile16_x >= screen_tile16_x - ROPE_MARGIN_TILE16 &&
+                            actor_tile16_x <= screen_tile16_x_end + ROPE_MARGIN_TILE16 &&
+                            actor_tile16_y >= screen_tile16_y - ROPE_MARGIN_TILE16 &&
+                            actor_tile16_y <= screen_tile16_y_end + ROPE_MARGIN_TILE16) {
+                            CLR_FLAG(actor->flags, ACTOR_FLAG_DISABLED);
+                        } else {
+                            SET_FLAG(actor->flags, ACTOR_FLAG_DISABLED);
+                        }
                     } else {
                         if (CHK_FLAG(actor_flags, ACTOR_FLAG_DISABLED)) {
                             CLR_FLAG(actor->flags, ACTOR_FLAG_DISABLED);
-                        }                        
+                        }
                         deactivate_actor_impl(actor);
                     }
                 } else {
@@ -352,9 +363,10 @@ static void activate_actor_impl(actor_t *actor) {
         ) {
             if (actor == &PLAYER || CHK_FLAG(actor->flags, ACTOR_FLAG_PERSISTENT)) {
                 SET_FLAG(actor->flags, ACTOR_FLAG_DISABLED);
-            } else {
+            } else if (actor != &actors[1] && actor != &actors[2]) {
                 return;
-            } 
+            }
+            /* Rope actors: fall through to activation even when slightly offscreen */
         }
     }
 
@@ -380,11 +392,11 @@ void activate_actors_in_row(UBYTE x, UBYTE y) BANKED {
     while (actor) {
         actor_t *next = actor->next;
         UBYTE ty = SUBPX_TO_TILE(actor->pos.y);
-        if (ty == y) {
-            UBYTE tx = SUBPX_TO_TILE(actor->pos.x);
-            if ((tx >= x) && (tx < x_end)) {
-                activate_actor_impl(actor);
-            }
+        UBYTE tx = SUBPX_TO_TILE(actor->pos.x);
+        UBYTE in_row = (ty == y) || ((actor == &actors[1] || actor == &actors[2]) && ty <= y && y <= ty + ROPE_ACTIVATION_TILES);
+        UBYTE in_strip = (tx >= x && tx < x_end) || ((actor == &actors[1] || actor == &actors[2]) && (INT16)x < (INT16)tx + (INT16)ROPE_ACTIVATION_TILES && (INT16)x_end > (INT16)tx - (INT16)ROPE_ACTIVATION_TILES);
+        if (in_row && in_strip) {
+            activate_actor_impl(actor);
         }
         actor = next;
     }
@@ -397,11 +409,11 @@ void activate_actors_in_col(UBYTE x, UBYTE y) BANKED {
     while (actor) {
         actor_t *next = actor->next;
         UBYTE tx = SUBPX_TO_TILE(actor->pos.x);
-        if (tx == x) {
-            UBYTE ty = SUBPX_TO_TILE(actor->pos.y);
-            if ((ty >= y) && (ty < y_end)) {
-                activate_actor_impl(actor);
-            }
+        UBYTE ty = SUBPX_TO_TILE(actor->pos.y);
+        UBYTE in_col = (tx == x) || ((actor == &actors[1] || actor == &actors[2]) && (INT16)x >= (INT16)tx - (INT16)ROPE_ACTIVATION_TILES && (INT16)x <= (INT16)tx + (INT16)ROPE_ACTIVATION_TILES);
+        UBYTE vert_ok = (ty >= y && ty < y_end) || ((actor == &actors[1] || actor == &actors[2]) && (ty < y_end) && ((ty + ROPE_ACTIVATION_TILES) > y));
+        if (in_col && vert_ok) {
+            activate_actor_impl(actor);
         }
         actor = next;
     }
