@@ -34,6 +34,7 @@ void load_init(void) BANKED;
 UBYTE load_scene(const scene_t * scene, UBYTE bank, UBYTE init_data) BANKED;
 
 UBYTE load_sprite(UBYTE sprite_offset, const spritesheet_t * sprite, UBYTE bank) BANKED;
+UBYTE load_actor_sprite(actor_t * actor) BANKED;
 void load_player(void) BANKED;
 void load_emote(const unsigned char * tiles, UBYTE bank) BANKED;
 void load_animations(const spritesheet_t *sprite, UBYTE bank, UWORD animation_set, animation_t * res_animations) NONBANKED;
