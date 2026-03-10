@@ -173,6 +173,37 @@ UBYTE load_actor_sprite(actor_t * actor) BANKED {
     return n_loaded;
 }
 
+/**
+ * Unloads an actor's sprite (basic): clears base_tile, sets HIDDEN|DISABLED,
+ * removes from active/inactive lists. No VRAM reclaim.
+ */
+UBYTE unload_actor_sprite(actor_t * actor) BANKED {
+    actor_t * h;
+    UBYTE found;
+    if (!actor || actor->reserve_tiles) return 0;
+    if (actor->base_tile == SCENE_SPRITE_UNLOADED) return 0;
+    h = actors_inactive_head;
+    found = 0;
+    while (h) {
+        if (h == actor) { found = 1; break; }
+        h = h->next;
+    }
+    if (found) {
+        DL_REMOVE_ITEM(actors_inactive_head, actor);
+    } else {
+        h = actors_active_head;
+        found = 0;
+        while (h) {
+            if (h == actor) { found = 1; break; }
+            h = h->next;
+        }
+        if (found) DL_REMOVE_ITEM(actors_active_head, actor);
+    }
+    SET_FLAG(actor->flags, ACTOR_FLAG_HIDDEN | ACTOR_FLAG_DISABLED);
+    actor->base_tile = SCENE_SPRITE_UNLOADED;
+    return 1;
+}
+
 void load_animations(const spritesheet_t *sprite, UBYTE bank, UWORD animation_set, animation_t * res_animations) NONBANKED {
     UBYTE _save = CURRENT_BANK;
     SWITCH_ROM(bank);

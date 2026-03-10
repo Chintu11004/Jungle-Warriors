@@ -40,13 +40,9 @@ UBYTE deferred_actor_load(void *THIS_void, UBYTE start, UWORD *stack_frame) OLDC
 UBYTE deferred_actor_unload(void *THIS_void, UBYTE start, UWORD *stack_frame) OLDCALL BANKED {
     (void)THIS_void;
     (void)start;
-    (void)stack_frame;
-    /* TODO: Implement per DEFERRED_ACTOR_VRAM_PLAN.md
-     * - Read actor_idx from stack_frame[0]
-     * - Process only deferred-loaded actors
-     * - If active: terminate scripts, remove from active list
-     * - If inactive: remove from inactive list
-     * - Set HIDDEN|DISABLED, clear base_tile, mark deferred-unloaded, free slot
-     */
+    UBYTE actor_idx = (UBYTE)stack_frame[0];
+    if (actor_idx == 0 || actor_idx >= actors_len) return TRUE;
+    actor_t * actor = actors + actor_idx;
+    unload_actor_sprite(actor);
     return TRUE;
 }
