@@ -214,7 +214,18 @@ UBYTE load_actor_sprite(actor_t * actor) BANKED {
         UBYTE n_tiles = spritesheet_get_tile_count(actor->sprite.ptr, actor->sprite.bank);
         if (!n_tiles) return 0;
 
-        /* Loop 1: already loaded? (no-op) */
+        /* Check if sprite already loaded (shared with reserved actor or scene) */
+        if (sprites_len) {
+            ReadBankedFarPtr(&scene_sprites, (const unsigned char *)&((scene_t *)current_scene.ptr)->sprites, current_scene.bank);
+            idx = IndexOfFarPtr(scene_sprites.ptr, scene_sprites.bank, sprites_len, &actor->sprite);
+            if (idx < sprites_len && scene_sprites_base_tiles[idx] != SCENE_SPRITE_UNLOADED) {
+                actor->base_tile = scene_sprites_base_tiles[idx];
+                CLR_FLAG(actor->flags, ACTOR_FLAG_HIDDEN | ACTOR_FLAG_DISABLED);
+                return 1;
+            }
+        }
+
+        /* Loop 1: already loaded in a deferred slot? (no-op) */
         for (i = 0; i < MAX_DEFERRED_ACTOR_SLOTS; i++) {
             if (deferred_slots[i].actor_idx == actor_idx) {
                 actor->base_tile = deferred_slots[i].base_tile;
@@ -234,6 +245,7 @@ UBYTE load_actor_sprite(actor_t * actor) BANKED {
                 deferred_slots[i].base_tile = allocated_sprite_tiles;
                 deferred_slots[i].tile_count = n_loaded;
                 actor->base_tile = allocated_sprite_tiles;
+                if (sprites_len && idx < sprites_len) scene_sprites_base_tiles[idx] = allocated_sprite_tiles;
                 allocated_sprite_tiles += n_loaded;
                 CLR_FLAG(actor->flags, ACTOR_FLAG_HIDDEN | ACTOR_FLAG_DISABLED);
                 return n_loaded;
@@ -244,6 +256,7 @@ UBYTE load_actor_sprite(actor_t * actor) BANKED {
                 if (!n_loaded) return 0;
                 deferred_slots[i].actor_idx = actor_idx;
                 actor->base_tile = deferred_slots[i].base_tile;
+                if (sprites_len && idx < sprites_len) scene_sprites_base_tiles[idx] = deferred_slots[i].base_tile;
                 CLR_FLAG(actor->flags, ACTOR_FLAG_HIDDEN | ACTOR_FLAG_DISABLED);
                 return n_loaded;
             }

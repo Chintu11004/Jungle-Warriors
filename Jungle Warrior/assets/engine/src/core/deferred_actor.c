@@ -25,8 +25,8 @@ static UBYTE actor_list_contains(actor_t *head, actor_t *actor) {
  *   [0] actor index (from actorPushById)
  *
  * Current behaviour:
- *   - load: allocate or reuse a deferred VRAM slot, then register the actor
- *     on the inactive list without unhiding or activating it
+ *   - load: allocate or reuse a deferred VRAM slot, register the actor on the
+ *     inactive list, and activate if on screen so the sprite shows immediately
  *   - unload: remove the actor from runtime lists, terminate active scripts,
  *     hide/disable it, and free the deferred slot
  *
@@ -44,6 +44,7 @@ UBYTE deferred_actor_load(void *THIS_void, UBYTE start, UWORD *stack_frame) OLDC
         !actor_list_contains(actors_inactive_head, actor) &&
         !actor_list_contains(actors_active_head, actor)) {
         DL_PUSH_HEAD(actors_inactive_head, actor);
+        activate_actor(actor);  /* activate if on screen so sprite shows immediately */
     }
     return TRUE;
 }
