@@ -16,13 +16,6 @@
         "actor": "51ee74c1-9948-4f2e-a1f9-3fa5fa611bb1"
       },
       "id": "e3702956-6d84-4eb9-8ba1-36a6f420d198"
-    },
-    {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
-      "args": {
-        "actor": "f3e0f3ca-0e4e-4dae-a711-99561cd029cf"
-      },
-      "id": "0771deb5-af6e-4cde-8078-cc0217ec8015"
     }
   ],
   "leaveScript": [],

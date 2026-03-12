@@ -9,7 +9,14 @@
 
 BANKREF(DEFERRED_ACTOR)
 
-#define MAX_DEFERRED_ACTOR_SLOTS 10
+static UBYTE actor_list_contains(actor_t *head, actor_t *actor) {
+    UBYTE i;
+    for (i = 0; head && i < MAX_ACTORS; i++) {
+        if (head == actor) return TRUE;
+        head = head->next;
+    }
+    return FALSE;
+}
 
 /*
  * Deferred Actor Load/Unload — VM_INVOKE handlers (one-shot).
@@ -17,14 +24,14 @@ BANKREF(DEFERRED_ACTOR)
  * stack_frame layout (1 param):
  *   [0] actor index (from actorPushById)
  *
- * These handlers are stubs. The full implementation requires the deferred
- * runtime from DEFERRED_ACTOR_VRAM_PLAN.md:
- *   - Deferred slot table (actor_idx, base_tile, tile_count per slot)
- *   - Per-actor VRAM state (static / deferred-unloaded / deferred-loaded)
- *   - load_scene changes for init_data=TRUE/FALSE
- *   - scene_sprite_ensure_loaded, emote_base_tile split, etc.
+ * Current behaviour:
+ *   - load: allocate or reuse a deferred VRAM slot, then register the actor
+ *     on the inactive list without unhiding or activating it
+ *   - unload: remove the actor from runtime lists, terminate active scripts,
+ *     hide/disable it, and free the deferred slot
  *
- * Until then, these return TRUE immediately (no-op).
+ * The broader plan in DEFERRED_ACTOR_VRAM_PLAN.md is still not complete:
+ * scene sprite lazy loading and emote tile reservation remain separate work.
  */
 UBYTE deferred_actor_load(void *THIS_void, UBYTE start, UWORD *stack_frame) OLDCALL BANKED {
     (void)THIS_void;
@@ -33,7 +40,11 @@ UBYTE deferred_actor_load(void *THIS_void, UBYTE start, UWORD *stack_frame) OLDC
     if (actor_idx == 0 || actor_idx >= actors_len) return TRUE;
     actor_t * actor = actors + actor_idx;
     if (actor->reserve_tiles) return TRUE;  /* skip reserved actors */
-    load_actor_sprite(actor);
+    if (load_actor_sprite(actor) &&
+        !actor_list_contains(actors_inactive_head, actor) &&
+        !actor_list_contains(actors_active_head, actor)) {
+        DL_PUSH_HEAD(actors_inactive_head, actor);
+    }
     return TRUE;
 }
 
