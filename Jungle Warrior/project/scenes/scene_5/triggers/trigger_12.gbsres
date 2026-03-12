@@ -1,0 +1,35 @@
+{
+  "_resourceType": "trigger",
+  "id": "7aad3224-6a16-45eb-a3fa-bd8ddbdf6919",
+  "name": "",
+  "prefabId": "",
+  "x": 49,
+  "y": 37,
+  "symbol": "trigger_0",
+  "prefabScriptOverrides": {},
+  "width": 14,
+  "height": 9,
+  "script": [
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "Default in Water",
+        "loopAnim": true
+      },
+      "id": "6bea7a52-af03-4d39-937a-a1e61228483d"
+    }
+  ],
+  "leaveScript": [
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "",
+        "loopAnim": true
+      },
+      "id": "1008b0a0-cdb6-4f71-95b1-9baa7d6ff226"
+    }
+  ],
+  "_index": 11
+}

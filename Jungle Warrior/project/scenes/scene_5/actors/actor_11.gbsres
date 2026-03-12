@@ -21,8 +21,8 @@
       "command": "EVENT_TEXT",
       "args": {
         "text": [
-          "When jumping to a rope,\nHOLD Z to grab onto it",
-          "When on the rope, \nPress Z to disembark."
+          "When jumping to a rope,\nHOLD A to grab onto it",
+          "When on the rope, \nPress A to disembark."
         ],
         "__section": "text",
         "avatarId": "",
