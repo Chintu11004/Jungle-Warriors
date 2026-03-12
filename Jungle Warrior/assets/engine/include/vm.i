@@ -1862,3 +1862,9 @@ OP_VM_PRINT_OVERLAY     = 0x8D
         VM_PUSH_CONST ACTOR_IDX
         VM_INVOKE BANK(DEFERRED_ACTOR), _deferred_actor_unload, 1, .ARG0
 .endm
+
+;-- Deload Prev Level — resets deferred slots and reclaims VRAM for level transition.
+; Call after unloading all deferred actors, before loading the next level. No params.
+.macro VM_DELOAD_PREV_LEVEL
+        VM_INVOKE BANK(DEFERRED_ACTOR), _deload_prev_level_invoke, 0, .ARG0
+.endm

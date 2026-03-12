@@ -58,3 +58,14 @@ UBYTE deferred_actor_unload(void *THIS_void, UBYTE start, UWORD *stack_frame) OL
     unload_actor_sprite(actor);
     return TRUE;
 }
+
+/** One-shot VM_INVOKE handler for Deload Prev Level. Resets deferred slots and reclaims VRAM.
+ *  Call after unloading all deferred actors for the current level, before loading the next level.
+ *  No params. Returns TRUE immediately. */
+UBYTE deload_prev_level_invoke(void *THIS_void, UBYTE start, UWORD *stack_frame) OLDCALL BANKED {
+    (void)THIS_void;
+    (void)start;
+    (void)stack_frame;
+    deload_prev_level();
+    return TRUE;
+}

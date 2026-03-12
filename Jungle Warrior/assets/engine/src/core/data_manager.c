@@ -63,6 +63,7 @@ typedef struct {
     far_ptr_t sprite;      /* Spritesheet identity for same-sprite sharing */
 } deferred_slot_t;
 static deferred_slot_t deferred_slots[MAX_DEFERRED_ACTOR_SLOTS];
+static UWORD deferred_allocated_delta;  /* Tiles allocated for deferred since level start */
 
 static void deferred_slots_reset(void) {
     UBYTE i;
@@ -71,6 +72,23 @@ static void deferred_slots_reset(void) {
         deferred_slots[i].base_tile = DEFERRED_SLOT_FREE;
         deferred_slots[i].tile_count = DEFERRED_SLOT_FREE;
     }
+}
+
+/** Resets deferred slots and reclaims VRAM for level transition.
+ *  Iterates all actors and unloads any deferred actors still loaded, then resets slots and reclaims VRAM.
+ *  Call once on level transition—no need to manually unload each actor first. */
+void deload_prev_level(void) BANKED {
+    UBYTE i;
+    actor_t *actor;
+    for (i = 1; i < actors_len; i++) {
+        actor = actors + i;
+        if (!actor->reserve_tiles && actor->base_tile != SCENE_SPRITE_UNLOADED) {
+            unload_actor_sprite(actor);
+        }
+    }
+    deferred_slots_reset();
+    allocated_sprite_tiles -= (UBYTE)deferred_allocated_delta;
+    deferred_allocated_delta = 0;
 }
 
 static UBYTE actor_list_remove(actor_t **head, actor_t *actor) {
@@ -264,6 +282,7 @@ UBYTE load_actor_sprite(actor_t * actor) BANKED {
                 actor->base_tile = allocated_sprite_tiles;
                 if (sprites_len && idx < sprites_len) scene_sprites_base_tiles[idx] = allocated_sprite_tiles;
                 allocated_sprite_tiles += n_loaded;
+                deferred_allocated_delta += n_loaded;
                 CLR_FLAG(actor->flags, ACTOR_FLAG_HIDDEN | ACTOR_FLAG_DISABLED);
                 return n_loaded;
             }
@@ -402,7 +421,10 @@ UBYTE load_scene(const scene_t * scene, UBYTE bank, UBYTE init_data) BANKED {
     projectiles_len = MIN(scn.n_projectiles,    MAX_PROJECTILE_DEFS);
     sprites_len     = MIN(scn.n_sprites,        MAX_SCENE_SPRITES);
     memset(scene_sprites_base_tiles, SCENE_SPRITE_UNLOADED, sizeof(scene_sprites_base_tiles));
-    if (init_data) deferred_slots_reset();
+    if (init_data) {
+        deferred_slots_reset();
+        deferred_allocated_delta = 0;
+    }
 
     collision_bank  = scn.collisions.bank;
     collision_ptr   = scn.collisions.ptr;
