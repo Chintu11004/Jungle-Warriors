@@ -35,6 +35,7 @@ UBYTE load_scene(const scene_t * scene, UBYTE bank, UBYTE init_data) BANKED;
 
 UBYTE load_sprite(UBYTE sprite_offset, const spritesheet_t * sprite, UBYTE bank) BANKED;
 UBYTE load_actor_sprite(actor_t * actor) BANKED;
+UBYTE scene_sprite_ensure_loaded(UBYTE sprite_idx) BANKED;
 UBYTE unload_actor_sprite(actor_t * actor) BANKED;
 void deload_prev_level(void) BANKED;
 void load_player(void) BANKED;

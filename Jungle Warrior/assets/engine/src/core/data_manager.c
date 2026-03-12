@@ -363,6 +363,28 @@ UBYTE unload_actor_sprite(actor_t * actor) BANKED {
     return 1;
 }
 
+/** Ensures a scene sprite is loaded into VRAM. Returns base_tile or 0 on failure.
+ *  Used by projectiles and other non-actor consumers of scene sprites. */
+UBYTE scene_sprite_ensure_loaded(UBYTE sprite_idx) BANKED {
+    if (sprite_idx >= sprites_len) return 0;
+    if (scene_sprites_base_tiles[sprite_idx] != SCENE_SPRITE_UNLOADED)
+        return scene_sprites_base_tiles[sprite_idx];
+
+    far_ptr_t scene_sprites;
+    far_ptr_t tmp_ptr;
+    ReadBankedFarPtr(&scene_sprites, (const unsigned char *)&((scene_t *)current_scene.ptr)->sprites, current_scene.bank);
+    {
+        const far_ptr_t * list_ptr = (const far_ptr_t *)scene_sprites.ptr;
+        list_ptr += sprite_idx;
+        ReadBankedFarPtr(&tmp_ptr, (void *)list_ptr, scene_sprites.bank);
+    }
+    UBYTE n_loaded = load_sprite(allocated_sprite_tiles, tmp_ptr.ptr, tmp_ptr.bank);
+    if (!n_loaded) return 0;
+    scene_sprites_base_tiles[sprite_idx] = allocated_sprite_tiles;
+    allocated_sprite_tiles += n_loaded;
+    return scene_sprites_base_tiles[sprite_idx];
+}
+
 void load_animations(const spritesheet_t *sprite, UBYTE bank, UWORD animation_set, animation_t * res_animations) NONBANKED {
     UBYTE _save = CURRENT_BANK;
     SWITCH_ROM(bank);
@@ -420,8 +442,8 @@ UBYTE load_scene(const scene_t * scene, UBYTE bank, UBYTE init_data) BANKED {
     triggers_len    = MIN(scn.n_triggers,       MAX_TRIGGERS);
     projectiles_len = MIN(scn.n_projectiles,    MAX_PROJECTILE_DEFS);
     sprites_len     = MIN(scn.n_sprites,        MAX_SCENE_SPRITES);
-    memset(scene_sprites_base_tiles, SCENE_SPRITE_UNLOADED, sizeof(scene_sprites_base_tiles));
     if (init_data) {
+        memset(scene_sprites_base_tiles, SCENE_SPRITE_UNLOADED, sizeof(scene_sprites_base_tiles));
         deferred_slots_reset();
         deferred_allocated_delta = 0;
     }
@@ -545,9 +567,12 @@ UBYTE load_scene(const scene_t * scene, UBYTE bank, UBYTE init_data) BANKED {
         projectile_def_t * projectile_def = projectile_defs;
         MemcpyBanked(projectile_def, scn.projectiles.ptr, sizeof(projectile_def_t) * projectiles_len, scn.projectiles.bank);
         for (i = projectiles_len; i != 0; i--, projectile_def++) {
-            // resolve and set base_tile for each projectile
+            // resolve and set base_tile for each projectile (load sprite into VRAM if needed)
             UBYTE idx = IndexOfFarPtr(scn.sprites.ptr, scn.sprites.bank, sprites_len, &projectile_def->sprite);
-            projectile_def->base_tile = (idx < sprites_len) ? scene_sprites_base_tiles[idx] : 0;
+            projectile_def->base_tile = (idx < sprites_len) ? scene_sprite_ensure_loaded(idx) : 0;
+            if (!init_data && projectile_def->base_tile != 0) {
+                load_sprite(projectile_def->base_tile, projectile_def->sprite.ptr, projectile_def->sprite.bank);
+            }
         }
     }
 
