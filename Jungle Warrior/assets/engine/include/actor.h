@@ -8,6 +8,7 @@
 
 #define MAX_ACTORS            21
 #define MAX_ACTORS_ACTIVE     12
+#define MAX_ROPE_ACTORS       15
 
 #define PLAYER                actors[0]
 #define ON_8PX_GRID(A)        ((((A).x | (A).y) & 0xFF) == 0)
@@ -45,6 +46,9 @@ extern UBYTE player_iframes;
 
 extern UBYTE allocated_sprite_tiles;
 extern UBYTE allocated_hardware_sprites;
+
+extern UBYTE rope_actor_indices[MAX_ROPE_ACTORS];
+extern UBYTE rope_actor_count;
 
 void actors_init(void) BANKED;
 void actors_update(void) BANKED;
@@ -85,5 +89,16 @@ void activate_actors_in_row(UBYTE x, UBYTE y) BANKED;
 void activate_actors_in_col(UBYTE x, UBYTE y) BANKED;
 void activate_persistent_actors(void) BANKED;
 void player_init(void) BANKED;
+void rope_actor_register(UBYTE actor_idx) BANKED;
+UBYTE rope_actor_register_invoke(void *THIS, UBYTE start, UWORD *stack_frame) OLDCALL BANKED;
+
+inline UBYTE is_rope_actor(actor_t *actor) {
+    UBYTE idx = (UBYTE)(actor - actors);
+    UBYTE i;
+    for (i = 0; i < rope_actor_count; i++) {
+        if (rope_actor_indices[i] == idx) return TRUE;
+    }
+    return FALSE;
+}
 
 #endif

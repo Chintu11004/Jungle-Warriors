@@ -480,6 +480,7 @@ UBYTE load_scene(const scene_t * scene, UBYTE bank, UBYTE init_data) BANKED {
 
     if (init_data) {
         camera_reset();
+        rope_actor_count = 0;
 
         // Copy scene player hit scripts to player actor
         memcpy(&PLAYER.script, &scn.script_p_hit1, sizeof(far_ptr_t));

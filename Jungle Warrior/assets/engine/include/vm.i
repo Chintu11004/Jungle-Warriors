@@ -1868,3 +1868,10 @@ OP_VM_PRINT_OVERLAY     = 0x8D
 .macro VM_DELOAD_PREV_LEVEL
         VM_INVOKE BANK(DEFERRED_ACTOR), _deload_prev_level_invoke, 0, .ARG0
 .endm
+
+;-- Register Rope Actor — adds actor to the rope actors list for special activation/deactivation.
+; Call from scene init for each rope actor. One-shot. stack_frame[0] = actor index.
+.macro VM_ROPE_ACTOR_REGISTER ACTOR_IDX
+        VM_PUSH_CONST ACTOR_IDX
+        VM_INVOKE BANK(ACTOR), _rope_actor_register_invoke, 1, .ARG0
+.endm

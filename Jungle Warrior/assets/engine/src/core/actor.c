@@ -18,6 +18,7 @@
 #include "vm.h"
 #include "macro.h"
 #include "shadow.h"
+#include "data_manager.h"
 
 #ifdef STRICT
     #include <gb/bgb_emu.h>
@@ -52,6 +53,8 @@ const metasprite_t emote_metasprite_8_8[]  = {
 
 actor_t actors[MAX_ACTORS];
 actor_t * actors_active_head;
+UBYTE rope_actor_indices[MAX_ROPE_ACTORS];
+UBYTE rope_actor_count;
 actor_t * actors_active_tail;
 actor_t * actors_inactive_head;
 
@@ -103,8 +106,28 @@ void actors_init(void) BANKED {
     player_iframes          = 0;
     player_collision_actor  = NULL;
     emote_actor             = NULL;
+    rope_actor_count        = 0;
 
     memset(actors, 0, sizeof(actors));
+}
+
+void rope_actor_register(UBYTE actor_idx) BANKED {
+    if (actor_idx == 0 || actor_idx >= actors_len) return;
+    if (rope_actor_count >= MAX_ROPE_ACTORS) return;
+    /* Avoid duplicate */
+    UBYTE i;
+    for (i = 0; i < rope_actor_count; i++) {
+        if (rope_actor_indices[i] == actor_idx) return;
+    }
+    rope_actor_indices[rope_actor_count++] = actor_idx;
+}
+
+/* VM invoke handler: stack_frame[0] = actor index. One-shot, returns TRUE. */
+UBYTE rope_actor_register_invoke(void *THIS_void, UBYTE start, UWORD *stack_frame) OLDCALL BANKED {
+    (void)THIS_void;
+    (void)start;
+    rope_actor_register((UBYTE)stack_frame[0]);
+    return TRUE;
 }
 
 void player_init(void) BANKED {
@@ -175,7 +198,7 @@ void actors_update(void) BANKED {
                 if (!VM_ISLOCKED()) {
                     if (actor == &PLAYER || CHK_FLAG(actor_flags, ACTOR_FLAG_PERSISTENT)) {
                         SET_FLAG(actor->flags, ACTOR_FLAG_DISABLED);
-                    } else if ((actor == &actors[1] || actor == &actors[2])) {
+                    } else if (is_rope_actor(actor)) {
                         /* Rope: use 4-block margin, stay active, only set DISABLED when far offscreen */
                         if (actor_tile16_x >= screen_tile16_x - ROPE_MARGIN_TILE16 &&
                             actor_tile16_x <= screen_tile16_x_end + ROPE_MARGIN_TILE16 &&
@@ -363,7 +386,7 @@ static void activate_actor_impl(actor_t *actor) {
         ) {
             if (actor == &PLAYER || CHK_FLAG(actor->flags, ACTOR_FLAG_PERSISTENT)) {
                 SET_FLAG(actor->flags, ACTOR_FLAG_DISABLED);
-            } else if (actor != &actors[1] && actor != &actors[2]) {
+            } else if (!is_rope_actor(actor)) {
                 return;
             }
             /* Rope actors: fall through to activation even when slightly offscreen */
@@ -393,8 +416,8 @@ void activate_actors_in_row(UBYTE x, UBYTE y) BANKED {
         actor_t *next = actor->next;
         UBYTE ty = SUBPX_TO_TILE(actor->pos.y);
         UBYTE tx = SUBPX_TO_TILE(actor->pos.x);
-        UBYTE in_row = (ty == y) || ((actor == &actors[1] || actor == &actors[2]) && ty <= y && y <= ty + ROPE_ACTIVATION_TILES);
-        UBYTE in_strip = (tx >= x && tx < x_end) || ((actor == &actors[1] || actor == &actors[2]) && (INT16)x < (INT16)tx + (INT16)ROPE_ACTIVATION_TILES && (INT16)x_end > (INT16)tx - (INT16)ROPE_ACTIVATION_TILES);
+        UBYTE in_row = (ty == y) || (is_rope_actor(actor) && ty <= y && y <= ty + ROPE_ACTIVATION_TILES);
+        UBYTE in_strip = (tx >= x && tx < x_end) || (is_rope_actor(actor) && (INT16)x < (INT16)tx + (INT16)ROPE_ACTIVATION_TILES && (INT16)x_end > (INT16)tx - (INT16)ROPE_ACTIVATION_TILES);
         if (in_row && in_strip) {
             activate_actor_impl(actor);
         }
@@ -410,8 +433,8 @@ void activate_actors_in_col(UBYTE x, UBYTE y) BANKED {
         actor_t *next = actor->next;
         UBYTE tx = SUBPX_TO_TILE(actor->pos.x);
         UBYTE ty = SUBPX_TO_TILE(actor->pos.y);
-        UBYTE in_col = (tx == x) || ((actor == &actors[1] || actor == &actors[2]) && (INT16)x >= (INT16)tx - (INT16)ROPE_ACTIVATION_TILES && (INT16)x <= (INT16)tx + (INT16)ROPE_ACTIVATION_TILES);
-        UBYTE vert_ok = (ty >= y && ty < y_end) || ((actor == &actors[1] || actor == &actors[2]) && (ty < y_end) && ((ty + ROPE_ACTIVATION_TILES) > y));
+        UBYTE in_col = (tx == x) || (is_rope_actor(actor) && (INT16)x >= (INT16)tx - (INT16)ROPE_ACTIVATION_TILES && (INT16)x <= (INT16)tx + (INT16)ROPE_ACTIVATION_TILES);
+        UBYTE vert_ok = (ty >= y && ty < y_end) || (is_rope_actor(actor) && (ty < y_end) && ((ty + ROPE_ACTIVATION_TILES) > y));
         if (in_col && vert_ok) {
             activate_actor_impl(actor);
         }
