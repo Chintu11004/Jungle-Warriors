@@ -57,14 +57,20 @@ scene_stack_item_t * scene_stack_ptr;
 UBYTE scene_sprites_base_tiles[MAX_SCENE_SPRITES];
 
 typedef struct {
-    UBYTE actor_idx;
+    UBYTE ref_count;       /* Number of actors using this tile region; 0 = slot free */
     UBYTE base_tile;
     UBYTE tile_count;
+    far_ptr_t sprite;      /* Spritesheet identity for same-sprite sharing */
 } deferred_slot_t;
 static deferred_slot_t deferred_slots[MAX_DEFERRED_ACTOR_SLOTS];
 
 static void deferred_slots_reset(void) {
-    memset(deferred_slots, DEFERRED_SLOT_FREE, sizeof(deferred_slots));
+    UBYTE i;
+    for (i = 0; i < MAX_DEFERRED_ACTOR_SLOTS; i++) {
+        deferred_slots[i].ref_count = 0;
+        deferred_slots[i].base_tile = DEFERRED_SLOT_FREE;
+        deferred_slots[i].tile_count = DEFERRED_SLOT_FREE;
+    }
 }
 
 static UBYTE actor_list_remove(actor_t **head, actor_t *actor) {
@@ -201,13 +207,11 @@ Deferred actors (reserve_tiles==0) use the slot table for private allocation.
 UBYTE load_actor_sprite(actor_t * actor) BANKED {
     far_ptr_t scene_sprites;
     UBYTE idx = sprites_len;
-    UBYTE actor_idx;
     UBYTE i;
     if (!actor) return 0;
-    actor_idx = (UBYTE)(actor - actors);
 
-    /* Deferred actors: use slot table. Invariant: at most MAX_DEFERRED_ACTOR_SLOTS in use.
-     * actor_idx == DEFERRED_SLOT_FREE means slot is free.
+    /* Deferred actors: use slot table with ref-counting for sprite sharing.
+     * ref_count == 0 means slot is free.
      * base_tile == DEFERRED_SLOT_FREE means never-used; else previously used (reuse if tile_count >= n_tiles).
      */
     if (!actor->reserve_tiles) {
@@ -220,28 +224,41 @@ UBYTE load_actor_sprite(actor_t * actor) BANKED {
             idx = IndexOfFarPtr(scene_sprites.ptr, scene_sprites.bank, sprites_len, &actor->sprite);
             if (idx < sprites_len && scene_sprites_base_tiles[idx] != SCENE_SPRITE_UNLOADED) {
                 actor->base_tile = scene_sprites_base_tiles[idx];
+                /* If tiles came from a deferred slot, increment ref_count to match unload's decrement */
+                for (i = 0; i < MAX_DEFERRED_ACTOR_SLOTS; i++) {
+                    if (deferred_slots[i].ref_count != 0 &&
+                        deferred_slots[i].base_tile == actor->base_tile) {
+                        deferred_slots[i].ref_count++;
+                        break;
+                    }
+                }
                 CLR_FLAG(actor->flags, ACTOR_FLAG_HIDDEN | ACTOR_FLAG_DISABLED);
                 return 1;
             }
         }
 
-        /* Loop 1: already loaded in a deferred slot? (no-op) */
+        /* Loop 1: same sprite already loaded in a deferred slot? Share it (ref-count) */
         for (i = 0; i < MAX_DEFERRED_ACTOR_SLOTS; i++) {
-            if (deferred_slots[i].actor_idx == actor_idx) {
+            if (deferred_slots[i].ref_count == 0) continue;
+            if (deferred_slots[i].sprite.bank == actor->sprite.bank &&
+                deferred_slots[i].sprite.ptr == actor->sprite.ptr) {
+                deferred_slots[i].ref_count++;
                 actor->base_tile = deferred_slots[i].base_tile;
+                CLR_FLAG(actor->flags, ACTOR_FLAG_HIDDEN | ACTOR_FLAG_DISABLED);
                 return deferred_slots[i].tile_count;
             }
         }
 
-        /* Loop 2: find free slot (actor_idx == 0xFF), then new alloc or reuse */
+        /* Loop 2: find free slot (ref_count == 0), then new alloc or reuse */
         for (i = 0; i < MAX_DEFERRED_ACTOR_SLOTS; i++) {
-            if (deferred_slots[i].actor_idx != DEFERRED_SLOT_FREE) continue;
+            if (deferred_slots[i].ref_count != 0) continue;
 
             if (deferred_slots[i].base_tile == DEFERRED_SLOT_FREE) {
                 /* Never-used: load at allocated_sprite_tiles */
                 UBYTE n_loaded = load_sprite(allocated_sprite_tiles, actor->sprite.ptr, actor->sprite.bank);
                 if (!n_loaded) return 0;
-                deferred_slots[i].actor_idx = actor_idx;
+                deferred_slots[i].ref_count = 1;
+                deferred_slots[i].sprite = actor->sprite;
                 deferred_slots[i].base_tile = allocated_sprite_tiles;
                 deferred_slots[i].tile_count = n_loaded;
                 actor->base_tile = allocated_sprite_tiles;
@@ -254,7 +271,8 @@ UBYTE load_actor_sprite(actor_t * actor) BANKED {
                 /* Previously used, enough space: reuse at base_tile */
                 UBYTE n_loaded = load_sprite(deferred_slots[i].base_tile, actor->sprite.ptr, actor->sprite.bank);
                 if (!n_loaded) return 0;
-                deferred_slots[i].actor_idx = actor_idx;
+                deferred_slots[i].ref_count = 1;
+                deferred_slots[i].sprite = actor->sprite;
                 actor->base_tile = deferred_slots[i].base_tile;
                 if (sprites_len && idx < sprites_len) scene_sprites_base_tiles[idx] = deferred_slots[i].base_tile;
                 CLR_FLAG(actor->flags, ACTOR_FLAG_HIDDEN | ACTOR_FLAG_DISABLED);
@@ -288,18 +306,18 @@ UBYTE load_actor_sprite(actor_t * actor) BANKED {
  */
 UBYTE unload_actor_sprite(actor_t * actor) BANKED {
     UBYTE i;
-    UBYTE actor_idx;
     UBYTE was_active;
     if (!actor || actor->reserve_tiles) return 0;
     if (actor->base_tile == SCENE_SPRITE_UNLOADED) return 0;
-    actor_idx = (UBYTE)(actor - actors);
     was_active = CHK_FLAG(actor->flags, ACTOR_FLAG_ACTIVE);
 
-    /* Free deferred slot if applicable */
+    /* Decrement deferred slot ref-count if applicable; slot stays "in use" until ref_count hits 0 */
     if (!actor->reserve_tiles) {
         for (i = 0; i < MAX_DEFERRED_ACTOR_SLOTS; i++) {
-            if (deferred_slots[i].actor_idx == actor_idx) {
-                deferred_slots[i].actor_idx = DEFERRED_SLOT_FREE;
+            if (deferred_slots[i].ref_count != 0 &&
+                deferred_slots[i].base_tile == actor->base_tile) {
+                deferred_slots[i].ref_count--;
+                /* When ref_count==0, slot is free for reuse; base_tile/tile_count kept for VRAM reuse */
                 break;
             }
         }
