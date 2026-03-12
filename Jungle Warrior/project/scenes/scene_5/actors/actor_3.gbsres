@@ -1,0 +1,181 @@
+{
+  "_resourceType": "actor",
+  "id": "92b4cbfc-64ba-4b16-8362-53695fbdafbb",
+  "name": "",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "1e27bb8e-c805-435a-8b87-05b4f50da4f0",
+  "prefabId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "symbol": "actor_40",
+  "script": [
+    {
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "Save the endangered\ncat?"
+        ],
+        "__section": "text",
+        "avatarId": "",
+        "minHeight": 4,
+        "maxHeight": 7,
+        "textX": 1,
+        "textY": 1,
+        "textHeight": 5,
+        "position": "bottom",
+        "clearPrevious": true,
+        "showFrame": "true",
+        "speedIn": -1,
+        "speedOut": -1,
+        "closeWhen": "key",
+        "closeButton": "a",
+        "closeDelayTime": 0.5,
+        "closeDelayFrames": 30
+      },
+      "id": "09e99cfa-ab6b-456b-b7ca-239588edf183"
+    },
+    {
+      "command": "EVENT_CHOICE",
+      "args": {
+        "variable": "L0",
+        "trueText": "Save it",
+        "falseText": "Abandon it"
+      },
+      "id": "8b2582f8-de93-4ddf-89c6-c97feef3be7b"
+    },
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "L0"
+          },
+          "valueB": {
+            "type": "true"
+          }
+        },
+        "__collapseElse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_TEXT",
+            "args": {
+              "text": [
+                "You have saved the \ncat!",
+                "...",
+                "The cat has been sent\nto...",
+                "THE JUNGLE WARRIOR\nHEADQUARTERS!"
+              ],
+              "__section": "text",
+              "avatarId": "",
+              "minHeight": 4,
+              "maxHeight": 7,
+              "textX": 1,
+              "textY": 1,
+              "textHeight": 5,
+              "position": "bottom",
+              "clearPrevious": true,
+              "showFrame": "true",
+              "speedIn": -1,
+              "speedOut": -1,
+              "closeWhen": "key",
+              "closeButton": "a",
+              "closeDelayTime": 0.5,
+              "closeDelayFrames": 30
+            },
+            "id": "40fb646e-022d-47cd-87c5-ea74c80aa600"
+          },
+          {
+            "command": "EVENT_ACTOR_DEACTIVATE",
+            "args": {
+              "actorId": "$self$"
+            },
+            "id": "b8505e96-313d-4581-8323-41594f7e4dae"
+          }
+        ],
+        "false": [
+          {
+            "command": "EVENT_TEXT",
+            "args": {
+              "text": [
+                "The cat is saddened by\nyour choice to ",
+                "abandon it.",
+                "It disappeared."
+              ],
+              "__section": "text",
+              "avatarId": "",
+              "minHeight": 4,
+              "maxHeight": 7,
+              "textX": 1,
+              "textY": 1,
+              "textHeight": 5,
+              "position": "bottom",
+              "clearPrevious": true,
+              "showFrame": "true",
+              "speedIn": -1,
+              "speedOut": -1,
+              "closeWhen": "key",
+              "closeButton": "a",
+              "closeDelayTime": 0.5,
+              "closeDelayFrames": 30
+            },
+            "id": "c6e3eedb-a23d-44a0-95e7-56b83e99ad2d"
+          },
+          {
+            "command": "EVENT_ACTOR_DEACTIVATE",
+            "args": {
+              "actorId": "92b4cbfc-64ba-4b16-8362-53695fbdafbb"
+            },
+            "id": "9d6fa91d-0980-4e70-953a-6e3e28df67fe"
+          },
+          {
+            "command": "EVENT_TEXT",
+            "args": {
+              "text": [
+                "why...?"
+              ],
+              "__section": "text",
+              "avatarId": "",
+              "minHeight": 4,
+              "maxHeight": 7,
+              "textX": 1,
+              "textY": 1,
+              "textHeight": 5,
+              "position": "bottom",
+              "clearPrevious": true,
+              "showFrame": "true",
+              "speedIn": -1,
+              "speedOut": -1,
+              "closeWhen": "key",
+              "closeButton": "a",
+              "closeDelayTime": 0.5,
+              "closeDelayFrames": 30
+            },
+            "id": "c18d5595-61d3-4c4c-8fc0-d33305909385"
+          }
+        ]
+      },
+      "id": "8856dc36-92a9-4bc3-8c62-6b73bea6dd2b"
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "coordinateType": "tiles",
+  "x": 82,
+  "y": 44,
+  "_index": 2
+}

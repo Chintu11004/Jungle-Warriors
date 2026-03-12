@@ -22,7 +22,7 @@
 
 #define EMOTE_SPRITE_SIZE       4
 #define SCENE_SPRITE_UNLOADED   0xFF
-#define MAX_DEFERRED_ACTOR_SLOTS 10
+#define MAX_DEFERRED_ACTOR_SLOTS 15
 #define DEFERRED_SLOT_FREE      0xFF
 
 far_ptr_t current_scene;

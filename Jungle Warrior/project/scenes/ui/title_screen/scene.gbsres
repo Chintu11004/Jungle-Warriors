@@ -1,7 +1,7 @@
 {
   "_resourceType": "scene",
   "id": "4912bee2-387a-472f-ae4f-6679b6149517",
-  "_index": 16,
+  "_index": 1,
   "type": "TOPDOWN",
   "name": "ui/Title Screen",
   "symbol": "scene_title_screen",
@@ -9,21 +9,13 @@
   "y": 76,
   "width": 20,
   "height": 18,
-  "backgroundId": "f047ff0e-58ad-49fc-bd2b-ec84fc1f7ab3",
+  "backgroundId": "69ec9009-b55d-4689-af91-27159f15b953",
   "tilesetId": "",
   "colorModeOverride": "none",
   "paletteIds": [],
   "spritePaletteIds": [],
   "autoFadeSpeed": 1,
   "script": [
-    {
-      "id": "82ba937b-2e7f-4044-a567-50f9c91be84d",
-      "command": "EVENT_MUSIC_PLAY",
-      "args": {
-        "musicId": "4f144f63-6005-4e99-b570-92a526201bd3",
-        "loop": false
-      }
-    },
     {
       "id": "ff79b819-b435-4ef8-af20-07302038959f",
       "command": "EVENT_ACTOR_DEACTIVATE",
@@ -81,14 +73,14 @@
                   "id": "a5dddc76-e5fe-424a-9b2b-1ad1834acefb",
                   "command": "EVENT_SWITCH_SCENE",
                   "args": {
-                    "sceneId": "5ae2eb6d-684e-4e0d-8edf-d9fa2299d635",
+                    "sceneId": "bec32a3e-9e07-4109-a0d0-8a86dd2b986d",
                     "x": {
                       "type": "number",
                       "value": 0
                     },
                     "y": {
                       "type": "number",
-                      "value": 21
+                      "value": 38
                     },
                     "direction": "right",
                     "fadeSpeed": "4"
