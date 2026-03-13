@@ -1,11 +1,11 @@
 {
   "_resourceType": "palette",
   "id": "2ebac764-bebb-4707-920b-2a975675b2cb",
-  "name": "Top Down Cliff",
+  "name": "Ground",
   "colors": [
-    "6b5208",
-    "422908",
-    "633a19",
-    "6b5208"
+    "946308",
+    "735208",
+    "4a3108",
+    "080800"
   ]
 }

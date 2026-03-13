@@ -1,10 +1,10 @@
 {
   "_resourceType": "palette",
   "id": "b550d28a-9cb7-4f19-82fb-d839725f2419",
-  "name": "Top Down Water",
+  "name": "Water Stream",
   "colors": [
-    "deefde",
-    "3194e6",
+    "def79c",
+    "6ba5ff",
     "194ace",
     "0821bd"
   ]
