@@ -36,6 +36,18 @@
     {
       "id": "SHOOTER_WALL_COLLISION_GROUP",
       "value": "COLLISION_GROUP_NONE"
+    },
+    {
+      "id": "FEAT_PLATFORM_RUN",
+      "value": 0
+    },
+    {
+      "id": "FEAT_PLATFORM_LADDERS_JUMP",
+      "value": 1
+    },
+    {
+      "id": "PLATFORM_JUMP_ANIM",
+      "value": ""
     }
   ]
 }

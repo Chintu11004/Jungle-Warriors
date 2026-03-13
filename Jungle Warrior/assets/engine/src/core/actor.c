@@ -17,6 +17,8 @@
 #include "ui.h"
 #include "vm.h"
 #include "macro.h"
+#include "shadow.h"
+#include "data_manager.h"
 
 #ifdef STRICT
     #include <gb/bgb_emu.h>
@@ -31,6 +33,8 @@
 #define SCREEN_TILE16_H            9u
 #define ACTOR_BOUNDS_TILE16        6u
 #define ACTOR_BOUNDS_TILE16_HALF   3u
+#define ROPE_MARGIN_TILE16         4u   /* blocks around viewport where rope stays enabled */
+#define ROPE_ACTIVATION_TILES      8u   /* tiles rope extends from origin (for early activation) */
 
 BANKREF(ACTOR)
 
@@ -49,6 +53,8 @@ const metasprite_t emote_metasprite_8_8[]  = {
 
 actor_t actors[MAX_ACTORS];
 actor_t * actors_active_head;
+UBYTE rope_actor_indices[MAX_ROPE_ACTORS];
+UBYTE rope_actor_count;
 actor_t * actors_active_tail;
 actor_t * actors_inactive_head;
 
@@ -65,14 +71,63 @@ UBYTE allocated_hardware_sprites;
 
 static void deactivate_actor_impl(actor_t *actor);
 
+/* Per-sub-sprite clipped metasprite renderer. Matches __move_metasprite
+ * assembly behavior: dy/dx are cumulative deltas (not absolute), no +16/+8
+ * added. Uses INT16 to detect out-of-uint8_t range and hides ghosts.
+ * MUST be NONBANKED (bank 0) — SWITCH_ROM unmaps bank 255. */
+UBYTE move_metasprite_clipped(const metasprite_t *metasprite, UBYTE base_tile, UBYTE base_sprite, INT16 x, INT16 y) NONBANKED {
+    OAM_item_t *shadow = (OAM_item_t *)((UWORD)__render_shadow_OAM << 8);
+    const metasprite_t *m = metasprite;
+    UBYTE slot = base_sprite;
+    UBYTE count = 0;
+
+    while (slot < MAX_HARDWARE_SPRITES && m->dy != metasprite_end) {
+        y += (INT16)m->dy;
+        x += (INT16)m->dx;
+
+        if ((UWORD)y < 256u && (UWORD)x < 256u) {
+            shadow[slot].y = (UBYTE)y;
+            shadow[slot].x = (UBYTE)x;
+            shadow[slot].tile = base_tile + m->dtile;
+            shadow[slot].prop = m->props;
+        } else {
+            shadow[slot].y = 0u;
+        }
+        slot++;
+        count++;
+        m++;
+    }
+    return count;
+}
+
 void actors_init(void) BANKED {
     actors_active_tail = actors_active_head = actors_inactive_head = NULL;
     player_moving           = FALSE;
     player_iframes          = 0;
     player_collision_actor  = NULL;
     emote_actor             = NULL;
+    rope_actor_count        = 0;
 
     memset(actors, 0, sizeof(actors));
+}
+
+void rope_actor_register(UBYTE actor_idx) BANKED {
+    if (actor_idx == 0 || actor_idx >= actors_len) return;
+    if (rope_actor_count >= MAX_ROPE_ACTORS) return;
+    /* Avoid duplicate */
+    UBYTE i;
+    for (i = 0; i < rope_actor_count; i++) {
+        if (rope_actor_indices[i] == actor_idx) return;
+    }
+    rope_actor_indices[rope_actor_count++] = actor_idx;
+}
+
+/* VM invoke handler: stack_frame[0] = actor index. One-shot, returns TRUE. */
+UBYTE rope_actor_register_invoke(void *THIS_void, UBYTE start, UWORD *stack_frame) OLDCALL BANKED {
+    (void)THIS_void;
+    (void)start;
+    rope_actor_register((UBYTE)stack_frame[0]);
+    return TRUE;
 }
 
 void player_init(void) BANKED {
@@ -139,15 +194,24 @@ void actors_update(void) BANKED {
                 // Actor top edge > screen bottom edge
                 (actor_tile16_y > screen_tile16_y_end)
             ) {
-                // Deactivate if offscreen
                 actor_t * prev = actor->prev;
                 if (!VM_ISLOCKED()) {
                     if (actor == &PLAYER || CHK_FLAG(actor_flags, ACTOR_FLAG_PERSISTENT)) {
                         SET_FLAG(actor->flags, ACTOR_FLAG_DISABLED);
+                    } else if (is_rope_actor(actor)) {
+                        /* Rope: use 4-block margin, stay active, only set DISABLED when far offscreen */
+                        if (actor_tile16_x >= screen_tile16_x - ROPE_MARGIN_TILE16 &&
+                            actor_tile16_x <= screen_tile16_x_end + ROPE_MARGIN_TILE16 &&
+                            actor_tile16_y >= screen_tile16_y - ROPE_MARGIN_TILE16 &&
+                            actor_tile16_y <= screen_tile16_y_end + ROPE_MARGIN_TILE16) {
+                            CLR_FLAG(actor->flags, ACTOR_FLAG_DISABLED);
+                        } else {
+                            SET_FLAG(actor->flags, ACTOR_FLAG_DISABLED);
+                        }
                     } else {
                         if (CHK_FLAG(actor_flags, ACTOR_FLAG_DISABLED)) {
                             CLR_FLAG(actor->flags, ACTOR_FLAG_DISABLED);
-                        }                        
+                        }
                         deactivate_actor_impl(actor);
                     }
                 } else {
@@ -223,32 +287,33 @@ void actors_render(void) NONBANKED {
         }
     }
     
-    // Render all actors
+    // Render all actors (per-sub-sprite clipped for large metasprites like ropes)
     for (actor = PLAYER.prev; (actor); actor = actor->prev){
         if (CHK_FLAG(actor->flags, ACTOR_FLAG_HIDDEN | ACTOR_FLAG_DISABLED)) {
            continue;
         }
         
+        INT16 ax, ay;
         if (CHK_FLAG(actor->flags, ACTOR_FLAG_PINNED)) {
-            screen_x = SUBPX_TO_PX(actor->pos.x);
-            screen_y = SUBPX_TO_PX(actor->pos.y);
+            ax = (INT16)SUBPX_TO_PX(actor->pos.x);
+            ay = (INT16)SUBPX_TO_PX(actor->pos.y);
         } else {
-            screen_x = SUBPX_TO_PX(actor->pos.x) - draw_scroll_x;
-            screen_y = SUBPX_TO_PX(actor->pos.y) - draw_scroll_y;
+            ax = (INT16)SUBPX_TO_PX(actor->pos.x) - draw_scroll_x;
+            ay = (INT16)SUBPX_TO_PX(actor->pos.y) - draw_scroll_y;
         }
 
-        if (((window_hide_actors) && (((screen_x + 8) > WX_REG) && ((screen_y - 8) > WY_REG)))) {
+        if (((window_hide_actors) && (((ax + 8) > WX_REG) && ((ay - 8) > WY_REG)))) {
             continue;
         }
         SWITCH_ROM(actor->sprite.bank);
         spritesheet_t *sprite = actor->sprite.ptr;
 
-        allocated_hardware_sprites += move_metasprite(
+        allocated_hardware_sprites += move_metasprite_clipped(
             *(sprite->metasprites + actor->frame),
             actor->base_tile,
             allocated_hardware_sprites,
-            screen_x,
-            screen_y
+            ax,
+            ay
         );
     }
 
@@ -308,6 +373,7 @@ static void activate_actor_impl(actor_t *actor) {
         UBYTE screen_tile16_x_end = screen_tile16_x + ACTOR_BOUNDS_TILE16 + SCREEN_TILE16_W;
         UBYTE screen_tile16_y = PX_TO_TILE16(draw_scroll_y) + TILE16_OFFSET;
         UBYTE screen_tile16_y_end = screen_tile16_y + ACTOR_BOUNDS_TILE16 + SCREEN_TILE16_H;
+        
         if (
             // Actor right edge < screen left edge
             (actor_tile16_x < screen_tile16_x) ||
@@ -320,9 +386,10 @@ static void activate_actor_impl(actor_t *actor) {
         ) {
             if (actor == &PLAYER || CHK_FLAG(actor->flags, ACTOR_FLAG_PERSISTENT)) {
                 SET_FLAG(actor->flags, ACTOR_FLAG_DISABLED);
-            } else {
+            } else if (!is_rope_actor(actor)) {
                 return;
-            } 
+            }
+            /* Rope actors: fall through to activation even when slightly offscreen */
         }
     }
 
@@ -348,11 +415,11 @@ void activate_actors_in_row(UBYTE x, UBYTE y) BANKED {
     while (actor) {
         actor_t *next = actor->next;
         UBYTE ty = SUBPX_TO_TILE(actor->pos.y);
-        if (ty == y) {
-            UBYTE tx = SUBPX_TO_TILE(actor->pos.x);
-            if ((tx >= x) && (tx < x_end)) {
-                activate_actor_impl(actor);
-            }
+        UBYTE tx = SUBPX_TO_TILE(actor->pos.x);
+        UBYTE in_row = (ty == y) || (is_rope_actor(actor) && ty <= y && y <= ty + ROPE_ACTIVATION_TILES);
+        UBYTE in_strip = (tx >= x && tx < x_end) || (is_rope_actor(actor) && (INT16)x < (INT16)tx + (INT16)ROPE_ACTIVATION_TILES && (INT16)x_end > (INT16)tx - (INT16)ROPE_ACTIVATION_TILES);
+        if (in_row && in_strip) {
+            activate_actor_impl(actor);
         }
         actor = next;
     }
@@ -365,11 +432,11 @@ void activate_actors_in_col(UBYTE x, UBYTE y) BANKED {
     while (actor) {
         actor_t *next = actor->next;
         UBYTE tx = SUBPX_TO_TILE(actor->pos.x);
-        if (tx == x) {
-            UBYTE ty = SUBPX_TO_TILE(actor->pos.y);
-            if ((ty >= y) && (ty < y_end)) {
-                activate_actor_impl(actor);
-            }
+        UBYTE ty = SUBPX_TO_TILE(actor->pos.y);
+        UBYTE in_col = (tx == x) || (is_rope_actor(actor) && (INT16)x >= (INT16)tx - (INT16)ROPE_ACTIVATION_TILES && (INT16)x <= (INT16)tx + (INT16)ROPE_ACTIVATION_TILES);
+        UBYTE vert_ok = (ty >= y && ty < y_end) || (is_rope_actor(actor) && (ty < y_end) && ((ty + ROPE_ACTIVATION_TILES) > y));
+        if (in_col && vert_ok) {
+            activate_actor_impl(actor);
         }
         actor = next;
     }

@@ -1846,3 +1846,32 @@ OP_VM_PRINT_OVERLAY     = 0x8D
         VM_PUSH_CONST ACTOR_IDX
         VM_INVOKE BANK(ROPE_SWING), _rope_swing_update, 6, .ARG5
 .endm
+
+;-- Deferred Actor Load — loads sprite tiles for one deferred actor.
+; One-shot (returns immediately). Requires deferred runtime (DEFERRED_ACTOR_VRAM_PLAN).
+; stack_frame[0] = actor index.
+.macro VM_DEFERRED_ACTOR_LOAD ACTOR_IDX
+        VM_PUSH_CONST ACTOR_IDX
+        VM_INVOKE BANK(DEFERRED_ACTOR), _deferred_actor_load, 1, .ARG0
+.endm
+
+;-- Deferred Actor Unload — unloads sprite tiles for one deferred actor.
+; One-shot (returns immediately). Requires deferred runtime (DEFERRED_ACTOR_VRAM_PLAN).
+; stack_frame[0] = actor index.
+.macro VM_DEFERRED_ACTOR_UNLOAD ACTOR_IDX
+        VM_PUSH_CONST ACTOR_IDX
+        VM_INVOKE BANK(DEFERRED_ACTOR), _deferred_actor_unload, 1, .ARG0
+.endm
+
+;-- Deload Prev Level — resets deferred slots and reclaims VRAM for level transition.
+; Call after unloading all deferred actors, before loading the next level. No params.
+.macro VM_DELOAD_PREV_LEVEL
+        VM_INVOKE BANK(DEFERRED_ACTOR), _deload_prev_level_invoke, 0, .ARG0
+.endm
+
+;-- Register Rope Actor — adds actor to the rope actors list for special activation/deactivation.
+; Call from scene init for each rope actor. One-shot. stack_frame[0] = actor index.
+.macro VM_ROPE_ACTOR_REGISTER ACTOR_IDX
+        VM_PUSH_CONST ACTOR_IDX
+        VM_INVOKE BANK(ACTOR), _rope_actor_register_invoke, 1, .ARG0
+.endm
