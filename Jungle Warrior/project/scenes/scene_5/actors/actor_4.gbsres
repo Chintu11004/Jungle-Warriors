@@ -1,6 +1,6 @@
 {
   "_resourceType": "actor",
-  "id": "d5f821c9-73ea-4f70-99ee-43552d3d7274",
+  "id": "1dd18792-82b9-4fc3-9db3-cd5131381134",
   "name": "",
   "frame": 0,
   "animate": false,
@@ -15,9 +15,19 @@
   "collisionGroup": "2",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
-  "symbol": "actor_41",
+  "symbol": "actor_42",
   "script": [],
-  "startScript": [],
+  "startScript": [
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "2nd enemy",
+        "loopAnim": true
+      },
+      "id": "4a761e27-104a-4d2d-9f05-62f19b6473ba"
+    }
+  ],
   "updateScript": [],
   "hit1Script": [
     {
@@ -25,13 +35,13 @@
       "args": {
         "actorId": "$self$"
       },
-      "id": "5f8355fe-672b-4ac7-a549-10d2214ca007"
+      "id": "eb044802-fcf4-4b9c-9c45-8bd7ecf2fed8"
     }
   ],
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
-  "x": 27,
-  "y": 39,
+  "x": 56,
+  "y": 22,
   "_index": 3
 }

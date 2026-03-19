@@ -1,10 +1,10 @@
 {
   "_resourceType": "actor",
-  "id": "11b8f5cb-9d2c-464e-ade8-404cf7f5ca50",
+  "id": "b2467fc8-e5a6-4523-a206-d4622f93f574",
   "name": "",
   "frame": 0,
   "animate": false,
-  "spriteSheetId": "30b8266a-0533-4f90-bd33-e97dc1d498ea",
+  "spriteSheetId": "ce80c540-317d-426c-8507-b1381c7dbfb5",
   "prefabId": "",
   "direction": "down",
   "moveSpeed": 1,
@@ -15,42 +15,15 @@
   "collisionGroup": "",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
-  "symbol": "actor_48",
-  "script": [
-    {
-      "command": "EVENT_TEXT",
-      "args": {
-        "text": [
-          "When jumping to a rope,\nHOLD A to grab onto it",
-          "When on the rope, \nPress A to disembark."
-        ],
-        "__section": "text",
-        "avatarId": "",
-        "minHeight": 4,
-        "maxHeight": 7,
-        "textX": 1,
-        "textY": 1,
-        "textHeight": 5,
-        "position": "bottom",
-        "clearPrevious": true,
-        "showFrame": "true",
-        "speedIn": -1,
-        "speedOut": -1,
-        "closeWhen": "key",
-        "closeButton": "a",
-        "closeDelayTime": 0.5,
-        "closeDelayFrames": 30
-      },
-      "id": "47e390c0-b63a-4577-841f-5c2e14429c12"
-    }
-  ],
+  "symbol": "actor_0",
+  "script": [],
   "startScript": [],
   "updateScript": [],
   "hit1Script": [],
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
-  "x": 52,
-  "y": 22,
+  "x": 158,
+  "y": 42,
   "_index": 10
 }

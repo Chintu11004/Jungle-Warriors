@@ -1,6 +1,6 @@
 {
   "_resourceType": "actor",
-  "id": "a79dd446-00b0-4936-af7c-539f1057cd93",
+  "id": "c6b33538-4d68-43a9-9518-645173f14ecd",
   "name": "",
   "frame": 0,
   "animate": false,
@@ -15,14 +15,15 @@
   "collisionGroup": "",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
-  "symbol": "actor_46",
+  "symbol": "actor_47",
   "script": [
     {
       "command": "EVENT_TEXT",
       "args": {
         "text": [
-          "When you're close to\nenemies",
-          "Press B to kill them"
+          "When you see a rope",
+          "Press the up or down\nkey to grab onto it",
+          "Press the A key to jump!"
         ],
         "__section": "text",
         "avatarId": "",
@@ -41,7 +42,7 @@
         "closeDelayTime": 0.5,
         "closeDelayFrames": 30
       },
-      "id": "4e0083b7-2755-4ad8-b346-923efffb41da"
+      "id": "996f25b8-80be-4f8d-afff-55f73da4173f"
     }
   ],
   "startScript": [],
@@ -50,7 +51,7 @@
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
-  "x": 13,
+  "x": 39,
   "y": 39,
   "_index": 8
 }

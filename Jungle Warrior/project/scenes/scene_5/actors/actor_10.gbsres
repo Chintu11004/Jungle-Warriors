@@ -1,6 +1,6 @@
 {
   "_resourceType": "actor",
-  "id": "c6b33538-4d68-43a9-9518-645173f14ecd",
+  "id": "11b8f5cb-9d2c-464e-ade8-404cf7f5ca50",
   "name": "",
   "frame": 0,
   "animate": false,
@@ -15,15 +15,14 @@
   "collisionGroup": "",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
-  "symbol": "actor_47",
+  "symbol": "actor_48",
   "script": [
     {
       "command": "EVENT_TEXT",
       "args": {
         "text": [
-          "When you see a rope",
-          "Press the up or down\nkey to grab onto it",
-          "Press the A key to jump!"
+          "When jumping to a rope,\nHOLD A to grab onto it",
+          "When on the rope, \nPress A to disembark."
         ],
         "__section": "text",
         "avatarId": "",
@@ -42,7 +41,7 @@
         "closeDelayTime": 0.5,
         "closeDelayFrames": 30
       },
-      "id": "996f25b8-80be-4f8d-afff-55f73da4173f"
+      "id": "47e390c0-b63a-4577-841f-5c2e14429c12"
     }
   ],
   "startScript": [],
@@ -51,7 +50,7 @@
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
-  "x": 39,
-  "y": 39,
+  "x": 52,
+  "y": 22,
   "_index": 9
 }

@@ -1,11 +1,11 @@
 {
   "_resourceType": "trigger",
-  "id": "78f0b9ce-8895-46f1-bf1c-42939305ad37",
+  "id": "bfd0a5c9-a5fd-4548-90fe-4730a389f37f",
   "name": "",
   "prefabId": "",
-  "x": 61,
+  "x": 62,
   "y": 17,
-  "symbol": "trigger_68",
+  "symbol": "trigger_69",
   "prefabScriptOverrides": {},
   "width": 1,
   "height": 1,
@@ -30,12 +30,12 @@
               "rope_swing_speed_factor": 2,
               "rope_actor": "bd6155b8-5834-4b60-8a25-b6a19c780815"
             },
-            "id": "2a66c417-a077-4c59-a766-8fb9ddb9b01a"
+            "id": "cd1e0beb-25d1-4696-b408-f673c0c79b15"
           }
         ],
         "false": []
       },
-      "id": "536b9fd2-db01-4811-980a-4b3394d24315"
+      "id": "982dc842-e007-4276-a180-1da71792b93a"
     }
   ],
   "leaveScript": [],

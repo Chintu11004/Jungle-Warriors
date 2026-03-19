@@ -1,91 +1,41 @@
 {
   "_resourceType": "trigger",
-  "id": "685f8b23-834c-4b81-825e-8e33a151a7a4",
+  "id": "3de8cc44-5699-42b2-9d52-34d4b3f80872",
   "name": "",
   "prefabId": "",
-  "x": 10,
-  "y": 36,
-  "symbol": "trigger_66",
+  "x": 60,
+  "y": 17,
+  "symbol": "trigger_67",
   "prefabScriptOverrides": {},
   "width": 1,
   "height": 1,
   "script": [
     {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "command": "EVENT_IF_INPUT",
       "args": {
-        "actor": "1b068494-2255-44c3-8319-504e4026bfde"
+        "input": [
+          "a"
+        ],
+        "__collapseElse": true
       },
-      "id": "41e7345d-0a97-431a-96a6-9f7c11f3a079"
-    },
-    {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
-      "args": {
-        "actor": "bd6155b8-5834-4b60-8a25-b6a19c780815"
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_ROPE_SWING",
+            "args": {
+              "rope_anchor_x": 67,
+              "rope_anchor_y": 13,
+              "rope_length": 11,
+              "rope_max_angle": 60,
+              "rope_swing_speed_factor": 2,
+              "rope_actor": "bd6155b8-5834-4b60-8a25-b6a19c780815"
+            },
+            "id": "e58dde9f-f2d4-4989-a84e-ce98f893ddb0"
+          }
+        ],
+        "false": []
       },
-      "id": "0787a1b8-53ce-4f0d-a833-1a64f95922f6"
-    },
-    {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
-      "args": {
-        "actor": "92b4cbfc-64ba-4b16-8362-53695fbdafbb"
-      },
-      "id": "47837efe-41a7-4799-abc6-2d0cce0de5a2"
-    },
-    {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
-      "args": {
-        "actor": "d5f821c9-73ea-4f70-99ee-43552d3d7274"
-      },
-      "id": "b30bca57-dd66-4c57-bf0d-56c14262c8d5"
-    },
-    {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
-      "args": {
-        "actor": "1dd18792-82b9-4fc3-9db3-cd5131381134"
-      },
-      "id": "534790ca-66af-4f37-8181-590de263eb90"
-    },
-    {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
-      "args": {
-        "actor": "da6e0308-e26d-4e67-9e7c-2f2d5ece0f26"
-      },
-      "id": "7fe78030-93cb-4c04-b9db-34b5cd071d40"
-    },
-    {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
-      "args": {
-        "actor": "f86aab3a-7a8e-4073-9d5f-679163dbe6c7"
-      },
-      "id": "6ad03d7d-0cbf-4931-b25d-19177dc80a5c"
-    },
-    {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
-      "args": {
-        "actor": "b8350063-4f85-4f92-8831-da8e8a5a5a80"
-      },
-      "id": "ee57a763-e979-47a9-a177-78bf5a4786f0"
-    },
-    {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
-      "args": {
-        "actor": "a79dd446-00b0-4936-af7c-539f1057cd93"
-      },
-      "id": "bafe9b49-a4d1-427a-a97a-143232d65b67"
-    },
-    {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
-      "args": {
-        "actor": "c6b33538-4d68-43a9-9518-645173f14ecd"
-      },
-      "id": "c57710b8-16a0-445b-82b8-72ece67f27b3"
-    },
-    {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
-      "args": {
-        "actor": "11b8f5cb-9d2c-464e-ade8-404cf7f5ca50"
-      },
-      "id": "eafbdfed-a77c-4d98-abf4-9fed2ecacb62"
+      "id": "245c7e61-d901-4e6d-91ea-3fa08464f9b1"
     }
   ],
   "leaveScript": [],

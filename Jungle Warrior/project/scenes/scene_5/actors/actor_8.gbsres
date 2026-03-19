@@ -1,10 +1,10 @@
 {
   "_resourceType": "actor",
-  "id": "b8350063-4f85-4f92-8831-da8e8a5a5a80",
+  "id": "a79dd446-00b0-4936-af7c-539f1057cd93",
   "name": "",
   "frame": 0,
   "animate": false,
-  "spriteSheetId": "fa959c50-bac4-4cac-9096-4da9a252e55f",
+  "spriteSheetId": "30b8266a-0533-4f90-bd33-e97dc1d498ea",
   "prefabId": "",
   "direction": "down",
   "moveSpeed": 1,
@@ -15,38 +15,42 @@
   "collisionGroup": "",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
-  "symbol": "actor_45",
-  "script": [],
-  "startScript": [
+  "symbol": "actor_46",
+  "script": [
     {
-      "command": "EVENT_WAIT",
+      "command": "EVENT_TEXT",
       "args": {
-        "time": {
-          "type": "number",
-          "value": 0.5
-        },
-        "frames": {
-          "type": "number",
-          "value": 3
-        },
-        "units": "frames"
+        "text": [
+          "When you're close to\nenemies",
+          "Press B to kill them"
+        ],
+        "__section": "text",
+        "avatarId": "",
+        "minHeight": 4,
+        "maxHeight": 7,
+        "textX": 1,
+        "textY": 1,
+        "textHeight": 5,
+        "position": "bottom",
+        "clearPrevious": true,
+        "showFrame": "true",
+        "speedIn": -1,
+        "speedOut": -1,
+        "closeWhen": "key",
+        "closeButton": "a",
+        "closeDelayTime": 0.5,
+        "closeDelayFrames": 30
       },
-      "id": "a5c2b062-7e68-4fae-8b09-822c0331c4e4"
-    },
-    {
-      "command": "EVENT_ACTOR_DEACTIVATE",
-      "args": {
-        "actorId": "$self$"
-      },
-      "id": "29d63f35-7e5f-4675-af82-2d14fce31a4d"
+      "id": "4e0083b7-2755-4ad8-b346-923efffb41da"
     }
   ],
+  "startScript": [],
   "updateScript": [],
   "hit1Script": [],
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
-  "x": 3,
-  "y": 2,
+  "x": 13,
+  "y": 39,
   "_index": 7
 }
