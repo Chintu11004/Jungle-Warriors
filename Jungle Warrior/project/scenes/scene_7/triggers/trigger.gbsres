@@ -1,0 +1,51 @@
+{
+  "_resourceType": "trigger",
+  "id": "2f944317-87ab-436d-96ca-de05d13a5fc8",
+  "name": "",
+  "prefabId": "",
+  "x": 169,
+  "y": 0,
+  "symbol": "trigger_1",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 42,
+  "script": [
+    {
+      "command": "EVENT_CAMERA_SET_BOUNDS",
+      "args": {
+        "x": {
+          "type": "number",
+          "value": 0
+        },
+        "y": {
+          "type": "number",
+          "value": 0
+        },
+        "width": {
+          "type": "number",
+          "value": 20
+        },
+        "height": {
+          "type": "number",
+          "value": 18
+        }
+      },
+      "id": "dab60b3f-7910-4686-90df-c9d00372a329"
+    }
+  ],
+  "leaveScript": [
+    {
+      "command": "EVENT_CAMERA_LOCK",
+      "args": {
+        "speed": 1,
+        "axis": [
+          "x",
+          "y"
+        ],
+        "preventScroll": []
+      },
+      "id": "f48c86e1-94a4-4df5-87b6-b8c4522c5848"
+    }
+  ],
+  "_index": 0
+}

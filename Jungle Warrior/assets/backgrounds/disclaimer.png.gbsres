@@ -1,0 +1,12 @@
+{
+  "_resourceType": "background",
+  "id": "f6f63db1-5485-444d-a01e-611f7cf13597",
+  "name": "disclaimer",
+  "symbol": "bg_disclaimer",
+  "tileColors": "0315+0012+032+0012+032+0012+032+0012+032+0012+032+0012+032+0012+032+0012+032+0012+032+0012+032+0012+032+0012+032+0012+032+0012+032+0012+032+0012+0315+",
+  "filename": "disclaimer.png",
+  "width": 20,
+  "height": 18,
+  "imageWidth": 160,
+  "imageHeight": 144
+}

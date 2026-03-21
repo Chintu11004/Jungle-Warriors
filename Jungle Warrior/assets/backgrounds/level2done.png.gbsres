@@ -1,0 +1,12 @@
+{
+  "_resourceType": "background",
+  "id": "89213118-d8ec-4f94-a54e-ac41ca08604c",
+  "name": "level2done",
+  "symbol": "bg_level2done",
+  "tileColors": "",
+  "filename": "level2done.png",
+  "width": 255,
+  "height": 62,
+  "imageWidth": 2976,
+  "imageHeight": 496
+}
