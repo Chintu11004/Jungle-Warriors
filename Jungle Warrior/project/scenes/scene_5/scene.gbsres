@@ -37,13 +37,6 @@
     {
       "command": "EVENT_DEFERRED_ACTOR_LOAD",
       "args": {
-        "actor": "b2467fc8-e5a6-4523-a206-d4622f93f574"
-      },
-      "id": "0c073414-883d-4620-92aa-318c8460ac92"
-    },
-    {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
-      "args": {
         "actor": "bd6155b8-5834-4b60-8a25-b6a19c780815"
       },
       "id": "36a629c6-f2c7-4be9-a0c4-513f629178a7"
