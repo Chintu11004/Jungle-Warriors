@@ -2,7 +2,7 @@
   "_resourceType": "scene",
   "id": "4912bee2-387a-472f-ae4f-6679b6149517",
   "_index": 0,
-  "type": "LOGO",
+  "type": "ADVENTURE",
   "name": "ui/Title Screen",
   "symbol": "scene_title_screen",
   "x": 341,
@@ -38,6 +38,37 @@
         ],
         "__collapse": false
       }
+    },
+    {
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "Welcome to Jungle \nWarriors!",
+          "You have been called \nupon by\na government task \nforce to help enforce\ntheir new rainforest",
+          "protection plan! Your\ngoal is to eliminate\nenemies and locate \nanimals they have\nencaged and free them!",
+          "If you do good, the task\nforce may send you \nresources...",
+          "Use them wisely!",
+          "Work together to free\nthe jungle! Otherwise...",
+          "Your work may be for\nnothing..."
+        ],
+        "__section": "text",
+        "avatarId": "",
+        "minHeight": 4,
+        "maxHeight": 7,
+        "textX": 1,
+        "textY": 1,
+        "textHeight": 5,
+        "position": "bottom",
+        "clearPrevious": true,
+        "showFrame": "true",
+        "speedIn": -1,
+        "speedOut": -1,
+        "closeWhen": "key",
+        "closeButton": "a",
+        "closeDelayTime": 0.5,
+        "closeDelayFrames": 30
+      },
+      "id": "e8233490-ccc8-43b0-9037-5fa1bf9e295e"
     },
     {
       "id": "a5dddc76-e5fe-424a-9b2b-1ad1834acefb",

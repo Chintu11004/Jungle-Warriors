@@ -1,0 +1,12 @@
+{
+  "_resourceType": "background",
+  "id": "fd798015-2320-4139-8230-10b9e81e05d7",
+  "name": "mapscreen",
+  "symbol": "bg_mapscreen",
+  "tileColors": "01168+",
+  "filename": "mapscreen.png",
+  "width": 20,
+  "height": 18,
+  "imageWidth": 160,
+  "imageHeight": 144
+}
