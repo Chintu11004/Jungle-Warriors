@@ -1,0 +1,43 @@
+{
+  "_resourceType": "trigger",
+  "id": "fa35e5bf-fc76-4f74-a8d1-80f200e66206",
+  "name": "",
+  "prefabId": "",
+  "x": 15,
+  "y": 34,
+  "symbol": "trigger_5",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 1,
+  "script": [
+    {
+      "command": "EVENT_IF_INPUT",
+      "args": {
+        "input": [
+          "a"
+        ],
+        "__collapseElse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_ROPE_SWING",
+            "args": {
+              "rope_anchor_x": 23,
+              "rope_anchor_y": 29,
+              "rope_length": 11,
+              "rope_max_angle": 60,
+              "rope_swing_speed_factor": 3,
+              "rope_actor": "140a9a96-03e4-40c1-b246-8fc8797fad44"
+            },
+            "id": "ae7eb1a3-0567-4d98-8522-8596b64963aa"
+          }
+        ],
+        "false": []
+      },
+      "id": "748febd6-b3e6-4485-96c9-958686895412"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 2
+}

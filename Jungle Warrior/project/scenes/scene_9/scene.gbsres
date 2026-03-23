@@ -1,0 +1,105 @@
+{
+  "_resourceType": "scene",
+  "id": "7cc33f7d-ebe9-4622-a505-a17cbc2b53a2",
+  "_index": 6,
+  "name": "Scene 7",
+  "backgroundId": "d95aba6c-07ea-4d5f-a79c-a892c81e53b8",
+  "tilesetId": "",
+  "width": 186,
+  "height": 62,
+  "type": "PLATFORM",
+  "colorModeOverride": "none",
+  "paletteIds": [
+    "default-bg-2",
+    "64e90f2e-92b5-4869-a6ee-b8080b0c9dc2",
+    "9f040423-1b1c-4155-a7c5-8ac23d9dba67",
+    "2ebac764-bebb-4707-920b-2a975675b2cb",
+    "5dafcf6e-b1d8-4c6b-b105-32d877f561e4",
+    "b550d28a-9cb7-4f19-82fb-d839725f2419",
+    "6eb4949c-705f-412a-9db3-9895af2fe45e",
+    "8376f314-0927-4218-9bbe-f3bc53412e11"
+  ],
+  "spritePaletteIds": [],
+  "collisions": "00899+0f18+003+0f3+009c+0f18+003+0f3+009c+0f2+00!0f2+0016+0f2+0071+102+00f+01e+00d+0f2+00!0f2+0016+0f2+0071+102+002a+0f2+00!0f2+0016+0f2+002b+01e+002a+01e+102+002a+0f2+00!0f2+0016+0f2+0071+102+002a+0f5+0016+0f2+0028+102+0047+102+002a+0f5+0016+0f2+0028+102+0014+01e+0025+102+002a+0f5+0016+0f2+001a+01e+102+0047+102+002a+0f5+008+01e+0f2+0028+102+0047+102+002a+0f2+00!0f2+0016+0f2+0028+102+0047+104+0028+0f2+00!0f2+0016+0f2+0028+102+0047+104+0028+0f2+00!0f2+0016+0f2+0028+102+0047+104+008+011c+004+0f2+00!0f2+0016+0f2+0028+102+0049+102+0028+0f2+00!0f2+0016+0f2+0073+102+0026+102+0f2+00!0f2+0112+004+0f2+0073+102+0026+102+0f2+00!0f2+0016+0f2+0073+102+0026+102+0f2+00!0f2+0016+0f2+0073+102+0026+102+0f2+00!0f2+0016+0f2+006b+102+006+102+0026+102+0f2+00!0f2+0016+0f2+006b+102+006+102+0026+102+0f2+00!0f2+0016+0f2+006b+102+006+102+0026+102+0f2+00!0f2+0016+0f2+006b+102+002e+102+0f2+00!0f2+0016+0f2+006b+102+002e+102+0f2+00!0f2+0016+0f2+006b+102+002e+102+0f2+00!0f2+0016+0f2+006b+102+002e+102+0f2+00!0f2+0016+0f2+006b+102+00!017+0028+0f2+00!0f2+0016+0f3+006a+102+0030+0f2+00!0f2+024+0f15+006a+102+0029+0f9+00!0f2+0039+01e+003c+102+0029+0f9+00!0f2+00ae+0f5+005+0f2+001a+01e+0086+0f2+008+0f2+0057+01e+0049+0f2+008+0f2+00ae+0f2+008+0f2+00ae+0f2+007+0f3+00ae+0f2+007+0f3+00ae+0f2+007+0ff+30!00a1+0f18+00!30!00a0+0fc+003+0f7+002+0f2+30!00b7+0f2+00!30!00b8+0f2+30!00b7+0f2+00!30!00b8+0f2+30!00b7+0f2+00!30!00b8+0f2+30!00b7+0f2+00!30!00b8+0f6+00b4+0f6+0022e+",
+  "autoFadeSpeed": 1,
+  "symbol": "scene_1",
+  "x": 1608,
+  "y": 904,
+  "script": [
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "$self$"
+      },
+      "id": "bb37a0c7-fa52-45fb-8597-1aaad7880961"
+    },
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "ae3b7f05-86fd-46e7-a05e-6ece87a29d5f"
+      },
+      "id": "58be9551-e1c8-4a18-b68a-ecfae9313588"
+    },
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "d32beef7-79b4-4ff4-bf12-e0243b0f324f"
+      },
+      "id": "49d870fe-3a93-470f-b8cd-c17a71d829da"
+    },
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "9a1c22e6-441c-40f0-acaf-e26484bb24ec"
+      },
+      "id": "0683e22e-ec5f-46dc-9345-512140622b64"
+    },
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "2faa494f-c838-4299-9dae-23209305efb1"
+      },
+      "id": "377998fb-a3e3-474e-9a58-a7653a22786f"
+    },
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "aaa582af-c22c-4e59-9610-f79cdbe45c60"
+      },
+      "id": "58d556e4-0472-4b9c-b0ca-04a2b465aee4"
+    },
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "140a9a96-03e4-40c1-b246-8fc8797fad44"
+      },
+      "id": "6fad6ef2-adf2-48d9-902b-e8ea49eeb33a"
+    },
+    {
+      "command": "EVENT_CAMERA_SET_BOUNDS",
+      "args": {
+        "x": {
+          "type": "number",
+          "value": 0
+        },
+        "y": {
+          "type": "number",
+          "value": 0
+        },
+        "width": {
+          "type": "number",
+          "value": 208
+        },
+        "height": {
+          "type": "number",
+          "value": 48
+        }
+      },
+      "id": "1d8f049b-2bc3-4873-bae9-7910b04b2647"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "playerSpriteSheetId": "c91b8ed9-7012-42b0-ace7-b8bb32a9b64d"
+}

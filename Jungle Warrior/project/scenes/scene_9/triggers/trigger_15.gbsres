@@ -1,0 +1,38 @@
+{
+  "_resourceType": "trigger",
+  "id": "0de9aa7e-cbbb-4aeb-9686-4c6f61b5c9aa",
+  "name": "",
+  "prefabId": "",
+  "x": 179,
+  "y": 11,
+  "symbol": "trigger_17",
+  "prefabScriptOverrides": {},
+  "width": 3,
+  "height": 2,
+  "script": [
+    {
+      "command": "EVENT_CAMERA_SET_BOUNDS",
+      "args": {
+        "x": {
+          "type": "number",
+          "value": 155
+        },
+        "y": {
+          "type": "number",
+          "value": 0
+        },
+        "width": {
+          "type": "number",
+          "value": 31
+        },
+        "height": {
+          "type": "number",
+          "value": 69
+        }
+      },
+      "id": "5892b8a1-9650-450b-b97c-14e18b2dbd20"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 14
+}
