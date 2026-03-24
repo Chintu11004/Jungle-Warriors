@@ -18,13 +18,20 @@
   "symbol": "actor_0",
   "script": [
     {
+      "command": "EVENT_ACTOR_COLLISIONS_DISABLE",
+      "args": {
+        "actorId": "$self$"
+      },
+      "id": "e1accac6-874d-4b6a-8d14-7d83fcbeff14"
+    },
+    {
       "command": "EVENT_ACTOR_SET_STATE",
       "args": {
         "actorId": "$self$",
         "spriteStateId": "Spin",
         "loopAnim": true
       },
-      "id": "09146867-2d25-4acc-a404-852bd62d98a8"
+      "id": "111ce7e6-73de-49f4-b546-2cf56c3d4dbf"
     },
     {
       "command": "EVENT_WAIT",
@@ -38,7 +45,7 @@
           "value": 1
         }
       },
-      "id": "eb739bef-67f2-4afe-a54e-c633d8efb76f"
+      "id": "059384bb-4eb4-421e-bef5-e0949aef6b7e"
     },
     {
       "command": "EVENT_ACTOR_SET_STATE",
@@ -47,14 +54,39 @@
         "spriteStateId": "Level Beat",
         "loopAnim": true
       },
-      "id": "ac9594ce-9aee-432b-a101-16320d21433e"
+      "id": "d97c8d31-e596-485a-a25d-270e4c9894ad"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_FRAME",
+      "args": {
+        "actorId": "$self$",
+        "frame": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "a2b54d2f-544f-4cec-b131-c6af8c0df112"
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": {
+          "type": "number",
+          "value": 1
+        },
+        "frames": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "fb0b8338-a788-497e-b175-7bd815f26bfb"
     },
     {
       "command": "EVENT_FADE_OUT",
       "args": {
-        "speed": 5
+        "speed": 4
       },
-      "id": "9acf2f85-1fe0-4438-afa1-640c47739916"
+      "id": "ce7d1e3b-a3a6-4770-994c-d3931e3a81fe"
     }
   ],
   "startScript": [],

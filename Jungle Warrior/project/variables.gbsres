@@ -107,6 +107,11 @@
       "symbol": "var_is_player_detected"
     },
     {
+      "id": "511",
+      "name": "player detection rate limit",
+      "symbol": "var_player_detection_rate_l"
+    },
+    {
       "id": "871ea302-1cc1-463c-b9d7-530aac38fe81__L0",
       "name": "Spoken to gardener",
       "symbol": "var_spoken_to_gardener"
@@ -197,9 +202,9 @@
       "symbol": "var_distance_to_roam_right"
     },
     {
-      "id": "511",
-      "name": "player detection rate limit",
-      "symbol": "var_player_detection_rate_l"
+      "id": "21",
+      "name": "animals rescued",
+      "symbol": "var_animals_rescued"
     }
   ],
   "constants": []

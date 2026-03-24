@@ -1,0 +1,27 @@
+{
+  "_resourceType": "scene",
+  "id": "337e8040-3695-4c98-bff9-21e14373d9de",
+  "_index": 5,
+  "type": "POINTNCLICK",
+  "name": "map screen",
+  "symbol": "scene_7",
+  "x": 1245.3333333333333,
+  "y": 52,
+  "width": 20,
+  "height": 18,
+  "backgroundId": "fd798015-2320-4139-8230-10b9e81e05d7",
+  "tilesetId": "",
+  "colorModeOverride": "none",
+  "paletteIds": [
+    "",
+    ""
+  ],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "playerSpriteSheetId": "a827b612-578f-4cb9-a2bf-fd54b197b83f",
+  "script": [],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": "00168+"
+}
