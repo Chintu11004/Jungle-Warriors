@@ -17,59 +17,7 @@
   "prefabScriptOverrides": {},
   "symbol": "actor_4",
   "script": [],
-  "startScript": [
-    {
-      "command": "EVENT_LOOP",
-      "args": {},
-      "children": {
-        "true": [
-          {
-            "command": "EVENT_WAIT",
-            "args": {
-              "time": {
-                "type": "number",
-                "value": 0.7
-              },
-              "frames": {
-                "type": "number",
-                "value": 1
-              }
-            },
-            "id": "df1581ed-98d0-48c6-82e4-86051b5cd77f"
-          },
-          {
-            "command": "EVENT_ACTOR_HIDE",
-            "args": {
-              "actorId": "$self$"
-            },
-            "id": "9960360d-a622-4b91-9a14-385ff4ed85e1"
-          },
-          {
-            "command": "EVENT_WAIT",
-            "args": {
-              "time": {
-                "type": "number",
-                "value": 0.7
-              },
-              "frames": {
-                "type": "number",
-                "value": 1
-              }
-            },
-            "id": "3daa0da2-b591-4e8c-bc49-218cf769398d"
-          },
-          {
-            "command": "EVENT_ACTOR_SHOW",
-            "args": {
-              "actorId": "$self$"
-            },
-            "id": "73b68d82-6fee-49bd-8616-5edb4c377198"
-          }
-        ]
-      },
-      "id": "862a0e34-e263-4ed9-935c-a6589a7c310b"
-    }
-  ],
+  "startScript": [],
   "updateScript": [],
   "hit1Script": [],
   "hit2Script": [],

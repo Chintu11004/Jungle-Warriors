@@ -1,0 +1,119 @@
+{
+  "_resourceType": "scene",
+  "id": "f38a9cda-5c1c-4d59-aaaf-6ec0fc1a984d",
+  "_index": 7,
+  "name": "Scene 8",
+  "backgroundId": "96367245-e438-4424-b346-1b3da8aae70c",
+  "tilesetId": "",
+  "width": 20,
+  "height": 18,
+  "type": "TOPDOWN",
+  "colorModeOverride": "none",
+  "paletteIds": [
+    "6bcbdeb2-ca87-4c30-b142-509cec8119be"
+  ],
+  "spritePaletteIds": [],
+  "collisions": "00168+",
+  "autoFadeSpeed": 1,
+  "symbol": "scene_8",
+  "x": 1584,
+  "y": 88,
+  "script": [
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "83",
+        "value": {
+          "type": "rnd",
+          "value": {
+            "type": "number",
+            "value": 5
+          }
+        }
+      },
+      "id": "aff08894-c2c1-4c33-8a90-69c4ab2c583d"
+    },
+    {
+      "command": "EVENT_INC_VALUE",
+      "args": {
+        "variable": "83"
+      },
+      "id": "fee0df86-240f-4f7c-9e6c-e7fc1714ce6a"
+    },
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "$self$"
+      },
+      "id": "e85969fd-aa9f-4b7b-a161-03df7855309a"
+    },
+    {
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "Great work! You\nfreed all animals,",
+          "and helped quell all\nenemies!",
+          "You have 100% cleared\nthis zone!",
+          "The government is\npleased to help, so",
+          "they are sending you \n$83$ more folks\nto help protect the",
+          "newly cleared zone!\nAssign them wisely!"
+        ],
+        "__section": "text",
+        "avatarId": "",
+        "minHeight": 4,
+        "maxHeight": 7,
+        "textX": 1,
+        "textY": 1,
+        "textHeight": 5,
+        "position": "bottom",
+        "clearPrevious": true,
+        "showFrame": "true",
+        "speedIn": -1,
+        "speedOut": -1,
+        "closeWhen": "key",
+        "closeButton": "a",
+        "closeDelayTime": 0.5,
+        "closeDelayFrames": 30
+      },
+      "id": "1e24e9b3-6a91-48a1-93e0-c74d5290abfc"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "70",
+        "value": {
+          "type": "add",
+          "valueA": {
+            "type": "variable",
+            "value": "83"
+          },
+          "valueB": {
+            "type": "variable",
+            "value": "70"
+          }
+        }
+      },
+      "id": "b1d746e7-23f5-4786-b381-c5db1e66b60f"
+    },
+    {
+      "command": "EVENT_SWITCH_SCENE",
+      "args": {
+        "sceneId": "337e8040-3695-4c98-bff9-21e14373d9de",
+        "x": {
+          "type": "number",
+          "value": 15
+        },
+        "y": {
+          "type": "number",
+          "value": 9
+        },
+        "direction": "",
+        "fadeSpeed": 4
+      },
+      "id": "9388e0ac-cd31-4f22-a3a2-3b31fb7b2f1a"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": []
+}

@@ -1,0 +1,12 @@
+{
+  "_resourceType": "background",
+  "id": "96367245-e438-4424-b346-1b3da8aae70c",
+  "name": "handshake4colors",
+  "symbol": "bg_handshake4colors",
+  "tileColors": "00168+",
+  "filename": "handshake4colors.png",
+  "width": 20,
+  "height": 18,
+  "imageWidth": 160,
+  "imageHeight": 144
+}

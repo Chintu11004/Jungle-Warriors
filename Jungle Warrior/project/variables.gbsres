@@ -205,6 +205,16 @@
       "id": "21",
       "name": "animals rescued",
       "symbol": "var_animals_rescued"
+    },
+    {
+      "id": "70",
+      "name": "people",
+      "symbol": "var_people"
+    },
+    {
+      "id": "83",
+      "name": "peopleadded",
+      "symbol": "var_peopleadded_0"
     }
   ],
   "constants": []

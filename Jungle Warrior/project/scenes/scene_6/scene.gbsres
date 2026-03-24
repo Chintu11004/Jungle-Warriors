@@ -20,6 +20,28 @@
   "y": 80,
   "script": [
     {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "21",
+        "value": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "136df11a-a770-4722-941d-b45da4253bf1"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "70",
+        "value": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "f24326c7-a8fe-4597-b1a7-693ff6275da1"
+    },
+    {
       "id": "f7c7ba72-c93e-4dad-aa0a-0efd441e775f",
       "command": "EVENT_ACTOR_DEACTIVATE",
       "args": {

@@ -17,67 +17,7 @@
   "prefabScriptOverrides": {},
   "symbol": "actor_2",
   "script": [],
-  "startScript": [
-    {
-      "command": "EVENT_LOOP",
-      "args": {},
-      "children": {
-        "true": [
-          {
-            "command": "EVENT_WAIT",
-            "args": {
-              "time": {
-                "type": "number",
-                "value": 0.7
-              },
-              "frames": {
-                "type": "number",
-                "value": 1
-              }
-            },
-            "id": "4d118ae1-22a3-4690-9ce2-cecc651d1698"
-          },
-          {
-            "command": "EVENT_ACTOR_SET_FRAME",
-            "args": {
-              "actorId": "$self$",
-              "frame": {
-                "type": "number",
-                "value": 1
-              }
-            },
-            "id": "0d75c271-4ed4-4d03-bc3d-77206774f82d"
-          },
-          {
-            "command": "EVENT_WAIT",
-            "args": {
-              "time": {
-                "type": "number",
-                "value": 0.7
-              },
-              "frames": {
-                "type": "number",
-                "value": 1
-              }
-            },
-            "id": "a0a7d899-7ef6-4c2c-a637-7fec8d2505f7"
-          },
-          {
-            "command": "EVENT_ACTOR_SET_FRAME",
-            "args": {
-              "actorId": "$self$",
-              "frame": {
-                "type": "number",
-                "value": 0
-              }
-            },
-            "id": "8cc41d84-acd8-4c4f-86eb-09fbbc494ae5"
-          }
-        ]
-      },
-      "id": "598d7859-4da2-49d7-8dc1-afb48d4e616a"
-    }
-  ],
+  "startScript": [],
   "updateScript": [],
   "hit1Script": [],
   "hit2Script": [],

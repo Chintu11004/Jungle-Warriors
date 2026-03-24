@@ -1,0 +1,78 @@
+{
+  "_resourceType": "scene",
+  "id": "b14263d8-a91c-407d-b8fe-ef4ec4e4474b",
+  "_index": 8,
+  "name": "Scene 9",
+  "backgroundId": "9011def0-31e0-4dc4-a049-f68713e2807d",
+  "tilesetId": "",
+  "width": 20,
+  "height": 18,
+  "type": "TOPDOWN",
+  "colorModeOverride": "none",
+  "paletteIds": [
+    "686018b8-af8b-4cf8-b476-11bef95898c1"
+  ],
+  "spritePaletteIds": [],
+  "collisions": "00168+",
+  "autoFadeSpeed": 1,
+  "symbol": "scene_9",
+  "x": 1824,
+  "y": 64,
+  "script": [
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "$self$"
+      },
+      "id": "4567b914-d995-413b-854b-60934075cbaa"
+    },
+    {
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "The government is\ndisappointed...",
+          "You did not rescue $animalsrescuedinverted\nand you failed to",
+          "quell $enemieskilledinverted enemies.\nWe are all in this together,\nso make sure to do \na good job!"
+        ],
+        "__section": "text",
+        "avatarId": "",
+        "minHeight": 4,
+        "maxHeight": 7,
+        "textX": 1,
+        "textY": 1,
+        "textHeight": 5,
+        "position": "bottom",
+        "clearPrevious": true,
+        "showFrame": "true",
+        "speedIn": -1,
+        "speedOut": -1,
+        "closeWhen": "key",
+        "closeButton": "a",
+        "closeDelayTime": 0.5,
+        "closeDelayFrames": 30
+      },
+      "id": "1b4be4f9-3d93-4bae-89df-43b05467030b"
+    },
+    {
+      "command": "EVENT_SWITCH_SCENE",
+      "args": {
+        "sceneId": "337e8040-3695-4c98-bff9-21e14373d9de",
+        "x": {
+          "type": "number",
+          "value": 0
+        },
+        "y": {
+          "type": "number",
+          "value": 0
+        },
+        "direction": "",
+        "fadeSpeed": 4
+      },
+      "id": "d610ddcf-4333-4ffe-a84b-28bab3aad145"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "autoFadeEventCollapse": false
+}

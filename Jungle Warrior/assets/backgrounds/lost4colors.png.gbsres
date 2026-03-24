@@ -1,0 +1,12 @@
+{
+  "_resourceType": "background",
+  "id": "9011def0-31e0-4dc4-a049-f68713e2807d",
+  "name": "lost4colors",
+  "symbol": "bg_lost4colors",
+  "tileColors": "",
+  "filename": "lost4colors.png",
+  "width": 20,
+  "height": 18,
+  "imageWidth": 160,
+  "imageHeight": 144
+}

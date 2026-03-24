@@ -40,6 +40,11 @@
       }
     },
     {
+      "command": "EVENT_RNG_SEED",
+      "args": {},
+      "id": "c96a85e1-2ad2-4e44-a182-6a82ce43ab54"
+    },
+    {
       "command": "EVENT_TEXT",
       "args": {
         "text": [

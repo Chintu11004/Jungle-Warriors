@@ -19,7 +19,36 @@
   "spritePaletteIds": [],
   "autoFadeSpeed": 1,
   "playerSpriteSheetId": "a827b612-578f-4cb9-a2bf-fd54b197b83f",
-  "script": [],
+  "script": [
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "$self$"
+      },
+      "id": "8b5718d2-7278-4acc-9b40-b6a1c42698cb"
+    },
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "dccb4554-b1e7-45c3-999d-c176a3f81ea3"
+      },
+      "id": "e4e77046-0eaf-47fb-b266-5db7f15a1462"
+    },
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "b22f8f54-b7f0-4301-a052-fadc169ba7ac"
+      },
+      "id": "2d05a12c-7c3d-4b4f-84eb-ff1a52a8e7de"
+    },
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "ba8acd5f-ecc0-426f-ae86-5f5d20c459ef"
+      },
+      "id": "9246b276-5ffb-4148-ad86-c0ad52361323"
+    }
+  ],
   "playerHit1Script": [],
   "playerHit2Script": [],
   "playerHit3Script": [],
