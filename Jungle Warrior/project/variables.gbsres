@@ -229,12 +229,42 @@
     {
       "id": "1dd18792-82b9-4fc3-9db3-cd5131381134__L4",
       "name": "Distance to roam right",
-      "symbol": "var_distance_to_roam_right_0"
+      "symbol": "var_distance_to_roam_right_"
     },
     {
       "id": "1dd18792-82b9-4fc3-9db3-cd5131381134__L5",
       "name": "Distance to roam left",
       "symbol": "var_distance_to_roam_left_0"
+    },
+    {
+      "id": "7df2ed09-4ae9-4535-a1fb-7e91bd69e395__L0",
+      "name": "PlayerDetected",
+      "symbol": "var_playerdetected"
+    },
+    {
+      "id": "7df2ed09-4ae9-4535-a1fb-7e91bd69e395__L1",
+      "name": "Direction",
+      "symbol": "var_direction"
+    },
+    {
+      "id": "7df2ed09-4ae9-4535-a1fb-7e91bd69e395__L2",
+      "name": "Origin_x",
+      "symbol": "var_origin_x"
+    },
+    {
+      "id": "7df2ed09-4ae9-4535-a1fb-7e91bd69e395__L3",
+      "name": "Origin_Y",
+      "symbol": "var_origin_y"
+    },
+    {
+      "id": "7df2ed09-4ae9-4535-a1fb-7e91bd69e395__L4",
+      "name": "DIstance to roam Right",
+      "symbol": "var_distance_to_roam_right"
+    },
+    {
+      "id": "7df2ed09-4ae9-4535-a1fb-7e91bd69e395__L5",
+      "name": "Distance to roam Left",
+      "symbol": "var_distance_to_roam_left"
     },
     {
       "id": "21",

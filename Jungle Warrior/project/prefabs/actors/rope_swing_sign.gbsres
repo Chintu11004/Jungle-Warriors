@@ -1,29 +1,25 @@
 {
-  "_resourceType": "actor",
-  "id": "c6b33538-4d68-43a9-9518-645173f14ecd",
-  "name": "",
+  "_resourceType": "actorPrefab",
+  "id": "6c4354ff-5974-4e98-8675-feeb680c46df",
+  "name": "rope swing sign",
   "frame": 0,
   "animate": false,
   "spriteSheetId": "30b8266a-0533-4f90-bd33-e97dc1d498ea",
-  "prefabId": "",
-  "direction": "down",
   "moveSpeed": 1,
   "animSpeed": 15,
   "paletteId": "",
-  "isPinned": false,
   "persistent": false,
   "collisionGroup": "",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
-  "symbol": "actor_47",
+  "_index": 8,
   "script": [
     {
       "command": "EVENT_TEXT",
       "args": {
         "text": [
-          "When you see a rope",
-          "Press the up or down\nkey to grab onto it",
-          "Press the A key to jump!"
+          "When jumping to a rope,\nHOLD A to grab onto it",
+          "When on the rope, \nPress A to disembark."
         ],
         "__section": "text",
         "avatarId": "",
@@ -42,16 +38,13 @@
         "closeDelayTime": 0.5,
         "closeDelayFrames": 30
       },
-      "id": "996f25b8-80be-4f8d-afff-55f73da4173f"
+      "id": "0b6fe2fb-43e2-4a1c-b24e-d7e1858f8d05",
+      "children": {}
     }
   ],
   "startScript": [],
   "updateScript": [],
   "hit1Script": [],
   "hit2Script": [],
-  "hit3Script": [],
-  "coordinateType": "tiles",
-  "x": 39,
-  "y": 39,
-  "_index": 7
+  "hit3Script": []
 }

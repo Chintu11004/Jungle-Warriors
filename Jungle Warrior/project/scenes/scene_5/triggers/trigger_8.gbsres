@@ -1,65 +1,44 @@
 {
   "_resourceType": "trigger",
-  "id": "e3130da9-77a9-47bb-a5b4-31fdb8d53b9c",
+  "id": "a53eb25a-b2df-47c3-8492-54a3f970627d",
   "name": "",
   "prefabId": "",
-  "x": 152,
-  "y": 0,
-  "symbol": "trigger_0",
+  "x": 46,
+  "y": 25,
+  "symbol": "trigger_19",
   "prefabScriptOverrides": {},
-  "width": 1,
-  "height": 43,
+  "width": 5,
+  "height": 1,
   "script": [
     {
-      "command": "EVENT_CAMERA_SET_BOUNDS",
+      "command": "EVENT_DELOAD_PREV_LEVEL",
       "args": {
-        "x": {
-          "type": "number",
-          "value": 135
-        },
-        "y": {
-          "type": "number",
-          "value": 16
-        },
-        "width": {
-          "type": "number",
-          "value": 38
-        },
-        "height": {
-          "type": "number",
-          "value": 30
-        },
         "__collapse": false
       },
-      "id": "9c3f5b15-0499-414b-aae1-cdbc70a35ca4"
-    },
-    {
-      "command": "EVENT_ACTOR_ACTIVATE",
-      "args": {
-        "actorId": "8159cdcd-a7e3-47e8-996e-20711377c0d2"
-      },
-      "id": "5122caa9-140c-4ac2-b9d7-df35f4e654bc"
-    },
-    {
-      "command": "EVENT_DEFERRED_ACTOR_UNLOAD",
-      "args": {
-        "actor": "1b068494-2255-44c3-8319-504e4026bfde"
-      },
-      "id": "ea0a9543-3a10-4b98-8f5d-b58ad18e7fde"
-    },
-    {
-      "command": "EVENT_DEFERRED_ACTOR_UNLOAD",
-      "args": {
-        "actor": "bd6155b8-5834-4b60-8a25-b6a19c780815"
-      },
-      "id": "4a95056a-f8bd-4c8d-8352-0b0292a0a9ad"
+      "id": "a872c0a6-58f1-42b2-9e79-8ab0011389c5"
     },
     {
       "command": "EVENT_DEFERRED_ACTOR_LOAD",
       "args": {
-        "actor": "b2467fc8-e5a6-4523-a206-d4622f93f574"
+        "actor": "4c679e78-1f87-4db2-8429-e652ef504bfd",
+        "__collapse": false
       },
-      "id": "8519cc13-aabc-4a00-b8f0-1559d328fd90"
+      "id": "1e757548-c7a8-4532-9b88-568a3341be35"
+    },
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "ff81a172-6d8f-4e2b-9a8f-597147cac4b7",
+        "__collapse": false
+      },
+      "id": "735c7f9d-2cf3-40c0-b368-a1b6f27b9e77"
+    },
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "593e701c-2493-4641-adc7-e8f6569cff5f"
+      },
+      "id": "02c4ae91-7fab-4c37-b40c-07798a0fdf13"
     }
   ],
   "leaveScript": [],

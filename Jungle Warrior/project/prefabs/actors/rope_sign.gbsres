@@ -1,28 +1,26 @@
 {
-  "_resourceType": "actor",
-  "id": "a79dd446-00b0-4936-af7c-539f1057cd93",
-  "name": "",
+  "_resourceType": "actorPrefab",
+  "id": "c0cce5d8-8c04-421e-9352-d84619ae2835",
+  "name": "Rope sign",
   "frame": 0,
   "animate": false,
   "spriteSheetId": "30b8266a-0533-4f90-bd33-e97dc1d498ea",
-  "prefabId": "",
-  "direction": "down",
   "moveSpeed": 1,
   "animSpeed": 15,
   "paletteId": "",
-  "isPinned": false,
   "persistent": false,
   "collisionGroup": "",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
-  "symbol": "actor_46",
+  "_index": 7,
   "script": [
     {
       "command": "EVENT_TEXT",
       "args": {
         "text": [
-          "When you're close to\nenemies",
-          "Press B to kill them"
+          "When you see a rope",
+          "Press the up or down\nkey to grab onto it",
+          "Press the A key to jump!"
         ],
         "__section": "text",
         "avatarId": "",
@@ -41,28 +39,13 @@
         "closeDelayTime": 0.5,
         "closeDelayFrames": 30
       },
-      "id": "4e0083b7-2755-4ad8-b346-923efffb41da"
+      "id": "65df1050-b21b-42e1-9899-823d4c4b4ea0",
+      "children": {}
     }
   ],
-  "startScript": [
-    {
-      "command": "EVENT_SET_VALUE",
-      "args": {
-        "variable": "L0",
-        "value": {
-          "type": "number",
-          "value": 1
-        }
-      },
-      "id": "45211a68-5bf5-4c16-b35b-e5dd96c4b76a"
-    }
-  ],
+  "startScript": [],
   "updateScript": [],
   "hit1Script": [],
   "hit2Script": [],
-  "hit3Script": [],
-  "coordinateType": "tiles",
-  "x": 14,
-  "y": 39,
-  "_index": 6
+  "hit3Script": []
 }

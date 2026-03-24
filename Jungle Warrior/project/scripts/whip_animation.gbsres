@@ -32,7 +32,7 @@
         "actorId": "$self$",
         "spriteStateId": "Whip Animation",
         "loopAnim": false,
-        "__collapse": true
+        "__collapse": false
       },
       "id": "3dc1b901-ae5e-4f8d-9c64-c65df3796349"
     },
@@ -160,7 +160,7 @@
           "2",
           "3"
         ],
-        "__collapse": false,
+        "__collapse": true,
         "__comment": false
       },
       "id": "a8b48442-463e-43d3-8443-bc9c7d8cdaf8"
@@ -187,7 +187,7 @@
         "actorId": "$self$",
         "spriteStateId": "",
         "loopAnim": true,
-        "__collapse": true
+        "__collapse": false
       },
       "id": "1bf31a5e-fb00-4da7-a805-8406b435003a"
     },

@@ -1,28 +1,25 @@
 {
-  "_resourceType": "actor",
-  "id": "11b8f5cb-9d2c-464e-ade8-404cf7f5ca50",
-  "name": "",
+  "_resourceType": "actorPrefab",
+  "id": "f6398ffb-8c72-4156-8f5a-16222e6f3c80",
+  "name": "Melee sign",
   "frame": 0,
   "animate": false,
   "spriteSheetId": "30b8266a-0533-4f90-bd33-e97dc1d498ea",
-  "prefabId": "",
-  "direction": "down",
   "moveSpeed": 1,
   "animSpeed": 15,
   "paletteId": "",
-  "isPinned": false,
   "persistent": false,
   "collisionGroup": "",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
-  "symbol": "actor_48",
+  "_index": 6,
   "script": [
     {
       "command": "EVENT_TEXT",
       "args": {
         "text": [
-          "When jumping to a rope,\nHOLD A to grab onto it",
-          "When on the rope, \nPress A to disembark."
+          "When you're close to\nenemies",
+          "Press B to kill them"
         ],
         "__section": "text",
         "avatarId": "",
@@ -41,16 +38,13 @@
         "closeDelayTime": 0.5,
         "closeDelayFrames": 30
       },
-      "id": "47e390c0-b63a-4577-841f-5c2e14429c12"
+      "id": "6a37c9d2-55e7-4000-b6c8-4528dec715c3",
+      "children": {}
     }
   ],
   "startScript": [],
   "updateScript": [],
   "hit1Script": [],
   "hit2Script": [],
-  "hit3Script": [],
-  "coordinateType": "tiles",
-  "x": 52,
-  "y": 22,
-  "_index": 8
+  "hit3Script": []
 }

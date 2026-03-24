@@ -1,6 +1,7 @@
 #pragma bank 255
 
 #include <string.h>
+#include <stddef.h>
 
 #include "system.h"
 #include "vm.h"
@@ -76,16 +77,20 @@ static void deferred_slots_reset(void) {
 
 /** Resets deferred slots and reclaims VRAM for level transition.
  *  Iterates all actors and unloads any deferred actors still loaded, then resets slots and reclaims VRAM.
+ *  Policy: actors[0] (player) and actors[1] (first scene NPC) are never unloaded here.
  *  Call once on level transition—no need to manually unload each actor first. */
 void deload_prev_level(void) BANKED {
     UBYTE i;
     actor_t *actor;
-    for (i = 1; i < actors_len; i++) {
+    for (i = 2; i < actors_len; i++) {
         actor = actors + i;
         if (!actor->reserve_tiles && actor->base_tile != SCENE_SPRITE_UNLOADED) {
             unload_actor_sprite(actor);
         }
     }
+    /* Invalidate scene sprite cache — deferred loads write these; without reset,
+     * load_actor_sprite thinks tiles are still in VRAM and skips load_sprite. */
+    memset(scene_sprites_base_tiles, SCENE_SPRITE_UNLOADED, sizeof(scene_sprites_base_tiles));
     deferred_slots_reset();
     allocated_sprite_tiles -= (UBYTE)deferred_allocated_delta;
     deferred_allocated_delta = 0;
@@ -242,7 +247,8 @@ UBYTE load_sprite(UBYTE sprite_offset, const spritesheet_t * sprite, UBYTE bank)
 /**
 Loads the sprite for an actor. If the sprite is already loaded, it returns the base tile.
 If the sprite is not loaded, it loads the sprite and returns the base tile.
-Deferred actors (reserve_tiles==0) use the slot table for private allocation.
+Deferred actors (reserve_tiles==0, not actors[1]) use the slot table for private allocation.
+actors[1] is always allocated like the player — never deferred (see load_scene).
 */
 UBYTE load_actor_sprite(actor_t * actor) BANKED {
     far_ptr_t scene_sprites;
@@ -254,7 +260,7 @@ UBYTE load_actor_sprite(actor_t * actor) BANKED {
      * ref_count == 0 means slot is free.
      * base_tile == DEFERRED_SLOT_FREE means never-used; else previously used (reuse if tile_count >= n_tiles).
      */
-    if (!actor->reserve_tiles) {
+    if (!actor->reserve_tiles && actor != &actors[1]) {
         UBYTE n_tiles = spritesheet_get_tile_count(actor->sprite.ptr, actor->sprite.bank);
         if (!n_tiles) return 0;
 
@@ -342,7 +348,15 @@ UBYTE load_actor_sprite(actor_t * actor) BANKED {
     if (!n_loaded) return 0;
     actor->base_tile = allocated_sprite_tiles;
     if (idx < sprites_len) scene_sprites_base_tiles[idx] = allocated_sprite_tiles;
-    allocated_sprite_tiles += n_loaded;
+    /* actors[1]: same tile floor as player (scene reserve_tiles); others use exact n_loaded */
+    if (actor == &actors[1]) {
+        UBYTE floor = ReadBankedUBYTE(
+            (const unsigned char *)current_scene.ptr + offsetof(scene_t, reserve_tiles),
+            current_scene.bank);
+        allocated_sprite_tiles += (n_loaded > floor) ? n_loaded : floor;
+    } else {
+        allocated_sprite_tiles += n_loaded;
+    }
     actor_ensure_inactive_if_unlisted(actor);
     return n_loaded;
 }
@@ -355,6 +369,8 @@ UBYTE unload_actor_sprite(actor_t * actor) BANKED {
     UBYTE i;
     UBYTE was_active;
     if (!actor || actor->reserve_tiles) return 0;
+    /* actors[0] = player, actors[1] = first NPC — never sprite-unload (project policy). */
+    if (actor == &PLAYER || actor == &actors[1]) return 0;
     if (actor->base_tile == SCENE_SPRITE_UNLOADED) return 0;
     was_active = CHK_FLAG(actor->flags, ACTOR_FLAG_ACTIVE);
 
@@ -364,6 +380,14 @@ UBYTE unload_actor_sprite(actor_t * actor) BANKED {
             if (deferred_slots[i].ref_count != 0 &&
                 deferred_slots[i].base_tile == actor->base_tile) {
                 deferred_slots[i].ref_count--;
+                /* Last user gone: drop scene_sprites_base_tiles entry so we don't skip load_sprite later */
+                if (deferred_slots[i].ref_count == 0 && sprites_len) {
+                    far_ptr_t scene_sprites;
+                    ReadBankedFarPtr(&scene_sprites, (const unsigned char *)&((scene_t *)current_scene.ptr)->sprites, current_scene.bank);
+                    UBYTE spr_idx = IndexOfFarPtr(scene_sprites.ptr, scene_sprites.bank, sprites_len, &actor->sprite);
+                    if (spr_idx < sprites_len && scene_sprites_base_tiles[spr_idx] == actor->base_tile)
+                        scene_sprites_base_tiles[spr_idx] = SCENE_SPRITE_UNLOADED;
+                }
                 /* When ref_count==0, slot is free for reuse; base_tile/tile_count kept for VRAM reuse */
                 break;
             }
@@ -554,18 +578,32 @@ UBYTE load_scene(const scene_t * scene, UBYTE bank, UBYTE init_data) BANKED {
             for (i = actors_len - 1; i != 0; i--, actor++) {
                 actor->next = 0;
                 actor->prev = 0;
-                if (actor->reserve_tiles) {
-                    // exclusive sprites allocated separately to avoid overwriting if modified
+                if (actor == &actors[1]) {
+                    /* First scene NPC: permanent VRAM after player (same rule as player tile reservation). */
+                    actor->base_tile = allocated_sprite_tiles;
+                    UBYTE n_loaded = load_sprite(allocated_sprite_tiles, actor->sprite.ptr, actor->sprite.bank);
+                    allocated_sprite_tiles += (n_loaded > scn.reserve_tiles) ? n_loaded : scn.reserve_tiles;
+                    CLR_FLAG(actor->flags, ACTOR_FLAG_HIDDEN | ACTOR_FLAG_DISABLED);
+                } else if (actor->reserve_tiles) {
                     actor->base_tile = allocated_sprite_tiles;
                     UBYTE n_loaded = load_sprite(allocated_sprite_tiles, actor->sprite.ptr, actor->sprite.bank);
                     allocated_sprite_tiles += (n_loaded > actor->reserve_tiles) ? n_loaded : actor->reserve_tiles;
+                } else if (CHK_FLAG(actor->flags, ACTOR_FLAG_PERSISTENT)) {
+                    /* Other persistent NPCs (not slot 1): same allocation rule as player */
+                    actor->base_tile = allocated_sprite_tiles;
+                    UBYTE n_loaded = load_sprite(allocated_sprite_tiles, actor->sprite.ptr, actor->sprite.bank);
+                    allocated_sprite_tiles += (n_loaded > scn.reserve_tiles) ? n_loaded : scn.reserve_tiles;
+                    CLR_FLAG(actor->flags, ACTOR_FLAG_HIDDEN | ACTOR_FLAG_DISABLED);
                 } else {
                     actor->base_tile = SCENE_SPRITE_UNLOADED;
                     SET_FLAG(actor->flags, ACTOR_FLAG_HIDDEN | ACTOR_FLAG_DISABLED);
                 }
                 load_animations((void *)actor->sprite.ptr, actor->sprite.bank, ANIM_SET_DEFAULT, actor->animations);
+                if (actor == &actors[1] || CHK_FLAG(actor->flags, ACTOR_FLAG_PERSISTENT)) {
+                    load_bounds(actor->sprite.ptr, actor->sprite.bank, &actor->bounds);
+                }
                 CLR_FLAG(actor->flags, ACTOR_FLAG_ACTIVE);
-                if (actor->reserve_tiles) {
+                if (actor == &actors[1] || actor->reserve_tiles || CHK_FLAG(actor->flags, ACTOR_FLAG_PERSISTENT)) {
                     DL_PUSH_HEAD(actors_inactive_head, actor);
                 }
             }

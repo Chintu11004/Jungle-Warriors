@@ -37,35 +37,36 @@
           {
             "command": "EVENT_DEFERRED_ACTOR_LOAD",
             "args": {
-              "actor": "d5f821c9-73ea-4f70-99ee-43552d3d7274",
+              "actor": "9dabdcaf-194c-45ca-a633-86c39bbb1314",
               "__collapse": false,
-              "__comment": true
+              "__comment": false
             },
             "id": "6ea3cd8e-2d1e-4287-b89b-0e1173a00630"
           },
           {
             "command": "EVENT_DEFERRED_ACTOR_LOAD",
             "args": {
-              "actor": "da6e0308-e26d-4e67-9e7c-2f2d5ece0f26",
+              "actor": "364140db-f88f-4dd0-a703-0c2109733346",
               "__collapse": false,
-              "__comment": true
+              "__comment": false
             },
             "id": "e5524a66-d68e-4065-a4fb-4251fa27f91e"
           },
           {
             "command": "EVENT_DEFERRED_ACTOR_LOAD",
             "args": {
-              "actor": "f86aab3a-7a8e-4073-9d5f-679163dbe6c7",
+              "actor": "b210b979-6619-4c9f-9cb8-5482900de2fd",
               "__collapse": false,
-              "__comment": true
+              "__comment": false
             },
             "id": "a97489cd-87b5-430a-bdd4-59024eebdf0e"
           },
           {
             "command": "EVENT_DEFERRED_ACTOR_LOAD",
             "args": {
-              "actor": "a79dd446-00b0-4936-af7c-539f1057cd93",
-              "__collapse": false
+              "actor": "9dabdcaf-194c-45ca-a633-86c39bbb1314",
+              "__collapse": false,
+              "__comment": true
             },
             "id": "da3a854c-84a9-47cd-ae0c-e79d29a7f686"
           },
@@ -73,31 +74,10 @@
             "command": "EVENT_DEFERRED_ACTOR_LOAD",
             "args": {
               "actor": "c6b33538-4d68-43a9-9518-645173f14ecd",
-              "__collapse": false
-            },
-            "id": "bc6dde09-77a9-4cd2-acef-5c97ef3c11c7"
-          },
-          {
-            "command": "EVENT_DEFERRED_ACTOR_LOAD",
-            "args": {
-              "actor": "1b068494-2255-44c3-8319-504e4026bfde"
-            },
-            "id": "16a77501-a39b-43a1-8893-73b26121f7b9"
-          },
-          {
-            "command": "EVENT_DEFERRED_ACTOR_LOAD",
-            "args": {
-              "actor": "bd6155b8-5834-4b60-8a25-b6a19c780815"
-            },
-            "id": "56e856a0-1e1b-4fd5-9ee9-59879c4089fe"
-          },
-          {
-            "command": "EVENT_DEFERRED_ACTOR_UNLOAD",
-            "args": {
-              "actor": "d5f821c9-73ea-4f70-99ee-43552d3d7274",
+              "__collapse": false,
               "__comment": true
             },
-            "id": "b13e4252-e8b5-4767-a94a-bae77f95b7b1"
+            "id": "bc6dde09-77a9-4cd2-acef-5c97ef3c11c7"
           }
         ]
       },
@@ -161,16 +141,16 @@
     {
       "command": "EVENT_REGISTER_ROPE_ACTOR",
       "args": {
-        "actor": "1b068494-2255-44c3-8319-504e4026bfde",
-        "__collapse": true
+        "actor": "ff81a172-6d8f-4e2b-9a8f-597147cac4b7",
+        "__collapse": false
       },
       "id": "a976fc8e-5c96-4ab7-a020-a5346d039eb1"
     },
     {
       "command": "EVENT_REGISTER_ROPE_ACTOR",
       "args": {
-        "actor": "bd6155b8-5834-4b60-8a25-b6a19c780815",
-        "__collapse": true
+        "actor": "593e701c-2493-4641-adc7-e8f6569cff5f",
+        "__collapse": false
       },
       "id": "fa90ed79-832c-434d-a621-0aee053d30e4"
     }

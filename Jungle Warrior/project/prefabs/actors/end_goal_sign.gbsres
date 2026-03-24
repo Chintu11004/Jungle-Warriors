@@ -1,0 +1,66 @@
+{
+  "_resourceType": "actorPrefab",
+  "id": "1ebea65b-3265-49d4-bad5-6ce737df635a",
+  "name": "End Goal Sign",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "ce80c540-317d-426c-8507-b1381c7dbfb5",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "persistent": false,
+  "collisionGroup": "1",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "_index": 9,
+  "script": [
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "Spin",
+        "loopAnim": true
+      },
+      "id": "ae2a73ad-462c-47ee-957b-be193857212a",
+      "children": {}
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": {
+          "type": "number",
+          "value": 3
+        },
+        "frames": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "8ab15100-4957-42de-9aed-6a5aa46740ee",
+      "children": {}
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "Level Beat",
+        "loopAnim": true
+      },
+      "id": "8e302604-a6a6-4c39-a030-0c783d35e38e",
+      "children": {}
+    },
+    {
+      "command": "EVENT_FADE_OUT",
+      "args": {
+        "speed": 5
+      },
+      "id": "b6fd67e2-bab4-4f2b-9231-e235319ab23e",
+      "children": {}
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

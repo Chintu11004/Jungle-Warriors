@@ -1,21 +1,19 @@
 {
   "_resourceType": "actor",
-  "id": "8159cdcd-a7e3-47e8-996e-20711377c0d2",
-  "name": "invisible wall",
+  "id": "9dabdcaf-194c-45ca-a633-86c39bbb1314",
+  "name": "Enemy 1",
   "frame": 0,
   "animate": false,
-  "spriteSheetId": "16b3604a-df34-48b9-b1f3-8b55b32f3c8f",
-  "prefabId": "",
-  "direction": "down",
+  "spriteSheetId": "743e9fbe-6c47-41f5-b20d-4f41d19c4005",
+  "prefabId": "7df2ed09-4ae9-4535-a1fb-7e91bd69e395",
+  "direction": "left",
   "moveSpeed": 1,
   "animSpeed": 15,
   "paletteId": "",
   "isPinned": false,
   "persistent": false,
-  "collisionGroup": "1",
-  "collisionExtraFlags": [
-    "solid"
-  ],
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
   "symbol": "actor_1",
   "script": [],
@@ -25,7 +23,7 @@
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
-  "x": 134,
-  "y": 45,
-  "_index": 10
+  "x": 28,
+  "y": 39,
+  "_index": 1
 }

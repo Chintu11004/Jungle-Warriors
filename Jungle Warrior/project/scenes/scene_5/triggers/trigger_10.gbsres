@@ -1,15 +1,76 @@
 {
   "_resourceType": "trigger",
-  "id": "05ee7319-37e3-40dc-b521-dc71504ea32d",
+  "id": "a91bc0b9-b191-4f2c-80f6-afcf0ec37472",
   "name": "",
   "prefabId": "",
-  "x": 152,
-  "y": 25,
-  "symbol": "trigger_21",
+  "x": 49,
+  "y": 34,
+  "symbol": "trigger_20",
   "prefabScriptOverrides": {},
-  "width": 1,
-  "height": 1,
-  "script": [],
+  "width": 14,
+  "height": 8,
+  "script": [
+    {
+      "command": "EVENT_DELOAD_PREV_LEVEL",
+      "args": {},
+      "id": "3b2fb481-175f-4ccf-aba0-daae7a1fbacd"
+    },
+    {
+      "command": "EVENT_GROUP",
+      "args": {
+        "__collapse": false,
+        "__label": "Loading actors"
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "d5f821c9-73ea-4f70-99ee-43552d3d7274",
+              "__collapse": false,
+              "__comment": false
+            },
+            "id": "6633b75d-141c-4dbf-a277-eab890b7ee51"
+          },
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "da6e0308-e26d-4e67-9e7c-2f2d5ece0f26",
+              "__collapse": false,
+              "__comment": false
+            },
+            "id": "53a8c50a-9023-42d2-85b6-ecf1f7db68fc"
+          },
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "f86aab3a-7a8e-4073-9d5f-679163dbe6c7",
+              "__collapse": false,
+              "__comment": false
+            },
+            "id": "19aac123-cb22-44a7-a667-8b66cc96384d"
+          },
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "a79dd446-00b0-4936-af7c-539f1057cd93",
+              "__collapse": false
+            },
+            "id": "48ac5222-e1b0-466d-9b7b-1940d75eb5c6"
+          },
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "c6b33538-4d68-43a9-9518-645173f14ecd",
+              "__collapse": false
+            },
+            "id": "96992f5d-0dcd-47fc-ad4e-931b52a051d3"
+          }
+        ]
+      },
+      "id": "80c83abe-8baf-4296-a272-c2a8063a9b5d"
+    }
+  ],
   "leaveScript": [],
   "_index": 9
 }

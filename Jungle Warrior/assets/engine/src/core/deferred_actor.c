@@ -37,7 +37,9 @@ UBYTE deferred_actor_load(void *THIS_void, UBYTE start, UWORD *stack_frame) OLDC
     (void)THIS_void;
     (void)start;
     UBYTE actor_idx = (UBYTE)stack_frame[0];
+    /* 0 = player; 1 = first NPC — never use deferred unload path; load still ok if needed */
     if (actor_idx == 0 || actor_idx >= actors_len) return TRUE;
+    if (actor_idx == 1) return TRUE;  /* actors[1]: VRAM from load_scene, never deferred */
     actor_t * actor = actors + actor_idx;
     if (actor->reserve_tiles) return TRUE;  /* skip reserved actors */
     {
@@ -54,7 +56,7 @@ UBYTE deferred_actor_unload(void *THIS_void, UBYTE start, UWORD *stack_frame) OL
     (void)THIS_void;
     (void)start;
     UBYTE actor_idx = (UBYTE)stack_frame[0];
-    if (actor_idx == 0 || actor_idx >= actors_len) return TRUE;
+    if (actor_idx == 0 || actor_idx == 1 || actor_idx >= actors_len) return TRUE;
     actor_t * actor = actors + actor_idx;
     unload_actor_sprite(actor);
     return TRUE;
