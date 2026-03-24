@@ -102,6 +102,11 @@
       "symbol": "var_weapon_cooldown"
     },
     {
+      "id": "20",
+      "name": "is player detected",
+      "symbol": "var_is_player_detected"
+    },
+    {
       "id": "871ea302-1cc1-463c-b9d7-530aac38fe81__L0",
       "name": "Spoken to gardener",
       "symbol": "var_spoken_to_gardener"
@@ -173,8 +178,28 @@
     },
     {
       "id": "d5f821c9-73ea-4f70-99ee-43552d3d7274__L5",
-      "name": "player detection",
-      "symbol": "var_player_detection"
+      "name": "Distance to roam Left",
+      "symbol": "var_distance_to_roam_left"
+    },
+    {
+      "id": "d5f821c9-73ea-4f70-99ee-43552d3d7274__L2",
+      "name": "Origin_x",
+      "symbol": "var_origin_x"
+    },
+    {
+      "id": "d5f821c9-73ea-4f70-99ee-43552d3d7274__L3",
+      "name": "Origin_Y",
+      "symbol": "var_origin_y"
+    },
+    {
+      "id": "d5f821c9-73ea-4f70-99ee-43552d3d7274__L4",
+      "name": "DIstance to roam Right",
+      "symbol": "var_distance_to_roam_right"
+    },
+    {
+      "id": "511",
+      "name": "player detection rate limit",
+      "symbol": "var_player_detection_rate_l"
     }
   ],
   "constants": []

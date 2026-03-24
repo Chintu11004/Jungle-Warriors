@@ -96,6 +96,20 @@
         }
       },
       "id": "1d8f049b-2bc3-4873-bae9-7910b04b2647"
+    },
+    {
+      "command": "EVENT_REGISTER_ROPE_ACTOR",
+      "args": {
+        "actor": "140a9a96-03e4-40c1-b246-8fc8797fad44"
+      },
+      "id": "ab5c8b94-7339-4aea-9cdd-86ac91b18b8d"
+    },
+    {
+      "command": "EVENT_REGISTER_ROPE_ACTOR",
+      "args": {
+        "actor": "aaa582af-c22c-4e59-9610-f79cdbe45c60"
+      },
+      "id": "0a1f6a92-6797-4501-95af-b9200983ba1d"
     }
   ],
   "playerHit1Script": [],

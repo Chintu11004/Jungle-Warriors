@@ -8,7 +8,7 @@
   "startDirection": "right",
   "showCollisionExtraTiles": false,
   "showCollisionTileValues": false,
-  "collisionLayerOpacity": 50,
+  "collisionLayerOpacity": 60,
   "sgbEnabled": false,
   "customHead": "",
   "defaultBackgroundPaletteIds": [

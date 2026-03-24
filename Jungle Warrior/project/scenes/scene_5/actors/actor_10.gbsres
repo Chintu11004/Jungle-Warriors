@@ -1,10 +1,10 @@
 {
   "_resourceType": "actor",
-  "id": "11b8f5cb-9d2c-464e-ade8-404cf7f5ca50",
+  "id": "b2467fc8-e5a6-4523-a206-d4622f93f574",
   "name": "",
   "frame": 0,
   "animate": false,
-  "spriteSheetId": "30b8266a-0533-4f90-bd33-e97dc1d498ea",
+  "spriteSheetId": "ce80c540-317d-426c-8507-b1381c7dbfb5",
   "prefabId": "",
   "direction": "down",
   "moveSpeed": 1,
@@ -12,36 +12,49 @@
   "paletteId": "",
   "isPinned": false,
   "persistent": false,
-  "collisionGroup": "",
+  "collisionGroup": "1",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
-  "symbol": "actor_48",
+  "symbol": "actor_0",
   "script": [
     {
-      "command": "EVENT_TEXT",
+      "command": "EVENT_ACTOR_SET_STATE",
       "args": {
-        "text": [
-          "When jumping to a rope,\nHOLD A to grab onto it",
-          "When on the rope, \nPress A to disembark."
-        ],
-        "__section": "text",
-        "avatarId": "",
-        "minHeight": 4,
-        "maxHeight": 7,
-        "textX": 1,
-        "textY": 1,
-        "textHeight": 5,
-        "position": "bottom",
-        "clearPrevious": true,
-        "showFrame": "true",
-        "speedIn": -1,
-        "speedOut": -1,
-        "closeWhen": "key",
-        "closeButton": "a",
-        "closeDelayTime": 0.5,
-        "closeDelayFrames": 30
+        "actorId": "$self$",
+        "spriteStateId": "Spin",
+        "loopAnim": true
       },
-      "id": "47e390c0-b63a-4577-841f-5c2e14429c12"
+      "id": "09146867-2d25-4acc-a404-852bd62d98a8"
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": {
+          "type": "number",
+          "value": 3
+        },
+        "frames": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "eb739bef-67f2-4afe-a54e-c633d8efb76f"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "Level Beat",
+        "loopAnim": true
+      },
+      "id": "ac9594ce-9aee-432b-a101-16320d21433e"
+    },
+    {
+      "command": "EVENT_FADE_OUT",
+      "args": {
+        "speed": 5
+      },
+      "id": "9acf2f85-1fe0-4438-afa1-640c47739916"
     }
   ],
   "startScript": [],
@@ -50,7 +63,7 @@
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
-  "x": 52,
-  "y": 22,
+  "x": 166,
+  "y": 42,
   "_index": 9
 }
