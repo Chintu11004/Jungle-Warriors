@@ -141,7 +141,7 @@
         "spriteSheetId": "fa959c50-bac4-4cac-9096-4da9a252e55f",
         "spriteStateId": "",
         "actorId": "$self$",
-        "x": 24,
+        "x": 0,
         "y": 8,
         "directionType": "actor",
         "otherActorId": "$self$",
@@ -152,7 +152,7 @@
         "speed": 2,
         "animSpeed": 15,
         "lifeTime": 2,
-        "initialOffset": 0,
+        "initialOffset": 24,
         "loopAnim": false,
         "destroyOnHit": true,
         "collisionGroup": "1",
@@ -204,28 +204,6 @@
         "__collapse": true
       },
       "id": "23fa44a7-22a7-4ef3-bf3e-29b3b9c759d2"
-    },
-    {
-      "command": "EVENT_IF",
-      "args": {
-        "condition": {
-          "type": "atan2",
-          "valueA": {
-            "type": "constant",
-            "value": ""
-          },
-          "valueB": {
-            "type": "number",
-            "value": 0
-          }
-        },
-        "__collapseElse": true
-      },
-      "children": {
-        "true": [],
-        "false": []
-      },
-      "id": "548ad215-95f7-477e-a5e4-832c850f1baa"
     }
   ]
 }

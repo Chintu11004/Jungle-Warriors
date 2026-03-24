@@ -160,6 +160,21 @@
       "id": "5fa52cd0-57cd-414c-8b93-5601c6e9636f__L0",
       "name": "Defeated",
       "symbol": "var_defeated_2"
+    },
+    {
+      "id": "d5f821c9-73ea-4f70-99ee-43552d3d7274__L0",
+      "name": "PlayerDetected",
+      "symbol": "var_playerdetected"
+    },
+    {
+      "id": "d5f821c9-73ea-4f70-99ee-43552d3d7274__L1",
+      "name": "Direction",
+      "symbol": "var_direction"
+    },
+    {
+      "id": "d5f821c9-73ea-4f70-99ee-43552d3d7274__L5",
+      "name": "player detection",
+      "symbol": "var_player_detection"
     }
   ],
   "constants": []
