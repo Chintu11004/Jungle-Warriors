@@ -105,5 +105,11 @@
   "playerHit1Script": [],
   "playerHit2Script": [],
   "playerHit3Script": [],
-  "playerSpriteSheetId": "c91b8ed9-7012-42b0-ace7-b8bb32a9b64d"
+  "playerSpriteSheetId": "c91b8ed9-7012-42b0-ace7-b8bb32a9b64d",
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 186,
+    "height": 59
+  }
 }

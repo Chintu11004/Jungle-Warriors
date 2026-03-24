@@ -107,6 +107,28 @@ static UBYTE actor_list_remove(actor_t **head, actor_t *actor) {
     return FALSE;
 }
 
+static UBYTE actor_list_contains(actor_t *head, actor_t *actor) {
+    UBYTE i;
+    for (i = 0; head && i < MAX_ACTORS; i++) {
+        if (head == actor) return TRUE;
+        head = head->next;
+    }
+    return FALSE;
+}
+
+/** After unload + reload, the actor is not on either list; re-link like load_scene() init_data
+ *  does before DL_PUSH_HEAD for inactive actors: list pointers, animations, not active. */
+static void actor_ensure_inactive_if_unlisted(actor_t *actor) {
+    if (!actor_list_contains(actors_inactive_head, actor) &&
+        !actor_list_contains(actors_active_head, actor)) {
+        actor->next = 0;
+        actor->prev = 0;
+        load_animations((void *)actor->sprite.ptr, actor->sprite.bank, ANIM_SET_DEFAULT, actor->animations);
+        CLR_FLAG(actor->flags, ACTOR_FLAG_ACTIVE);
+        DL_PUSH_HEAD(actors_inactive_head, actor);
+    }
+}
+
 /** Read spritesheet tile count without loading. Returns max of DMG and CGB counts. */
 static UBYTE spritesheet_get_tile_count(const spritesheet_t *sprite, UBYTE bank) {
     far_ptr_t data;
@@ -251,6 +273,7 @@ UBYTE load_actor_sprite(actor_t * actor) BANKED {
                     }
                 }
                 CLR_FLAG(actor->flags, ACTOR_FLAG_HIDDEN | ACTOR_FLAG_DISABLED);
+                actor_ensure_inactive_if_unlisted(actor);
                 return 1;
             }
         }
@@ -263,6 +286,7 @@ UBYTE load_actor_sprite(actor_t * actor) BANKED {
                 deferred_slots[i].ref_count++;
                 actor->base_tile = deferred_slots[i].base_tile;
                 CLR_FLAG(actor->flags, ACTOR_FLAG_HIDDEN | ACTOR_FLAG_DISABLED);
+                actor_ensure_inactive_if_unlisted(actor);
                 return deferred_slots[i].tile_count;
             }
         }
@@ -284,6 +308,7 @@ UBYTE load_actor_sprite(actor_t * actor) BANKED {
                 allocated_sprite_tiles += n_loaded;
                 deferred_allocated_delta += n_loaded;
                 CLR_FLAG(actor->flags, ACTOR_FLAG_HIDDEN | ACTOR_FLAG_DISABLED);
+                actor_ensure_inactive_if_unlisted(actor);
                 return n_loaded;
             }
             if (deferred_slots[i].tile_count >= n_tiles) {
@@ -295,6 +320,7 @@ UBYTE load_actor_sprite(actor_t * actor) BANKED {
                 actor->base_tile = deferred_slots[i].base_tile;
                 if (sprites_len && idx < sprites_len) scene_sprites_base_tiles[idx] = deferred_slots[i].base_tile;
                 CLR_FLAG(actor->flags, ACTOR_FLAG_HIDDEN | ACTOR_FLAG_DISABLED);
+                actor_ensure_inactive_if_unlisted(actor);
                 return n_loaded;
             }
             /* Freed slot but tile_count < n_tiles: skip, try next */
@@ -309,6 +335,7 @@ UBYTE load_actor_sprite(actor_t * actor) BANKED {
     }
     if (idx < sprites_len && scene_sprites_base_tiles[idx] != SCENE_SPRITE_UNLOADED) {
         actor->base_tile = scene_sprites_base_tiles[idx];
+        actor_ensure_inactive_if_unlisted(actor);
         return 1;
     }
     UBYTE n_loaded = load_sprite(allocated_sprite_tiles, actor->sprite.ptr, actor->sprite.bank);
@@ -316,6 +343,7 @@ UBYTE load_actor_sprite(actor_t * actor) BANKED {
     actor->base_tile = allocated_sprite_tiles;
     if (idx < sprites_len) scene_sprites_base_tiles[idx] = allocated_sprite_tiles;
     allocated_sprite_tiles += n_loaded;
+    actor_ensure_inactive_if_unlisted(actor);
     return n_loaded;
 }
 

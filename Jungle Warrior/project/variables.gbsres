@@ -107,6 +107,11 @@
       "symbol": "var_is_player_detected"
     },
     {
+      "id": "22",
+      "name": "Enemies Killed",
+      "symbol": "var_enemies_killed"
+    },
+    {
       "id": "511",
       "name": "player detection rate limit",
       "symbol": "var_player_detection_rate_l"
@@ -200,6 +205,36 @@
       "id": "d5f821c9-73ea-4f70-99ee-43552d3d7274__L4",
       "name": "DIstance to roam Right",
       "symbol": "var_distance_to_roam_right"
+    },
+    {
+      "id": "1dd18792-82b9-4fc3-9db3-cd5131381134__L0",
+      "name": "PlayerDetected",
+      "symbol": "var_playerdetected_0"
+    },
+    {
+      "id": "1dd18792-82b9-4fc3-9db3-cd5131381134__L1",
+      "name": "direction",
+      "symbol": "var_direction_0"
+    },
+    {
+      "id": "1dd18792-82b9-4fc3-9db3-cd5131381134__L2",
+      "name": "origin_x",
+      "symbol": "var_origin_x_0"
+    },
+    {
+      "id": "1dd18792-82b9-4fc3-9db3-cd5131381134__L3",
+      "name": "origin_y",
+      "symbol": "var_origin_y_0"
+    },
+    {
+      "id": "1dd18792-82b9-4fc3-9db3-cd5131381134__L4",
+      "name": "Distance to roam right",
+      "symbol": "var_distance_to_roam_right_0"
+    },
+    {
+      "id": "1dd18792-82b9-4fc3-9db3-cd5131381134__L5",
+      "name": "Distance to roam left",
+      "symbol": "var_distance_to_roam_left_0"
     },
     {
       "id": "21",

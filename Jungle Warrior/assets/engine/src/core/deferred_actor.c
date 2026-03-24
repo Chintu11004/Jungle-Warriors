@@ -40,11 +40,12 @@ UBYTE deferred_actor_load(void *THIS_void, UBYTE start, UWORD *stack_frame) OLDC
     if (actor_idx == 0 || actor_idx >= actors_len) return TRUE;
     actor_t * actor = actors + actor_idx;
     if (actor->reserve_tiles) return TRUE;  /* skip reserved actors */
-    if (load_actor_sprite(actor) &&
-        !actor_list_contains(actors_inactive_head, actor) &&
-        !actor_list_contains(actors_active_head, actor)) {
-        DL_PUSH_HEAD(actors_inactive_head, actor);
-        activate_actor(actor);  /* activate if on screen so sprite shows immediately */
+    {
+        UBYTE was_orphan = !actor_list_contains(actors_inactive_head, actor) &&
+                           !actor_list_contains(actors_active_head, actor);
+        if (load_actor_sprite(actor) && was_orphan) {
+            activate_actor(actor);  /* activate if on screen so sprite shows immediately */
+        }
     }
     return TRUE;
 }
