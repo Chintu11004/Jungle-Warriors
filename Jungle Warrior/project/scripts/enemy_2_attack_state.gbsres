@@ -29,7 +29,7 @@
         "actorId": "0",
         "spriteStateId": "2nd enemy attack",
         "loopAnim": false,
-        "__collapse": false
+        "__collapse": true
       },
       "id": "5316893a-69bb-4325-a7b0-df231d80a009"
     },
@@ -37,7 +37,8 @@
       "command": "EVENT_ACTOR_SET_ANIMATION_SPEED",
       "args": {
         "actorId": "0",
-        "speed": 255
+        "speed": 255,
+        "__collapse": true
       },
       "id": "634b2765-01e2-44fd-98f9-1bd95b87716a"
     },
@@ -66,7 +67,7 @@
         "collisionMask": [
           "player"
         ],
-        "__collapse": false
+        "__collapse": true
       },
       "id": "5bf7ffbe-204d-4c7a-89a8-fe17ca453325"
     },
@@ -130,7 +131,7 @@
         "actorId": "0",
         "spriteStateId": "2nd enemy",
         "loopAnim": true,
-        "__collapse": false
+        "__collapse": true
       },
       "id": "70e181d5-c7f8-49e4-9295-8766a7c2256f"
     },
@@ -138,7 +139,8 @@
       "command": "EVENT_ACTOR_SET_ANIMATION_SPEED",
       "args": {
         "actorId": "0",
-        "speed": 31
+        "speed": 31,
+        "__collapse": true
       },
       "id": "f02a3487-d058-447d-a7ea-b13b24760a6f"
     }

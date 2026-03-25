@@ -1,0 +1,171 @@
+{
+  "_resourceType": "script",
+  "id": "97e0eb6a-272b-43dd-a5f3-1c677cefd773",
+  "name": "Shooting Enemy sttack",
+  "description": "",
+  "variables": {
+    "V0": {
+      "id": "V0",
+      "name": "Time per attack frame",
+      "passByReference": false
+    },
+    "V1": {
+      "id": "V1",
+      "name": "Variable B",
+      "passByReference": false
+    }
+  },
+  "actors": {
+    "0": {
+      "id": "0",
+      "name": "Actor A"
+    }
+  },
+  "symbol": "script_20",
+  "script": [
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "0",
+        "spriteStateId": "2nd enemy attack",
+        "loopAnim": false,
+        "__collapse": false
+      },
+      "id": "77074d4a-a3f8-472a-ab82-7d1cde000ea3"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_ANIMATION_SPEED",
+      "args": {
+        "actorId": "0",
+        "speed": 255,
+        "__collapse": true
+      },
+      "id": "266dd8e3-2438-4ba8-8104-5d6c0454108c"
+    },
+    {
+      "command": "EVENT_LOOP_FOR",
+      "args": {
+        "variable": "V1",
+        "from": {
+          "type": "number",
+          "value": 0
+        },
+        "comparison": "<=",
+        "to": {
+          "type": "number",
+          "value": 4
+        },
+        "operation": "+=",
+        "value": {
+          "type": "number",
+          "value": 1
+        },
+        "__collapse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_ACTOR_SET_FRAME",
+            "args": {
+              "actorId": "0",
+              "frame": {
+                "type": "variable",
+                "value": "V1"
+              },
+              "__collapse": false
+            },
+            "id": "a8e5a504-2440-4ab4-94c9-8b9d6c240ed8"
+          },
+          {
+            "command": "EVENT_WAIT",
+            "args": {
+              "time": {
+                "type": "number",
+                "value": 0.5
+              },
+              "frames": {
+                "type": "variable",
+                "value": "V0"
+              },
+              "units": "frames",
+              "__collapse": true
+            },
+            "id": "6df54933-6464-403f-91d0-8cd69303214c"
+          },
+          {
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "eq",
+                "valueA": {
+                  "type": "variable",
+                  "value": "V1"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 3
+                }
+              },
+              "__collapseElse": true
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_LAUNCH_PROJECTILE",
+                  "args": {
+                    "__section": "source",
+                    "spriteSheetId": "0c7ff725-df44-4ca7-aa72-def9ce2d00e2",
+                    "spriteStateId": "",
+                    "actorId": "0",
+                    "x": 0,
+                    "y": 12,
+                    "directionType": "actor",
+                    "otherActorId": "0",
+                    "direction": "right",
+                    "angle": 0,
+                    "angleVariable": "V0",
+                    "targetActorId": "$self$",
+                    "speed": 2,
+                    "animSpeed": 15,
+                    "lifeTime": 4,
+                    "initialOffset": 16,
+                    "loopAnim": true,
+                    "destroyOnHit": true,
+                    "collisionGroup": "1",
+                    "collisionMask": [
+                      "player"
+                    ],
+                    "__collapse": false
+                  },
+                  "id": "de07f7e8-22b5-4739-9b5f-f9c660a01b10"
+                }
+              ],
+              "false": []
+            },
+            "id": "8f19a37f-dcff-4f7c-8563-e17b47582488"
+          }
+        ]
+      },
+      "id": "692fb2a4-fc58-4091-a045-8c212b202ed0"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "0",
+        "spriteStateId": "",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "b0aea870-5336-473c-8815-cae85aa9b59b"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_ANIMATION_SPEED",
+      "args": {
+        "actorId": "0",
+        "speed": 31,
+        "__collapse": true
+      },
+      "id": "2c22f914-5b77-4228-bda3-346c25546e67"
+    }
+  ]
+}

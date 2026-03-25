@@ -150,7 +150,7 @@
         "angleVariable": "V0",
         "targetActorId": "$self$",
         "speed": 2,
-        "animSpeed": 15,
+        "animSpeed": 7,
         "lifeTime": 2,
         "initialOffset": 24,
         "loopAnim": false,
@@ -160,7 +160,7 @@
           "2",
           "3"
         ],
-        "__collapse": true,
+        "__collapse": false,
         "__comment": false
       },
       "id": "a8b48442-463e-43d3-8443-bc9c7d8cdaf8"

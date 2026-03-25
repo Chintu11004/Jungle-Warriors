@@ -132,6 +132,11 @@
       "symbol": "var_peopleadded_0"
     },
     {
+      "id": "510",
+      "name": "Shooting Enemy Cooldown",
+      "symbol": "var_shooting_enemy_cooldown"
+    },
+    {
       "id": "511",
       "name": "player detection rate limit",
       "symbol": "var_player_detection_rate_l"
@@ -285,6 +290,36 @@
       "id": "7df2ed09-4ae9-4535-a1fb-7e91bd69e395__L5",
       "name": "Distance to roam Left",
       "symbol": "var_distance_to_roam_left_1"
+    },
+    {
+      "id": "00a0092b-9df5-4241-a243-87e4d4f309cb__L0",
+      "name": "Player_detected",
+      "symbol": "var_player_detected"
+    },
+    {
+      "id": "00a0092b-9df5-4241-a243-87e4d4f309cb__L1",
+      "name": "Direction",
+      "symbol": "var_direction_2"
+    },
+    {
+      "id": "00a0092b-9df5-4241-a243-87e4d4f309cb__L2",
+      "name": "Origin_x",
+      "symbol": "var_origin_x_2"
+    },
+    {
+      "id": "00a0092b-9df5-4241-a243-87e4d4f309cb__L3",
+      "name": "Origin_y",
+      "symbol": "var_origin_y_2"
+    },
+    {
+      "id": "00a0092b-9df5-4241-a243-87e4d4f309cb__L4",
+      "name": "Distance to move right",
+      "symbol": "var_distance_to_move_right"
+    },
+    {
+      "id": "00a0092b-9df5-4241-a243-87e4d4f309cb__L5",
+      "name": "Distance to move left",
+      "symbol": "var_distance_to_move_left"
     }
   ],
   "constants": []

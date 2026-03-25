@@ -1,0 +1,170 @@
+{
+  "_resourceType": "sprite",
+  "id": "0c7ff725-df44-4ca7-aa72-def9ce2d00e2",
+  "name": "molotov",
+  "symbol": "sprite_molotov",
+  "states": [
+    {
+      "id": "3eff2bdb-0d08-40b7-8326-49f739bd5f08",
+      "name": "",
+      "animationType": "fixed",
+      "flipLeft": true,
+      "animations": [
+        {
+          "id": "299ca06e-a53e-4a8d-90c5-ce363cfaabe1",
+          "frames": [
+            {
+              "id": "2ae9b86a-b486-4263-a06f-32f7891028dd",
+              "tiles": [
+                {
+                  "id": "ccb290dc-98f5-4e6c-aeb4-c8b1afecd703",
+                  "x": 3,
+                  "y": -8,
+                  "sliceX": 0,
+                  "sliceY": 0,
+                  "palette": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "objPalette": "OBP0",
+                  "paletteIndex": 0,
+                  "priority": false
+                }
+              ]
+            },
+            {
+              "id": "5da62221-3ebc-4199-b7fd-727b50fc73de",
+              "tiles": [
+                {
+                  "id": "35ed706e-23c8-41a4-85fe-db4724b9d9c8",
+                  "x": 3,
+                  "y": -1,
+                  "sliceX": 8,
+                  "sliceY": 0,
+                  "palette": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "objPalette": "OBP0",
+                  "paletteIndex": 0,
+                  "priority": false
+                }
+              ]
+            },
+            {
+              "id": "fec538c1-be17-4cae-bc4d-5d312c461f35",
+              "tiles": [
+                {
+                  "id": "23be0bd8-eaf6-4e63-bbae-014b2f7d1622",
+                  "x": 4,
+                  "y": -6,
+                  "sliceX": 0,
+                  "sliceY": 16,
+                  "palette": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "objPalette": "OBP0",
+                  "paletteIndex": 0,
+                  "priority": false
+                }
+              ]
+            },
+            {
+              "id": "efc0edad-f721-4edd-889a-33d0de2eefe5",
+              "tiles": [
+                {
+                  "id": "1d1d9a3b-9752-43da-a571-5785f9cd02a8",
+                  "x": 4,
+                  "y": 0,
+                  "sliceX": 8,
+                  "sliceY": 24,
+                  "palette": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "objPalette": "OBP0",
+                  "paletteIndex": 0,
+                  "priority": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "94d620b1-1060-47cf-b7dc-db2553682d22",
+          "frames": [
+            {
+              "id": "bb943898-eb03-4cdb-956e-016bf9e9c646",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "30b002aa-6194-4690-a848-c8144c48e5ec",
+          "frames": [
+            {
+              "id": "bed8d592-6b57-48b3-922b-4e9b4a7b1d27",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "9a82160a-3914-490b-a04b-90435373a7a6",
+          "frames": [
+            {
+              "id": "943227c9-0e03-4f13-9ee1-b6e20c6ff25d",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "cca7061b-7613-4925-8bf1-9b09713b061a",
+          "frames": [
+            {
+              "id": "9edf0d08-1dc5-4bbb-b930-62bc4e3efd51",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "0ed772b2-a456-4cc0-99bf-6e714f0a2a2a",
+          "frames": [
+            {
+              "id": "1c9f6998-72e4-4552-97fc-279792fcd67a",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "d2e6713b-e857-4c39-a6da-3ab13900b91b",
+          "frames": [
+            {
+              "id": "226f86cb-bcfc-418d-863e-0f1d416c16ca",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "791bb68a-55b8-4693-8c21-e2815378ef07",
+          "frames": [
+            {
+              "id": "ec584144-b3ce-486d-98a4-edffe3896fa0",
+              "tiles": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "numTiles": 4,
+  "canvasOriginX": 0,
+  "canvasOriginY": 0,
+  "canvasWidth": 32,
+  "canvasHeight": 32,
+  "boundsX": 0,
+  "boundsY": -8,
+  "boundsWidth": 16,
+  "boundsHeight": 16,
+  "animSpeed": 15,
+  "filename": "molotov.png",
+  "width": 19,
+  "height": 50,
+  "checksum": "5dabef1e77f48d1b5383c3872d38e3d4cde246ed"
+}
