@@ -1,0 +1,77 @@
+{
+  "_resourceType": "scene",
+  "id": "849b96d8-788c-4537-8eb4-57e10ce7ef43",
+  "_index": 13,
+  "name": "congrats",
+  "backgroundId": "96367245-e438-4424-b346-1b3da8aae70c",
+  "tilesetId": "",
+  "width": 20,
+  "height": 18,
+  "type": "TOPDOWN",
+  "colorModeOverride": "none",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "collisions": "00168+",
+  "autoFadeSpeed": 1,
+  "symbol": "scene_14",
+  "x": 2584,
+  "y": 512,
+  "script": [
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "$self$"
+      },
+      "id": "224048ba-fc6f-47ff-98ea-07209ba6b59d"
+    },
+    {
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "Congratulations!\nThe government task\nforce is very pleased\nwith your work!",
+          "You have successfully\ncleared the rainforest\nof malicious loggers",
+          "and miners, and worked\ntogether with people to\ncontinue to protect\nand monitor the",
+          "rainforest! Because of\nyour actions, the \nfuture of the",
+          "rainforest is in good \nhands! You deserve\nsome rest!"
+        ],
+        "__section": "text",
+        "avatarId": "",
+        "minHeight": 4,
+        "maxHeight": 7,
+        "textX": 1,
+        "textY": 1,
+        "textHeight": 5,
+        "position": "bottom",
+        "clearPrevious": true,
+        "showFrame": "true",
+        "speedIn": -1,
+        "speedOut": -1,
+        "closeWhen": "key",
+        "closeButton": "a",
+        "closeDelayTime": 0.5,
+        "closeDelayFrames": 30
+      },
+      "id": "97aa832a-07c8-4a14-aaed-c16680ce37f9"
+    },
+    {
+      "command": "EVENT_SWITCH_SCENE",
+      "args": {
+        "sceneId": "57d35570-ae81-4b32-9dfa-a8a236742f39",
+        "x": {
+          "type": "number",
+          "value": 0
+        },
+        "y": {
+          "type": "number",
+          "value": 0
+        },
+        "direction": "",
+        "fadeSpeed": 4
+      },
+      "id": "63d0b1af-62c4-4a14-a547-c33c3c624895"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": []
+}
