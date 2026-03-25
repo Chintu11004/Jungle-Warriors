@@ -608,6 +608,13 @@ void platform_init(void) BANKED
 
 void platform_update(void) BANKED
 {
+#ifdef FEAT_PLATFORM_BLANK
+    /* Blank state cannot be left once entered (ignore plat_next_state from collision, scripts, etc.) */
+    if (plat_state == BLANK_STATE) {
+        plat_next_state = BLANK_STATE;
+    }
+#endif
+
     // State transitions
 
     if (plat_state != plat_next_state)
@@ -2559,8 +2566,11 @@ static void state_update_blank(void) {
     plat_delta_y += VEL_TO_SUBPX(plat_vel_y);
 
     // Collision ------------------------------------------------------
+    /* COL_CHECK_WALLS is required for vertical floor/ceiling tile tests; COL_CHECK_Y alone
+       skips them (see move_and_collide early goto when !(mask & COL_CHECK_WALLS)). */
+    move_and_collide(COL_CHECK_Y | COL_CHECK_WALLS);
 
-    move_and_collide(COL_CHECK_Y);
+    plat_next_state = BLANK_STATE;
 }
 #endif
 
