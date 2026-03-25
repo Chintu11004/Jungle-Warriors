@@ -3,11 +3,11 @@
   "id": "40fda058-df90-4205-a239-fe77bce4fa79",
   "name": "stars",
   "symbol": "bg_stars",
-  "tileColors": "00898+",
+  "tileColors": "001130+",
   "filename": "stars.png",
   "width": 20,
-  "height": 110,
+  "height": 220,
   "imageWidth": 160,
-  "imageHeight": 883,
+  "imageHeight": 1761,
   "autoColor": false
 }
