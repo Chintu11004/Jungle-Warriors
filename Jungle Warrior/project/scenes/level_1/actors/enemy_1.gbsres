@@ -45,6 +45,22 @@
           }
         }
       }
+    },
+    "aac6679b-857e-4d6a-aed0-be5e4cb67a34": {
+      "id": "aac6679b-857e-4d6a-aed0-be5e4cb67a34",
+      "args": {
+        "condition": {
+          "type": "gt",
+          "valueA": {
+            "type": "variable",
+            "value": "18"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
+        }
+      }
     }
   },
   "symbol": "actor_1",
