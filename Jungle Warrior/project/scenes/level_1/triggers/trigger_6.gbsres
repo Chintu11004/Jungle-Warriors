@@ -6,7 +6,20 @@
   "x": 152,
   "y": 0,
   "symbol": "trigger_0",
-  "prefabScriptOverrides": {},
+  "prefabScriptOverrides": {
+    "59913806-a492-4779-a85d-b5501ed77e97": {
+      "id": "59913806-a492-4779-a85d-b5501ed77e97",
+      "args": {
+        "actor": "392c1ce4-42f1-43ce-8e13-8c762bfa1ec6"
+      }
+    },
+    "baac20c3-7ed1-4fa0-91a5-b0400a897baa": {
+      "id": "baac20c3-7ed1-4fa0-91a5-b0400a897baa",
+      "args": {
+        "actorId": "7f8c5e81-30d9-448e-87b0-777dc1b60a2c"
+      }
+    }
+  },
   "width": 1,
   "height": 43,
   "script": [

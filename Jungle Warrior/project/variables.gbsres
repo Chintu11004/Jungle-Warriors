@@ -3,43 +3,43 @@
   "variables": [
     {
       "id": "0",
-      "name": "Quest1",
-      "symbol": "var_quest1"
+      "name": "Level 2 Complete",
+      "symbol": "var_level_2_complete"
     },
     {
       "id": "1",
-      "name": "Quest2",
-      "symbol": "var_quest2"
+      "name": "Level 3 complete",
+      "symbol": "var_level_3_complete"
     },
     {
       "id": "2",
-      "name": "Quest3",
-      "symbol": "var_quest3"
+      "name": "Map Screen Visited",
+      "symbol": "var_map_screen_visited"
     },
     {
       "id": "3",
-      "name": "Quest4",
-      "symbol": "var_quest4"
+      "name": "people_assigned_L2",
+      "symbol": "var_people_assigned_l2"
     },
     {
       "id": "4",
-      "name": "Quest5",
-      "symbol": "var_quest5"
+      "name": "Assigned people to L2 on turn",
+      "symbol": "var_assigned_people_to_l2_o"
     },
     {
       "id": "5",
-      "name": "Quest6",
-      "symbol": "var_quest6"
+      "name": "Assigned people to L3 on turn",
+      "symbol": "var_assigned_people_to_l3_o"
     },
     {
       "id": "6",
-      "name": "Quest7",
-      "symbol": "var_quest7"
+      "name": "people_assigned_L3",
+      "symbol": "var_people_assigned_l3"
     },
     {
       "id": "7",
-      "name": "Quest8",
-      "symbol": "var_quest8"
+      "name": "first time map screen",
+      "symbol": "var_first_time_map_screen_0"
     },
     {
       "id": "8",
@@ -130,6 +130,16 @@
       "id": "83",
       "name": "peopleadded",
       "symbol": "var_peopleadded_0"
+    },
+    {
+      "id": "508",
+      "name": "Level Number Pointer",
+      "symbol": "var_level_number_pointer"
+    },
+    {
+      "id": "509",
+      "name": "KnockBack Cooldown",
+      "symbol": "var_knockback_cooldown"
     },
     {
       "id": "510",
@@ -320,6 +330,41 @@
       "id": "00a0092b-9df5-4241-a243-87e4d4f309cb__L5",
       "name": "Distance to move left",
       "symbol": "var_distance_to_move_left"
+    },
+    {
+      "id": "4457dff6-cb70-480e-bef5-2fc2b40fadef__L0",
+      "name": "PlayerDetectedt",
+      "symbol": "var_playerdetectedt"
+    },
+    {
+      "id": "4457dff6-cb70-480e-bef5-2fc2b40fadef__L1",
+      "name": "Direction",
+      "symbol": "var_direction_3"
+    },
+    {
+      "id": "4457dff6-cb70-480e-bef5-2fc2b40fadef__L2",
+      "name": "Origin_x",
+      "symbol": "var_origin_x_3"
+    },
+    {
+      "id": "4457dff6-cb70-480e-bef5-2fc2b40fadef__L3",
+      "name": "Origin_y",
+      "symbol": "var_origin_y_3"
+    },
+    {
+      "id": "4457dff6-cb70-480e-bef5-2fc2b40fadef__L4",
+      "name": "Distance to roam right",
+      "symbol": "var_distance_to_roam_right__1"
+    },
+    {
+      "id": "4457dff6-cb70-480e-bef5-2fc2b40fadef__L5",
+      "name": "Distance to roam left",
+      "symbol": "var_distance_to_roam_left_2"
+    },
+    {
+      "id": "337e8040-3695-4c98-bff9-21e14373d9de__L0",
+      "name": "Level Pointers Variable",
+      "symbol": "var_level_pointers_variable"
     }
   ],
   "constants": []

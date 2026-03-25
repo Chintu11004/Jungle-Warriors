@@ -2,7 +2,7 @@
   "_resourceType": "scene",
   "id": "337e8040-3695-4c98-bff9-21e14373d9de",
   "_index": 5,
-  "type": "POINTNCLICK",
+  "type": "PLATFORM",
   "name": "map screen",
   "symbol": "scene_7",
   "x": 1245.3333333333333,
@@ -21,36 +21,585 @@
   "playerSpriteSheetId": "a827b612-578f-4cb9-a2bf-fd54b197b83f",
   "script": [
     {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "command": "EVENT_GROUP",
       "args": {
-        "actor": "$self$"
+        "__collapse": true,
+        "__label": "loading actors"
       },
-      "id": "8b5718d2-7278-4acc-9b40-b6a1c42698cb"
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "dccb4554-b1e7-45c3-999d-c176a3f81ea3",
+              "__collapse": true
+            },
+            "id": "e4e77046-0eaf-47fb-b266-5db7f15a1462"
+          },
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "b22f8f54-b7f0-4301-a052-fadc169ba7ac",
+              "__collapse": true
+            },
+            "id": "2d05a12c-7c3d-4b4f-84eb-ff1a52a8e7de"
+          },
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "ba8acd5f-ecc0-426f-ae86-5f5d20c459ef",
+              "__collapse": true
+            },
+            "id": "9246b276-5ffb-4148-ad86-c0ad52361323"
+          }
+        ]
+      },
+      "id": "6354a1b3-d833-4ffb-94e7-aa6231ede4d5"
     },
     {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "command": "EVENT_SWITCH",
       "args": {
-        "actor": "dccb4554-b1e7-45c3-999d-c176a3f81ea3"
+        "variable": "L0",
+        "choices": 2,
+        "__collapseCase0": false,
+        "__collapseCase1": false,
+        "__collapseCase2": false,
+        "__collapseCase3": false,
+        "__collapseCase4": false,
+        "__collapseCase5": false,
+        "__collapseCase6": false,
+        "__collapseCase7": false,
+        "__collapseCase8": false,
+        "__collapseCase9": false,
+        "__collapseCase10": false,
+        "__collapseCase11": false,
+        "__collapseCase12": false,
+        "__collapseCase13": false,
+        "__collapseCase14": false,
+        "__collapseCase15": false,
+        "__collapseElse": false,
+        "value0": {
+          "type": "number",
+          "value": 0
+        },
+        "value1": {
+          "type": "number",
+          "value": 1
+        },
+        "__collapse": true
       },
-      "id": "e4e77046-0eaf-47fb-b266-5db7f15a1462"
+      "children": {
+        "true0": [
+          {
+            "command": "EVENT_ACTOR_SET_POSITION",
+            "args": {
+              "actorId": "$self$",
+              "x": {
+                "type": "number",
+                "value": 5
+              },
+              "y": {
+                "type": "number",
+                "value": 7
+              }
+            },
+            "id": "4a854c9f-f85a-4105-b896-a24d7f2604c5"
+          }
+        ],
+        "true1": [
+          {
+            "command": "EVENT_ACTOR_SET_POSITION",
+            "args": {
+              "actorId": "$self$",
+              "x": {
+                "type": "number",
+                "value": 16
+              },
+              "y": {
+                "type": "number",
+                "value": 8
+              }
+            },
+            "id": "abcd79a3-95ed-4a50-ae97-a9c312e749b1"
+          }
+        ],
+        "true2": [],
+        "true3": [],
+        "true4": [],
+        "true5": [],
+        "true6": [],
+        "true7": [],
+        "true8": [],
+        "true9": [],
+        "true10": [],
+        "true11": [],
+        "true12": [],
+        "true13": [],
+        "true14": [],
+        "true15": [],
+        "false": []
+      },
+      "id": "76199596-5cab-4d37-8952-20c3c71f2c0b"
     },
     {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "command": "EVENT_SET_INPUT_SCRIPT",
       "args": {
-        "actor": "b22f8f54-b7f0-4301-a052-fadc169ba7ac"
+        "input": [
+          "left",
+          "up",
+          "down",
+          "right"
+        ],
+        "override": true,
+        "__scriptTabs": "press",
+        "__collapse": false
       },
-      "id": "2d05a12c-7c3d-4b4f-84eb-ff1a52a8e7de"
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "508",
+              "value": {
+                "type": "mod",
+                "valueA": {
+                  "type": "add",
+                  "valueA": {
+                    "type": "variable",
+                    "value": "508"
+                  },
+                  "valueB": {
+                    "type": "number",
+                    "value": 1
+                  }
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 2
+                }
+              }
+            },
+            "id": "a912a117-589f-4e36-9964-09847c0a4187"
+          }
+        ]
+      },
+      "id": "06db4bf0-2b9f-42d3-b4fa-d2701c55c92d"
     },
     {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "command": "EVENT_INC_VALUE",
       "args": {
-        "actor": "ba8acd5f-ecc0-426f-ae86-5f5d20c459ef"
+        "variable": "2"
       },
-      "id": "9246b276-5ffb-4148-ad86-c0ad52361323"
+      "id": "e258dca4-ee6c-4270-84c0-1655fab2fb4e"
+    },
+    {
+      "command": "EVENT_GROUP",
+      "args": {
+        "__label": "Did player assign enough people?",
+        "__collapse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "ne",
+                "valueA": {
+                  "type": "variable",
+                  "value": "4"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 0
+                }
+              },
+              "__collapseElse": true
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "and",
+                      "valueA": {
+                        "type": "eq",
+                        "valueA": {
+                          "type": "variable",
+                          "value": "4"
+                        },
+                        "valueB": {
+                          "type": "sub",
+                          "valueA": {
+                            "type": "variable",
+                            "value": "2"
+                          },
+                          "valueB": {
+                            "type": "number",
+                            "value": 1
+                          }
+                        }
+                      },
+                      "valueB": {
+                        "type": "lt",
+                        "valueA": {
+                          "type": "variable",
+                          "value": "3"
+                        },
+                        "valueB": {
+                          "type": "number",
+                          "value": 3
+                        }
+                      }
+                    },
+                    "__collapseElse": false,
+                    "__collapse": true,
+                    "__label": "If we did NOT assign enought peoplpe for Level 2"
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "0",
+                          "value": {
+                            "type": "number",
+                            "value": 0
+                          },
+                          "__collapse": true
+                        },
+                        "id": "2f303178-b693-4702-9cd6-a4dd07cbc57f"
+                      },
+                      {
+                        "command": "EVENT_TEXT",
+                        "args": {
+                          "text": [
+                            "You didn't assign \nenough people to the ",
+                            "zone.",
+                            "The zone has been \novertaken by the ",
+                            "parisitic corportations\nagain."
+                          ],
+                          "__section": "text",
+                          "avatarId": "",
+                          "minHeight": 4,
+                          "maxHeight": 7,
+                          "textX": 1,
+                          "textY": 1,
+                          "textHeight": 5,
+                          "position": "bottom",
+                          "clearPrevious": true,
+                          "showFrame": "true",
+                          "speedIn": -1,
+                          "speedOut": -1,
+                          "closeWhen": "key",
+                          "closeButton": "a",
+                          "closeDelayTime": 0.5,
+                          "closeDelayFrames": 30,
+                          "__collapse": true
+                        },
+                        "id": "d2c436da-41d2-45f2-b9f0-8179af4b2a64"
+                      },
+                      {
+                        "command": "EVENT_WAIT",
+                        "args": {
+                          "time": {
+                            "type": "number",
+                            "value": 1
+                          },
+                          "frames": {
+                            "type": "number",
+                            "value": 1
+                          },
+                          "__collapse": true
+                        },
+                        "id": "30e8e8fd-09ce-4246-ba46-d771101e135b"
+                      },
+                      {
+                        "command": "EVENT_TEXT",
+                        "args": {
+                          "text": [
+                            "You should assign more\npeople to save the zone."
+                          ],
+                          "__section": "text",
+                          "avatarId": "",
+                          "minHeight": 4,
+                          "maxHeight": 7,
+                          "textX": 1,
+                          "textY": 1,
+                          "textHeight": 5,
+                          "position": "bottom",
+                          "clearPrevious": true,
+                          "showFrame": "true",
+                          "speedIn": -1,
+                          "speedOut": -1,
+                          "closeWhen": "key",
+                          "closeButton": "a",
+                          "closeDelayTime": 0.5,
+                          "closeDelayFrames": 30,
+                          "__collapse": true
+                        },
+                        "id": "9c57c8c7-0a95-4a2b-b21d-1bd04d829fa4"
+                      }
+                    ],
+                    "false": [
+                      {
+                        "command": "EVENT_TEXT",
+                        "args": {
+                          "text": [
+                            "While you were away\nsaving another zone...",
+                            "The corporations tried\nto take over the",
+                            "left side of the island.",
+                            "But, you assigned\nenough people to defend",
+                            "the zone.",
+                            "Good Job."
+                          ],
+                          "__section": "text",
+                          "avatarId": "",
+                          "minHeight": 4,
+                          "maxHeight": 7,
+                          "textX": 1,
+                          "textY": 1,
+                          "textHeight": 5,
+                          "position": "bottom",
+                          "clearPrevious": true,
+                          "showFrame": "true",
+                          "speedIn": -1,
+                          "speedOut": -1,
+                          "closeWhen": "key",
+                          "closeButton": "a",
+                          "closeDelayTime": 0.5,
+                          "closeDelayFrames": 30,
+                          "__label": "If we assigned enough people",
+                          "__collapse": true
+                        },
+                        "id": "5dd3688d-a1e9-4033-a4b5-d8409283e675"
+                      },
+                      {
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "4",
+                          "value": {
+                            "type": "number",
+                            "value": 0
+                          }
+                        },
+                        "id": "542de606-c645-493c-972a-792b3e7b69d1"
+                      }
+                    ]
+                  },
+                  "id": "ef098e21-a831-4ba7-8dc0-1b20d3f3af86"
+                }
+              ],
+              "false": []
+            },
+            "id": "5e5ea6d9-8f20-4bac-af26-86d728d7fe7c"
+          },
+          {
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "ne",
+                "valueA": {
+                  "type": "variable",
+                  "value": "5"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 0
+                }
+              },
+              "__collapseElse": true,
+              "__collapse": true
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "and",
+                      "valueA": {
+                        "type": "eq",
+                        "valueA": {
+                          "type": "variable",
+                          "value": "5"
+                        },
+                        "valueB": {
+                          "type": "sub",
+                          "valueA": {
+                            "type": "variable",
+                            "value": "2"
+                          },
+                          "valueB": {
+                            "type": "number",
+                            "value": 1
+                          }
+                        }
+                      },
+                      "valueB": {
+                        "type": "lt",
+                        "valueA": {
+                          "type": "variable",
+                          "value": "6"
+                        },
+                        "valueB": {
+                          "type": "number",
+                          "value": 4
+                        }
+                      }
+                    },
+                    "__collapseElse": false,
+                    "__collapse": false,
+                    "__label": "If we did NOT assign enought peoplpe for Level 3"
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "1",
+                          "value": {
+                            "type": "number",
+                            "value": 0
+                          },
+                          "__collapse": false
+                        },
+                        "id": "a75aa818-f73f-4e96-8640-1002bd233231"
+                      },
+                      {
+                        "command": "EVENT_TEXT",
+                        "args": {
+                          "text": [
+                            "You didn't assign \nenough people to the ",
+                            "right side of the island.",
+                            "The zone has been \novertaken by the ",
+                            "parisitic corportations\nagain."
+                          ],
+                          "__section": "text",
+                          "avatarId": "",
+                          "minHeight": 4,
+                          "maxHeight": 7,
+                          "textX": 1,
+                          "textY": 1,
+                          "textHeight": 5,
+                          "position": "bottom",
+                          "clearPrevious": true,
+                          "showFrame": "true",
+                          "speedIn": -1,
+                          "speedOut": -1,
+                          "closeWhen": "key",
+                          "closeButton": "a",
+                          "closeDelayTime": 0.5,
+                          "closeDelayFrames": 30,
+                          "__collapse": true
+                        },
+                        "id": "e2051bd1-9a2b-428e-ba2f-a8a5a1102cf0"
+                      },
+                      {
+                        "command": "EVENT_WAIT",
+                        "args": {
+                          "time": {
+                            "type": "number",
+                            "value": 1
+                          },
+                          "frames": {
+                            "type": "number",
+                            "value": 1
+                          },
+                          "__collapse": true
+                        },
+                        "id": "3a801ced-dc60-4419-a3a2-211fa2fe1110"
+                      },
+                      {
+                        "command": "EVENT_TEXT",
+                        "args": {
+                          "text": [
+                            "You should assign more\npeople to save the zone."
+                          ],
+                          "__section": "text",
+                          "avatarId": "",
+                          "minHeight": 4,
+                          "maxHeight": 7,
+                          "textX": 1,
+                          "textY": 1,
+                          "textHeight": 5,
+                          "position": "bottom",
+                          "clearPrevious": true,
+                          "showFrame": "true",
+                          "speedIn": -1,
+                          "speedOut": -1,
+                          "closeWhen": "key",
+                          "closeButton": "a",
+                          "closeDelayTime": 0.5,
+                          "closeDelayFrames": 30,
+                          "__collapse": true
+                        },
+                        "id": "c18cd137-eb3a-4291-ad9c-c4c4127273ec"
+                      }
+                    ],
+                    "false": [
+                      {
+                        "command": "EVENT_TEXT",
+                        "args": {
+                          "text": [
+                            "While you were away\nsaving another zone...",
+                            "The corporations tried\nto take over the",
+                            "right side of the island.",
+                            "But, you assigned\nenough people to defend",
+                            "the zone.",
+                            "Good Job."
+                          ],
+                          "__section": "text",
+                          "avatarId": "",
+                          "minHeight": 4,
+                          "maxHeight": 7,
+                          "textX": 1,
+                          "textY": 1,
+                          "textHeight": 5,
+                          "position": "bottom",
+                          "clearPrevious": true,
+                          "showFrame": "true",
+                          "speedIn": -1,
+                          "speedOut": -1,
+                          "closeWhen": "key",
+                          "closeButton": "a",
+                          "closeDelayTime": 0.5,
+                          "closeDelayFrames": 30,
+                          "__label": "If we assigned enough people",
+                          "__collapse": true
+                        },
+                        "id": "962d8b44-a317-4ef4-9f8b-dc1266594e87"
+                      },
+                      {
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "5",
+                          "value": {
+                            "type": "number",
+                            "value": 0
+                          },
+                          "__collapse": true
+                        },
+                        "id": "ed227ba5-19b3-4502-b40f-363d3ce1bb3a"
+                      }
+                    ]
+                  },
+                  "id": "a6539d6a-c59d-467e-9c94-bd16b18b45ba"
+                }
+              ],
+              "false": []
+            },
+            "id": "8451da87-9e8b-4e92-96aa-2accaa7724c8"
+          }
+        ]
+      },
+      "id": "b90b2bab-8cf4-4163-b4a9-b5166bebebf3"
     }
   ],
   "playerHit1Script": [],
   "playerHit2Script": [],
   "playerHit3Script": [],
-  "collisions": "00168+"
+  "collisions": "00168+",
+  "autoFadeEventCollapse": true
 }

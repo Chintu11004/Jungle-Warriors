@@ -1,26 +1,24 @@
 {
-  "_resourceType": "actor",
-  "id": "13bc003c-8cee-457b-9c27-b1246208e49b",
-  "name": "",
+  "_resourceType": "actorPrefab",
+  "id": "a60fe8d6-aab5-4daa-a98f-6908cbba4c95",
+  "name": "Snake Enemy",
   "frame": 0,
   "animate": false,
   "spriteSheetId": "7deb7e83-6fa3-4d3e-96e0-798da357fa14",
-  "prefabId": "",
-  "direction": "down",
   "moveSpeed": 1,
   "animSpeed": 15,
   "paletteId": "",
-  "isPinned": false,
   "persistent": false,
   "collisionGroup": "1",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
-  "symbol": "actor_3",
+  "_index": 0,
   "script": [
     {
       "command": "EVENT_SCENE_UPDATE_PAUSE",
       "args": {},
-      "id": "069f879a-4fc4-48d1-9b95-9bb66b3a7891"
+      "id": "c65d8226-9c92-43b2-a9d5-6a12cc95d945",
+      "children": {}
     },
     {
       "command": "EVENT_ACTOR_SET_STATE",
@@ -29,7 +27,8 @@
         "spriteStateId": "default escape",
         "loopAnim": false
       },
-      "id": "f70a35ed-5976-4182-8e67-99015bfc6d99"
+      "id": "761fdc03-cd81-407a-9f7f-1e7c32359e09",
+      "children": {}
     },
     {
       "command": "EVENT_WAIT",
@@ -43,7 +42,8 @@
           "value": 1
         }
       },
-      "id": "50c5ca04-8320-4ea0-85c5-91adf4dcfe09"
+      "id": "82707c71-d8ce-443c-bd3f-3e6f4ab4d190",
+      "children": {}
     },
     {
       "command": "EVENT_TEXT",
@@ -71,26 +71,30 @@
         "closeDelayTime": 0.5,
         "closeDelayFrames": 30
       },
-      "id": "95066b35-5a46-4258-9910-3ef829ebf9d4"
+      "id": "99edf33f-d0c1-46ea-aa41-1f46e7229bb2",
+      "children": {}
     },
     {
       "command": "EVENT_INC_VALUE",
       "args": {
         "variable": "21"
       },
-      "id": "b1bb2981-d859-4303-a3a5-165afd9929c1"
+      "id": "5b682f46-2aad-4ddc-8276-0591d0b1e360",
+      "children": {}
     },
     {
       "command": "EVENT_ACTOR_DEACTIVATE",
       "args": {
         "actorId": "$self$"
       },
-      "id": "9a2d19f1-6836-4445-b53d-d6630ad991c5"
+      "id": "0e2e5730-b5fc-49cd-bb1c-a1431b31014a",
+      "children": {}
     },
     {
       "command": "EVENT_SCENE_UPDATE_RESUME",
       "args": {},
-      "id": "497fbaf9-0abd-475f-b304-fefeb5a83683"
+      "id": "b8beea13-4069-41db-abc7-a0ed66e04173",
+      "children": {}
     }
   ],
   "startScript": [
@@ -101,15 +105,12 @@
         "spriteStateId": "",
         "loopAnim": true
       },
-      "id": "a4813481-addc-4024-8b69-714a71644036"
+      "id": "a3c71530-7bf0-4f2f-8844-d0372bfa2d48",
+      "children": {}
     }
   ],
   "updateScript": [],
   "hit1Script": [],
   "hit2Script": [],
-  "hit3Script": [],
-  "coordinateType": "tiles",
-  "x": 182,
-  "y": 18,
-  "_index": 0
+  "hit3Script": []
 }

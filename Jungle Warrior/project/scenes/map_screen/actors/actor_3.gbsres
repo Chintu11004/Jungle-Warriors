@@ -8,7 +8,7 @@
   "prefabId": "",
   "direction": "down",
   "moveSpeed": 1,
-  "animSpeed": 15,
+  "animSpeed": 255,
   "paletteId": "",
   "isPinned": false,
   "persistent": false,
@@ -16,9 +16,420 @@
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
   "symbol": "actor_6",
-  "script": [],
+  "script": [
+    {
+      "command": "EVENT_CHOICE",
+      "args": {
+        "variable": "L1",
+        "trueText": "Go to Zone",
+        "falseText": "Assign People",
+        "__collapse": false
+      },
+      "id": "bf14b916-0b17-43eb-a4c9-f4aa3518f048"
+    },
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "L1"
+          },
+          "valueB": {
+            "type": "true"
+          }
+        },
+        "__collapseElse": false,
+        "__collapse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_SWITCH_SCENE",
+            "args": {
+              "sceneId": "2fe46d18-f866-41e0-b46b-7a949c0a82f1",
+              "x": {
+                "type": "number",
+                "value": 0
+              },
+              "y": {
+                "type": "number",
+                "value": 22
+              },
+              "direction": "right",
+              "fadeSpeed": "2"
+            },
+            "id": "48a3f6c3-7fdf-4339-b33c-8f4abbad6978"
+          }
+        ],
+        "false": [
+          {
+            "command": "EVENT_TEXT",
+            "args": {
+              "text": [
+                "You have assigned...",
+                "$06$ people to defend\nthis area."
+              ],
+              "__section": "text",
+              "avatarId": "",
+              "minHeight": 4,
+              "maxHeight": 7,
+              "textX": 1,
+              "textY": 1,
+              "textHeight": 5,
+              "position": "bottom",
+              "clearPrevious": true,
+              "showFrame": "true",
+              "speedIn": -1,
+              "speedOut": -1,
+              "closeWhen": "key",
+              "closeButton": "a",
+              "closeDelayTime": 0.5,
+              "closeDelayFrames": 30
+            },
+            "id": "d2ea9aa9-83c0-427e-a74f-31f160b2ffba"
+          },
+          {
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "eq",
+                "valueA": {
+                  "type": "variable",
+                  "value": "83"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 0
+                }
+              },
+              "__collapseElse": false,
+              "__collapse": false
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_TEXT",
+                  "args": {
+                    "text": [
+                      "You don't have people\nto assign to this area."
+                    ],
+                    "__section": "text",
+                    "avatarId": "",
+                    "minHeight": 4,
+                    "maxHeight": 7,
+                    "textX": 1,
+                    "textY": 1,
+                    "textHeight": 5,
+                    "position": "bottom",
+                    "clearPrevious": true,
+                    "showFrame": "true",
+                    "speedIn": -1,
+                    "speedOut": -1,
+                    "closeWhen": "key",
+                    "closeButton": "a",
+                    "closeDelayTime": 0.5,
+                    "closeDelayFrames": 30
+                  },
+                  "id": "957cd7ce-0f8b-4dd0-9d1d-9ffcc165ff44"
+                }
+              ],
+              "false": [
+                {
+                  "command": "PT_EVENT_ADVANCED_MENU",
+                  "args": {
+                    "__scriptTabs": "items",
+                    "width": 20,
+                    "height": 8,
+                    "position": "bottom",
+                    "from": "bottom",
+                    "clearPrevious": true,
+                    "showFrame": true,
+                    "speedIn": -1,
+                    "speedOut": -1,
+                    "variable": "L0",
+                    "setStartValue": false,
+                    "items": 4,
+                    "option_1_text": "Assign 1 person",
+                    "option1_x": 1,
+                    "option1_y": 3,
+                    "option1_l": 1,
+                    "option1_r": 1,
+                    "option1_u": 1,
+                    "option1_d": 2,
+                    "option_2_text": "Assign 2 people",
+                    "option2_x": 1,
+                    "option2_y": 4,
+                    "option2_l": 2,
+                    "option2_r": 2,
+                    "option2_u": 1,
+                    "option2_d": 3,
+                    "option_3_text": "Don't assign",
+                    "option3_x": 1,
+                    "option3_y": 5,
+                    "option3_l": 3,
+                    "option3_r": 3,
+                    "option3_u": 2,
+                    "option3_d": 3,
+                    "option_4_text": "Assign People?",
+                    "option4_x": 0,
+                    "option4_y": 1,
+                    "option4_l": 0,
+                    "option4_r": 0,
+                    "option4_u": 0,
+                    "option4_d": 0,
+                    "option_5_text": "",
+                    "option5_x": 0,
+                    "option5_y": 0,
+                    "option5_l": 0,
+                    "option5_r": 0,
+                    "option5_u": 0,
+                    "option5_d": 0,
+                    "option_6_text": "",
+                    "option6_x": 0,
+                    "option6_y": 0,
+                    "option6_l": 0,
+                    "option6_r": 0,
+                    "option6_u": 0,
+                    "option6_d": 0,
+                    "option_7_text": "",
+                    "option7_x": 0,
+                    "option7_y": 0,
+                    "option7_l": 0,
+                    "option7_r": 0,
+                    "option7_u": 0,
+                    "option7_d": 0,
+                    "option_8_text": "",
+                    "option8_x": 0,
+                    "option8_y": 0,
+                    "option8_l": 0,
+                    "option8_r": 0,
+                    "option8_u": 0,
+                    "option8_d": 0,
+                    "option_9_text": "",
+                    "option9_x": 0,
+                    "option9_y": 0,
+                    "option9_l": 0,
+                    "option9_r": 0,
+                    "option9_u": 0,
+                    "option9_d": 0,
+                    "option_10_text": "",
+                    "option10_x": 0,
+                    "option10_y": 0,
+                    "option10_l": 0,
+                    "option10_r": 0,
+                    "option10_u": 0,
+                    "option10_d": 0,
+                    "option_11_text": "",
+                    "option11_x": 0,
+                    "option11_y": 0,
+                    "option11_l": 0,
+                    "option11_r": 0,
+                    "option11_u": 0,
+                    "option11_d": 0,
+                    "option_12_text": "",
+                    "option12_x": 0,
+                    "option12_y": 0,
+                    "option12_l": 0,
+                    "option12_r": 0,
+                    "option12_u": 0,
+                    "option12_d": 0,
+                    "option_13_text": "",
+                    "option13_x": 0,
+                    "option13_y": 0,
+                    "option13_l": 0,
+                    "option13_r": 0,
+                    "option13_u": 0,
+                    "option13_d": 0,
+                    "option_14_text": "",
+                    "option14_x": 0,
+                    "option14_y": 0,
+                    "option14_l": 0,
+                    "option14_r": 0,
+                    "option14_u": 0,
+                    "option14_d": 0,
+                    "option_15_text": "",
+                    "option15_x": 0,
+                    "option15_y": 0,
+                    "option15_l": 0,
+                    "option15_r": 0,
+                    "option15_u": 0,
+                    "option15_d": 0,
+                    "option_16_text": "",
+                    "option16_x": 0,
+                    "option16_y": 0,
+                    "option16_l": 0,
+                    "option16_r": 0,
+                    "option16_u": 0,
+                    "option16_d": 0,
+                    "cancelOnB": false,
+                    "__collapse": false
+                  },
+                  "id": "af6e3150-b5ff-4bcd-a65d-f8eddc3dd4ee"
+                },
+                {
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "eq",
+                      "valueA": {
+                        "type": "variable",
+                        "value": "L0"
+                      },
+                      "valueB": {
+                        "type": "number",
+                        "value": 3
+                      }
+                    },
+                    "__collapseElse": false,
+                    "__collapse": false
+                  },
+                  "children": {
+                    "true": [],
+                    "false": [
+                      {
+                        "command": "EVENT_IF",
+                        "args": {
+                          "condition": {
+                            "type": "lte",
+                            "valueA": {
+                              "type": "variable",
+                              "value": "L0"
+                            },
+                            "valueB": {
+                              "type": "variable",
+                              "value": "83"
+                            }
+                          },
+                          "__collapseElse": false,
+                          "__label": "Check if we have that many peopel to assign"
+                        },
+                        "children": {
+                          "true": [
+                            {
+                              "command": "EVENT_SET_VALUE",
+                              "args": {
+                                "variable": "6",
+                                "value": {
+                                  "type": "add",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "6"
+                                  },
+                                  "valueB": {
+                                    "type": "variable",
+                                    "value": "L0"
+                                  }
+                                },
+                                "__collapse": false
+                              },
+                              "id": "4be49509-69b6-46fb-9afc-2dcd35b4ea58"
+                            },
+                            {
+                              "command": "EVENT_SET_VALUE",
+                              "args": {
+                                "variable": "5",
+                                "value": {
+                                  "type": "variable",
+                                  "value": "2"
+                                },
+                                "__collapse": false
+                              },
+                              "id": "5faddf09-6164-4668-a0af-e067f365dc02"
+                            }
+                          ],
+                          "false": [
+                            {
+                              "command": "EVENT_TEXT",
+                              "args": {
+                                "text": [
+                                  "You only have $83$\npeople to assign."
+                                ],
+                                "__section": "text",
+                                "avatarId": "",
+                                "minHeight": 4,
+                                "maxHeight": 7,
+                                "textX": 1,
+                                "textY": 1,
+                                "textHeight": 5,
+                                "position": "bottom",
+                                "clearPrevious": true,
+                                "showFrame": "true",
+                                "speedIn": -1,
+                                "speedOut": -1,
+                                "closeWhen": "key",
+                                "closeButton": "a",
+                                "closeDelayTime": 0.5,
+                                "closeDelayFrames": 30
+                              },
+                              "id": "1f869617-e582-4ee3-b019-f19cd4f15f2a"
+                            }
+                          ]
+                        },
+                        "id": "1b39c22d-2bae-4d2b-80b7-3a86a9a40f39"
+                      }
+                    ]
+                  },
+                  "id": "2e31e83c-37a7-4098-bd39-c2ddaa3b0eb8"
+                }
+              ]
+            },
+            "id": "0e5c1c41-5274-4100-b02c-6bc18c681248"
+          }
+        ]
+      },
+      "id": "4021eab3-8769-410e-bc8a-7d0ea37756e8"
+    }
+  ],
   "startScript": [],
-  "updateScript": [],
+  "updateScript": [
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "1"
+          },
+          "valueB": {
+            "type": "true"
+          }
+        },
+        "__collapseElse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_ACTOR_SET_FRAME",
+            "args": {
+              "actorId": "$self$",
+              "frame": {
+                "type": "number",
+                "value": 1
+              }
+            },
+            "id": "370cfcdd-0692-49a1-95d6-828b0d24ac0e"
+          }
+        ],
+        "false": [
+          {
+            "command": "EVENT_ACTOR_SET_FRAME",
+            "args": {
+              "actorId": "$self$",
+              "frame": {
+                "type": "number",
+                "value": 0
+              }
+            },
+            "id": "9f9838d1-1a26-41ee-b65f-b9d3ae07cff7"
+          }
+        ]
+      },
+      "id": "eb262ac5-d31c-4c45-b4c0-43d9266c2a5c"
+    }
+  ],
   "hit1Script": [],
   "hit2Script": [],
   "hit3Script": [],

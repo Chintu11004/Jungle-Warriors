@@ -20,6 +20,11 @@
   "y": 88,
   "script": [
     {
+      "command": "EVENT_RNG_SEED",
+      "args": {},
+      "id": "7a362199-bb5c-41d4-9945-d097d0fd444c"
+    },
+    {
       "command": "EVENT_SET_VALUE",
       "args": {
         "variable": "83",
@@ -27,7 +32,7 @@
           "type": "rnd",
           "value": {
             "type": "number",
-            "value": 5
+            "value": 3
           }
         }
       },

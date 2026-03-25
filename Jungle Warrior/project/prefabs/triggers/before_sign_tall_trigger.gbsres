@@ -6,6 +6,13 @@
   "_index": 7,
   "script": [
     {
+      "command": "EVENT_ACTOR_ACTIVATE",
+      "args": {
+        "actorId": "$self$"
+      },
+      "id": "baac20c3-7ed1-4fa0-91a5-b0400a897baa"
+    },
+    {
       "command": "EVENT_CAMERA_SET_BOUNDS",
       "args": {
         "x": {
@@ -30,36 +37,16 @@
       "children": {}
     },
     {
-      "command": "EVENT_ACTOR_ACTIVATE",
-      "args": {
-        "actorId": "8159cdcd-a7e3-47e8-996e-20711377c0d2"
-      },
-      "id": "bd0bcf77-2874-4508-93b8-85ffe0266607",
-      "children": {}
-    },
-    {
-      "command": "EVENT_DEFERRED_ACTOR_UNLOAD",
-      "args": {
-        "actor": "1b068494-2255-44c3-8319-504e4026bfde"
-      },
-      "id": "4db602e3-b1ed-4523-9d4e-8b768a5c8e25",
-      "children": {}
-    },
-    {
-      "command": "EVENT_DEFERRED_ACTOR_UNLOAD",
-      "args": {
-        "actor": "bd6155b8-5834-4b60-8a25-b6a19c780815"
-      },
-      "id": "bfa8adf9-2fdf-469b-8294-13e141183810",
-      "children": {}
+      "command": "EVENT_DELOAD_PREV_LEVEL",
+      "args": {},
+      "id": "8b6acc17-698e-476b-b929-a953792739b1"
     },
     {
       "command": "EVENT_DEFERRED_ACTOR_LOAD",
       "args": {
-        "actor": "b2467fc8-e5a6-4523-a206-d4622f93f574"
+        "actor": "$self$"
       },
-      "id": "66433a79-718c-4880-9cdc-de79ff497a7b",
-      "children": {}
+      "id": "59913806-a492-4779-a85d-b5501ed77e97"
     }
   ],
   "leaveScript": []

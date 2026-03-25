@@ -1,7 +1,7 @@
 {
   "_resourceType": "actorPrefab",
   "id": "7df2ed09-4ae9-4535-a1fb-7e91bd69e395",
-  "name": "Enemy Prefab",
+  "name": "2nd Enemy",
   "frame": 0,
   "animate": false,
   "spriteSheetId": "e4b2341a-2a2f-4b00-9623-1e1dee80c6a5",
@@ -138,17 +138,17 @@
       "command": "EVENT_IF",
       "args": {
         "condition": {
-          "type": "eq",
+          "type": "gt",
           "valueA": {
             "type": "variable",
-            "value": "0"
+            "value": "18"
           },
           "valueB": {
             "type": "number",
-            "value": 1
+            "value": 0
           }
         },
-        "__collapseElse": true,
+        "__collapseElse": false,
         "__collapse": false
       },
       "children": {
@@ -164,7 +164,7 @@
               },
               "otherActorId": "player",
               "__collapseElse": false,
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true": [
@@ -191,7 +191,41 @@
             "id": "b13baa5b-e58d-498f-9b34-150f6f6c8eae"
           }
         ],
-        "false": []
+        "false": [
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "L0",
+              "value": {
+                "type": "number",
+                "value": 2
+              },
+              "__collapse": true
+            },
+            "id": "c46031e1-dcae-4ccc-8380-c523296cb226",
+            "children": {}
+          },
+          {
+            "command": "EVENT_ACTOR_SET_ANIMATION_SPEED",
+            "args": {
+              "actorId": "$self$",
+              "speed": 31,
+              "__collapse": true
+            },
+            "id": "9643538b-f066-450a-ad1a-ad20993ff817",
+            "children": {}
+          },
+          {
+            "command": "EVENT_ACTOR_SET_MOVEMENT_SPEED",
+            "args": {
+              "actorId": "$self$",
+              "speed": 0.25,
+              "__collapse": true
+            },
+            "id": "3cc41859-52b8-4575-9e0b-3562d0420692",
+            "children": {}
+          }
+        ]
       },
       "id": "aac6679b-857e-4d6a-aed0-be5e4cb67a34"
     },

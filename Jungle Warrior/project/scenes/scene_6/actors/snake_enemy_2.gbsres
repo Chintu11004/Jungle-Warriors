@@ -1,12 +1,12 @@
 {
   "_resourceType": "actor",
-  "id": "0502e161-3408-4c83-b5a6-ce81257eb1ba",
-  "name": "Shooting Enemy Prefab",
+  "id": "cbbb064e-74bb-4fe4-a327-ba08b0646a48",
+  "name": "Snake Enemy",
   "frame": 0,
   "animate": false,
   "spriteSheetId": "743e9fbe-6c47-41f5-b20d-4f41d19c4005",
-  "prefabId": "00a0092b-9df5-4241-a243-87e4d4f309cb",
-  "direction": "right",
+  "prefabId": "a60fe8d6-aab5-4daa-a98f-6908cbba4c95",
+  "direction": "down",
   "moveSpeed": 1,
   "animSpeed": 15,
   "paletteId": "",
@@ -15,7 +15,7 @@
   "collisionGroup": "",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
-  "symbol": "actor_1",
+  "symbol": "actor_9",
   "script": [],
   "startScript": [],
   "updateScript": [],
@@ -23,7 +23,7 @@
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
-  "x": 28,
-  "y": 39,
-  "_index": 6
+  "x": 14,
+  "y": 25,
+  "_index": 2
 }

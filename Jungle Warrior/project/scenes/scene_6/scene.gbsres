@@ -28,7 +28,7 @@
     {
       "command": "EVENT_DEFERRED_ACTOR_LOAD",
       "args": {
-        "actor": "13bc003c-8cee-457b-9c27-b1246208e49b"
+        "actor": "05184472-e47b-4955-a12e-beee566bd3e1"
       },
       "id": "ae8b20a7-d838-4ec1-b9e4-7e1313783a13"
     },
@@ -100,6 +100,122 @@
         ]
       },
       "id": "c6f26aa1-f054-4a39-ae68-b2da1c36c3cd"
+    },
+    {
+      "command": "EVENT_GROUP",
+      "args": {
+        "__label": "Common Scipt for level setup",
+        "__collapse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "18",
+              "value": {
+                "type": "number",
+                "value": 4
+              },
+              "__collapse": false
+            },
+            "id": "dabcee0f-1715-4cf5-9d7b-3ca85445cd50"
+          },
+          {
+            "command": "EVENT_SET_PLATFORMER_CALLBACK_SCRIPT",
+            "args": {
+              "event": "knockbackStart",
+              "__scriptTabs": "scriptinput",
+              "__collapse": false
+            },
+            "children": {
+              "script": [
+                {
+                  "command": "EVENT_CALL_CUSTOM_EVENT",
+                  "args": {
+                    "customEventId": "a910691b-cedc-463c-8633-b81c735893f9",
+                    "$actor[0]$": "df7118b4-870d-4ad2-8149-1183421be21c"
+                  },
+                  "id": "7b99a8df-4488-426d-8a3e-ba5aa0539552"
+                }
+              ]
+            },
+            "id": "d47a99a7-c386-4ea0-899a-0d5c27a02995"
+          },
+          {
+            "command": "EVENT_SET_PLATFORMER_CALLBACK_SCRIPT",
+            "args": {
+              "event": "blankStart",
+              "__scriptTabs": "scriptinput",
+              "__collapse": true
+            },
+            "children": {
+              "script": [
+                {
+                  "command": "EVENT_CALL_CUSTOM_EVENT",
+                  "args": {
+                    "customEventId": "1af28223-8723-4e15-9c91-9d8ec3d65d42",
+                    "$variable[V0]$": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "$variable[V1]$": {
+                      "type": "number",
+                      "value": 37
+                    },
+                    "$actor[0]$": "f35b9684-3cd3-490b-a0d7-984d3e267b24"
+                  },
+                  "id": "8c7ff519-ed59-462c-8aeb-1a37c465dab4"
+                }
+              ]
+            },
+            "id": "92f99944-f220-4928-9c72-1577b02ae13f"
+          },
+          {
+            "command": "EVENT_ACTOR_SET_ANIMATION_SPEED",
+            "args": {
+              "actorId": "$self$",
+              "speed": 15,
+              "__collapse": true
+            },
+            "id": "b80135b6-4079-410e-943a-147f41363b25"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "23",
+              "value": {
+                "type": "number",
+                "value": 2
+              }
+            },
+            "id": "36de3bc6-3f5d-4038-8632-af7f872f1043"
+          }
+        ]
+      },
+      "id": "48a862f6-10c6-424b-902c-56b874a20442"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "22",
+        "value": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "610927b9-a201-4437-9926-724589e68b4a"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "21",
+        "value": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "47d8b97e-70bf-4e73-b0d9-3713a50add72"
     }
   ],
   "playerHit1Script": [],

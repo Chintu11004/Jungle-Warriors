@@ -1,0 +1,10 @@
+{
+  "_resourceType": "script",
+  "id": "3b8722f2-6574-4d06-be9c-f212d00cc8a0",
+  "name": "On level load",
+  "description": "",
+  "variables": {},
+  "actors": {},
+  "symbol": "script_21",
+  "script": []
+}
