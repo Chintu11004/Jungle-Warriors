@@ -48,17 +48,17 @@
         "spriteSheetId": "16b3604a-df34-48b9-b1f3-8b55b32f3c8f",
         "spriteStateId": "",
         "actorId": "0",
-        "x": 12,
+        "x": 0,
         "y": 0,
-        "directionType": "actor",
-        "otherActorId": "$self$",
+        "directionType": "target",
+        "otherActorId": "0",
         "direction": "right",
         "angle": 0,
         "angleVariable": "V0",
         "targetActorId": "$self$",
         "speed": 4,
         "animSpeed": 127,
-        "lifeTime": 0.07,
+        "lifeTime": 0.1,
         "initialOffset": 0,
         "loopAnim": false,
         "destroyOnHit": false,
@@ -66,7 +66,7 @@
         "collisionMask": [
           "player"
         ],
-        "__collapse": true
+        "__collapse": false
       },
       "id": "5bf7ffbe-204d-4c7a-89a8-fe17ca453325"
     },

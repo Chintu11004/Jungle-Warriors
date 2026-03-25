@@ -1,6 +1,6 @@
 {
   "_resourceType": "actor",
-  "id": "aaa582af-c22c-4e59-9610-f79cdbe45c60",
+  "id": "9a1c22e6-441c-40f0-acaf-e26484bb24ec",
   "name": "",
   "frame": 0,
   "animate": false,
@@ -15,15 +15,27 @@
   "collisionGroup": "",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
-  "symbol": "actor_7",
+  "symbol": "actor_10",
   "script": [],
-  "startScript": [],
+  "startScript": [
+    {
+      "command": "EVENT_ACTOR_SET_FRAME",
+      "args": {
+        "actorId": "$self$",
+        "frame": {
+          "type": "number",
+          "value": 28
+        }
+      },
+      "id": "f723cea2-8665-4b7c-a43a-88e1f544aefa"
+    }
+  ],
   "updateScript": [],
   "hit1Script": [],
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
-  "x": 55,
-  "y": 31,
-  "_index": 2
+  "x": 86,
+  "y": 9,
+  "_index": 4
 }

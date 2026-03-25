@@ -15,7 +15,7 @@
     },
     {
       "id": "plat_blank_grav",
-      "value": 0
+      "value": 1720
     },
     {
       "id": "PLATFORM_KNOCKBACK_ANIM",
@@ -52,6 +52,18 @@
     {
       "id": "plat_turn_acc",
       "value": 2293
+    },
+    {
+      "id": "ADVENTURE_KNOCKBACK_ANIM",
+      "value": "Hurt"
+    },
+    {
+      "id": "adv_knockback_frames",
+      "value": 2
+    },
+    {
+      "id": "plat_knockback_frames",
+      "value": 30
     }
   ]
 }

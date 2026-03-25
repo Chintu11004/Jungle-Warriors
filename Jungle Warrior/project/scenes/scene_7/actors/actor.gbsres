@@ -1,35 +1,71 @@
 {
   "_resourceType": "actor",
-  "id": "13bc003c-8cee-457b-9c27-b1246208e49b",
+  "id": "ae3b7f05-86fd-46e7-a05e-6ece87a29d5f",
   "name": "",
   "frame": 0,
   "animate": false,
-  "spriteSheetId": "7deb7e83-6fa3-4d3e-96e0-798da357fa14",
+  "spriteSheetId": "ce80c540-317d-426c-8507-b1381c7dbfb5",
   "prefabId": "",
   "direction": "down",
   "moveSpeed": 1,
-  "animSpeed": 15,
+  "animSpeed": 1,
   "paletteId": "",
   "isPinned": false,
   "persistent": false,
   "collisionGroup": "1",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
-  "symbol": "actor_13",
+  "symbol": "actor_6",
   "script": [
     {
-      "command": "EVENT_SCENE_UPDATE_PAUSE",
-      "args": {},
-      "id": "069f879a-4fc4-48d1-9b95-9bb66b3a7891"
+      "command": "EVENT_ACTOR_COLLISIONS_DISABLE",
+      "args": {
+        "actorId": "$self$"
+      },
+      "id": "43b6fdf5-13c7-4396-a5ab-b37e2eb8eb9d"
     },
     {
       "command": "EVENT_ACTOR_SET_STATE",
       "args": {
         "actorId": "$self$",
-        "spriteStateId": "default escape",
-        "loopAnim": false
+        "spriteStateId": "Spin",
+        "loopAnim": true
       },
-      "id": "f70a35ed-5976-4182-8e67-99015bfc6d99"
+      "id": "ca4ff31e-262a-4986-a83d-656078f15805"
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": {
+          "type": "number",
+          "value": 3
+        },
+        "frames": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "8bb7c990-4a78-4e85-a1ee-dfe010a2840e"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "Level Beat",
+        "loopAnim": true
+      },
+      "id": "aa6d0428-a3ee-449a-b997-4b05adc4178b"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_FRAME",
+      "args": {
+        "actorId": "$self$",
+        "frame": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "fb5337f2-5a1e-457b-8a3f-58d7beb77a38"
     },
     {
       "command": "EVENT_WAIT",
@@ -43,73 +79,23 @@
           "value": 1
         }
       },
-      "id": "50c5ca04-8320-4ea0-85c5-91adf4dcfe09"
+      "id": "71b77314-374c-49e9-bf87-f33d5deee97d"
     },
     {
-      "command": "EVENT_TEXT",
+      "command": "EVENT_FADE_OUT",
       "args": {
-        "text": [
-          "You have freed a Green\nAnaconda from its cage!",
-          "\"Ssssnake... those evil\nlllloggers pppput me",
-          "here, ssssss. Thhhhhan\nks for helping me!\"",
-          "The snake slithered\nback to its habitat."
-        ],
-        "__section": "text",
-        "avatarId": "",
-        "minHeight": 4,
-        "maxHeight": 7,
-        "textX": 1,
-        "textY": 1,
-        "textHeight": 5,
-        "position": "bottom",
-        "clearPrevious": true,
-        "showFrame": "true",
-        "speedIn": -1,
-        "speedOut": -1,
-        "closeWhen": "key",
-        "closeButton": "a",
-        "closeDelayTime": 0.5,
-        "closeDelayFrames": 30
+        "speed": 4
       },
-      "id": "95066b35-5a46-4258-9910-3ef829ebf9d4"
-    },
-    {
-      "command": "EVENT_INC_VALUE",
-      "args": {
-        "variable": "21"
-      },
-      "id": "b1bb2981-d859-4303-a3a5-165afd9929c1"
-    },
-    {
-      "command": "EVENT_ACTOR_DEACTIVATE",
-      "args": {
-        "actorId": "$self$"
-      },
-      "id": "9a2d19f1-6836-4445-b53d-d6630ad991c5"
-    },
-    {
-      "command": "EVENT_SCENE_UPDATE_RESUME",
-      "args": {},
-      "id": "497fbaf9-0abd-475f-b304-fefeb5a83683"
+      "id": "f972624d-f733-4bf0-a94a-c45027f0e072"
     }
   ],
-  "startScript": [
-    {
-      "command": "EVENT_ACTOR_SET_STATE",
-      "args": {
-        "actorId": "$self$",
-        "spriteStateId": "",
-        "loopAnim": true
-      },
-      "id": "a4813481-addc-4024-8b69-714a71644036"
-    }
-  ],
+  "startScript": [],
   "updateScript": [],
   "hit1Script": [],
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
   "x": 182,
-  "y": 18,
+  "y": 56,
   "_index": 0
 }

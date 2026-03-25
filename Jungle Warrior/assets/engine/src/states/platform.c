@@ -2527,12 +2527,15 @@ static void state_update_knockback(void) {
 // BLANK_STATE
 
 #ifdef FEAT_PLATFORM_BLANK
+#define PLAT_BLANK_INPUT_MASK (J_UP | J_DOWN | J_LEFT | J_RIGHT | J_SELECT | J_START | J_B | J_A)
+
 static void state_enter_blank(void) {
     plat_vel_x = 0;
     plat_vel_y = 0;
     plat_grounded = FALSE;
     plat_run_stage = RUN_STAGE_NONE;
     plat_jump_type = JUMP_TYPE_NONE;
+    plat_rope_mask = PLAT_BLANK_INPUT_MASK;
 #ifdef PLATFORM_BLANK_ANIM
     plat_set_player_anim_state(PLATFORM_BLANK_ANIM);
 #elif PLATFORM_ANIM_OVERRIDES_SET  
@@ -2544,6 +2547,7 @@ static void state_enter_blank(void) {
 static void state_exit_blank(void) {
     plat_vel_x = 0;
     plat_vel_y = 0;
+    plat_rope_mask = 0;
     plat_callback_execute(BLANK_END);    
 }
 

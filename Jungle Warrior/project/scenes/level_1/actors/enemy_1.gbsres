@@ -1,0 +1,61 @@
+{
+  "_resourceType": "actor",
+  "id": "9dabdcaf-194c-45ca-a633-86c39bbb1314",
+  "name": "Enemy 1",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "743e9fbe-6c47-41f5-b20d-4f41d19c4005",
+  "prefabId": "7df2ed09-4ae9-4535-a1fb-7e91bd69e395",
+  "direction": "left",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {
+    "f4839e53-ae3f-47a1-8d86-dc588871ec76": {
+      "id": "f4839e53-ae3f-47a1-8d86-dc588871ec76",
+      "args": {
+        "state": "knockback"
+      }
+    },
+    "b13baa5b-e58d-498f-9b34-150f6f6c8eae": {
+      "id": "b13baa5b-e58d-498f-9b34-150f6f6c8eae",
+      "args": {
+        "distance": {
+          "type": "number",
+          "value": 2
+        }
+      }
+    },
+    "e21ff218-02fc-4bd5-8045-de5b35d855ae": {
+      "id": "e21ff218-02fc-4bd5-8045-de5b35d855ae",
+      "args": {
+        "condition": {
+          "type": "lte",
+          "valueA": {
+            "type": "variable",
+            "value": "18"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
+        }
+      }
+    }
+  },
+  "symbol": "actor_1",
+  "script": [],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "coordinateType": "tiles",
+  "x": 28,
+  "y": 39,
+  "_index": 1
+}

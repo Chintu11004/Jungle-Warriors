@@ -144,7 +144,7 @@
           "value": 2
         },
         "otherActorId": "player",
-        "__collapseElse": true,
+        "__collapseElse": false,
         "__collapse": false
       },
       "children": {
@@ -206,7 +206,7 @@
                       "type": "number",
                       "value": 1
                     },
-                    "__collapse": false,
+                    "__collapse": true,
                     "value2": {
                       "type": "number",
                       "value": 2
@@ -856,7 +856,7 @@
                       "value": 5
                     },
                     "units": "frames",
-                    "__collapse": true
+                    "__collapse": false
                   },
                   "children": {
                     "true": [
@@ -873,36 +873,93 @@
                         "children": {
                           "true": [
                             {
-                              "command": "EVENT_SET_VALUE",
+                              "command": "EVENT_IF",
                               "args": {
-                                "variable": "L0",
-                                "value": {
-                                  "type": "number",
-                                  "value": 1
-                                }
+                                "condition": {
+                                  "type": "eq",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "0"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 1
+                                  }
+                                },
+                                "__collapseElse": false
                               },
-                              "id": "24914989-f52c-4606-8886-f87a2bd0b069",
-                              "children": {}
-                            },
-                            {
-                              "command": "EVENT_ACTOR_SET_ANIMATION_SPEED",
-                              "args": {
-                                "actorId": "$self$",
-                                "speed": 7,
-                                "__collapse": true
+                              "children": {
+                                "true": [
+                                  {
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "L0",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 2
+                                      },
+                                      "__collapse": true
+                                    },
+                                    "id": "16dd12f2-6f63-49cc-87fd-a84be7571136",
+                                    "children": {}
+                                  },
+                                  {
+                                    "command": "EVENT_ACTOR_SET_ANIMATION_SPEED",
+                                    "args": {
+                                      "actorId": "$self$",
+                                      "speed": 31,
+                                      "__collapse": true
+                                    },
+                                    "id": "6722db44-9703-4f5d-9bbe-4fdcb3ffd8a6",
+                                    "children": {}
+                                  },
+                                  {
+                                    "command": "EVENT_ACTOR_SET_MOVEMENT_SPEED",
+                                    "args": {
+                                      "actorId": "$self$",
+                                      "speed": 0.25,
+                                      "__collapse": true
+                                    },
+                                    "id": "fceeb0cc-a474-40e6-848d-d4d3ffab96fb",
+                                    "children": {}
+                                  }
+                                ],
+                                "false": [
+                                  {
+                                    "command": "EVENT_SET_VALUE",
+                                    "args": {
+                                      "variable": "L0",
+                                      "value": {
+                                        "type": "number",
+                                        "value": 1
+                                      }
+                                    },
+                                    "id": "24914989-f52c-4606-8886-f87a2bd0b069",
+                                    "children": {}
+                                  },
+                                  {
+                                    "command": "EVENT_ACTOR_SET_ANIMATION_SPEED",
+                                    "args": {
+                                      "actorId": "$self$",
+                                      "speed": 7,
+                                      "__collapse": true
+                                    },
+                                    "id": "83595cd4-ca3e-4d47-a6b5-3ccd5ff16e99",
+                                    "children": {}
+                                  },
+                                  {
+                                    "command": "EVENT_ACTOR_SET_MOVEMENT_SPEED",
+                                    "args": {
+                                      "actorId": "$self$",
+                                      "speed": 1,
+                                      "__collapse": true
+                                    },
+                                    "id": "7255119d-7743-4068-840b-ce4b60e53b0c",
+                                    "children": {}
+                                  }
+                                ]
                               },
-                              "id": "83595cd4-ca3e-4d47-a6b5-3ccd5ff16e99",
-                              "children": {}
-                            },
-                            {
-                              "command": "EVENT_ACTOR_SET_MOVEMENT_SPEED",
-                              "args": {
-                                "actorId": "$self$",
-                                "speed": 1,
-                                "__collapse": true
-                              },
-                              "id": "7255119d-7743-4068-840b-ce4b60e53b0c",
-                              "children": {}
+                              "id": "e21ff218-02fc-4bd5-8045-de5b35d855ae"
                             }
                           ],
                           "false": [

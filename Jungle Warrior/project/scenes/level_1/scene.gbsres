@@ -1,0 +1,268 @@
+{
+  "_resourceType": "scene",
+  "id": "bec32a3e-9e07-4109-a0d0-8a86dd2b986d",
+  "_index": 1,
+  "type": "PLATFORM",
+  "name": "Level 1",
+  "symbol": "scene_5",
+  "x": 80,
+  "y": 408,
+  "width": 172,
+  "height": 46,
+  "backgroundId": "57935e9f-1781-430d-8953-9f9b92b6e7fd",
+  "tilesetId": "",
+  "colorModeOverride": "none",
+  "paletteIds": [
+    "default-bg-2",
+    "2ebac764-bebb-4707-920b-2a975675b2cb",
+    "9f040423-1b1c-4155-a7c5-8ac23d9dba67",
+    "",
+    "b550d28a-9cb7-4f19-82fb-d839725f2419",
+    "64e90f2e-92b5-4869-a6ee-b8080b0c9dc2",
+    "5dafcf6e-b1d8-4c6b-b105-32d877f561e4",
+    "6eb4949c-705f-412a-9db3-9895af2fe45e"
+  ],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "playerSpriteSheetId": "c91b8ed9-7012-42b0-ace7-b8bb32a9b64d",
+  "script": [
+    {
+      "command": "EVENT_GROUP",
+      "args": {
+        "__collapse": true,
+        "__label": "Loading actors"
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "9dabdcaf-194c-45ca-a633-86c39bbb1314",
+              "__collapse": false,
+              "__comment": false
+            },
+            "id": "6ea3cd8e-2d1e-4287-b89b-0e1173a00630"
+          },
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "364140db-f88f-4dd0-a703-0c2109733346",
+              "__collapse": false,
+              "__comment": false
+            },
+            "id": "e5524a66-d68e-4065-a4fb-4251fa27f91e"
+          },
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "b210b979-6619-4c9f-9cb8-5482900de2fd",
+              "__collapse": false,
+              "__comment": false
+            },
+            "id": "a97489cd-87b5-430a-bdd4-59024eebdf0e"
+          },
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "9dabdcaf-194c-45ca-a633-86c39bbb1314",
+              "__collapse": false,
+              "__comment": true
+            },
+            "id": "da3a854c-84a9-47cd-ae0c-e79d29a7f686"
+          },
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "c6b33538-4d68-43a9-9518-645173f14ecd",
+              "__collapse": false,
+              "__comment": true
+            },
+            "id": "bc6dde09-77a9-4cd2-acef-5c97ef3c11c7"
+          }
+        ]
+      },
+      "id": "9395fbf5-b9b5-40d3-89b5-2c72e71be2ad"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "92dbf5f0-ecc4-4fad-b816-b2a45db599ca",
+        "__collapse": true
+      },
+      "id": "60e9aa1a-f9d1-4cbd-8256-edba0fd024cd"
+    },
+    {
+      "command": "EVENT_SET_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "start"
+        ],
+        "override": true,
+        "__scriptTabs": "press",
+        "__collapse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_REMOVE_INPUT_SCRIPT",
+            "args": {
+              "input": [
+                "start"
+              ]
+            },
+            "id": "3e184740-f6a6-4f32-9397-4f97dea1e544"
+          },
+          {
+            "command": "EVENT_SCENE_PUSH_STATE",
+            "args": {},
+            "id": "74fdffac-1d5e-4336-91f0-a1eeccf0a5e0"
+          },
+          {
+            "command": "EVENT_SWITCH_SCENE",
+            "args": {
+              "sceneId": "e8bf0db0-d23a-4a03-873f-b9094c9d66c8",
+              "x": {
+                "type": "number",
+                "value": 0
+              },
+              "y": {
+                "type": "number",
+                "value": 0
+              },
+              "direction": "",
+              "fadeSpeed": 1
+            },
+            "id": "38b3805f-5900-41eb-9278-125ef548cd5b"
+          }
+        ]
+      },
+      "id": "c6e95cfc-6c3a-4872-b4b9-fd06e2e1b7ed"
+    },
+    {
+      "command": "EVENT_REGISTER_ROPE_ACTOR",
+      "args": {
+        "actor": "ff81a172-6d8f-4e2b-9a8f-597147cac4b7",
+        "__collapse": true
+      },
+      "id": "a976fc8e-5c96-4ab7-a020-a5346d039eb1"
+    },
+    {
+      "command": "EVENT_REGISTER_ROPE_ACTOR",
+      "args": {
+        "actor": "593e701c-2493-4641-adc7-e8f6569cff5f",
+        "__collapse": true
+      },
+      "id": "fa90ed79-832c-434d-a621-0aee053d30e4"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "18",
+        "value": {
+          "type": "number",
+          "value": 4
+        },
+        "__collapse": true
+      },
+      "id": "4ae3460b-f1f1-45b0-9aab-c39b57613d0a"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "81daf0f4-6d57-4b0a-976d-a2b499989b38",
+        "$actor[0]$": "f35b9684-3cd3-490b-a0d7-984d3e267b24",
+        "__collapse": true
+      },
+      "id": "c83df141-82f6-41bb-93c3-70580a008bd8"
+    },
+    {
+      "command": "EVENT_SET_PLATFORMER_CALLBACK_SCRIPT",
+      "args": {
+        "event": "knockbackStart",
+        "__scriptTabs": "scriptinput",
+        "__collapse": true
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "a910691b-cedc-463c-8633-b81c735893f9",
+              "$actor[0]$": "f35b9684-3cd3-490b-a0d7-984d3e267b24"
+            },
+            "id": "7b0747d8-e39a-45ce-b5f3-d2912f0cf3be"
+          }
+        ]
+      },
+      "id": "4bad5596-53fd-4358-96e9-b355a8dba1c4"
+    },
+    {
+      "command": "EVENT_SET_PLATFORMER_CALLBACK_SCRIPT",
+      "args": {
+        "event": "blankStart",
+        "__scriptTabs": "scriptinput",
+        "__collapse": true
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "1af28223-8723-4e15-9c91-9d8ec3d65d42",
+              "$variable[V0]$": {
+                "type": "number",
+                "value": 0
+              },
+              "$variable[V1]$": {
+                "type": "number",
+                "value": 37
+              },
+              "$actor[0]$": "f35b9684-3cd3-490b-a0d7-984d3e267b24"
+            },
+            "id": "81c0bbad-bf6d-44aa-86aa-ee8611936c57"
+          }
+        ]
+      },
+      "id": "a04900e1-d9f1-430c-96cb-8ea398636e36"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_ANIMATION_SPEED",
+      "args": {
+        "actorId": "$self$",
+        "speed": 15,
+        "__collapse": true
+      },
+      "id": "5a293721-07fb-4c3e-b186-b8c67a5ca136"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "23",
+        "value": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "c6602ba5-cbaa-4a91-8a4d-f2d2ac9658e5"
+    }
+  ],
+  "playerHit1Script": [
+    {
+      "command": "EVENT_PLATFORMER_STATE_SET",
+      "args": {
+        "state": "knockback"
+      },
+      "id": "38b11872-547d-47b7-82b5-c43ce09eac03"
+    }
+  ],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": "004f6+017+0040d+017+0011+017+00476+102+00aa+102+00aa+102+00aa+10!11!01d+002f+017+0067+102+00aa+102+00aa+102+00aa+102+0047+102+0061+102+0047+102+0061+102+0047+102+0061+102+0047+102+0061+102+0047+10!11!016+005b+102+0047+102+0061+102+00e+0f!30!0037+102+0061+102+00e+0f!00!30!0015+102+001f+102+0061+102+00e+0f!002+30!0014+102+001f+102+0071+0f!003+30!0013+102+001f+102+0061+20!0f!00e+0f!003+0f!0013+102+001f+102+0060+20!00!0f!00e+0f!003+0f!0013+102+001f+102+005f+20!002+0f!00e+0f!003+0f!0013+102+001f+102+0032+0f2e+002+0f!00e+0f!003+0f14+102+0fc+30!0012+102+0062+0f!00e+0f!00e+0f9+102+0f!00c+30!0011+102+0062+0f!00e+0f!00e+0f!008+102+0f!00d+30!0010+102+0062+0f!00e+0f!00e+0f!008+102+0f!00e+30!00f+102+0010+20!0f21+0030+0f!00e+0f!00e+0f!008+102+0f!00f+30!001f+20!0052+0f10+00e+0fc+0010+30!001d+20!0023+",
+  "autoFadeEventCollapse": true,
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 172,
+    "height": 46
+  }
+}

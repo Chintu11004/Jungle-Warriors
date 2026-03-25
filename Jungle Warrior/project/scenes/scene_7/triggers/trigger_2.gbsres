@@ -1,21 +1,85 @@
 {
   "_resourceType": "trigger",
-  "id": "8a70080f-60eb-4038-9b19-8fc6f3e8066a",
+  "id": "f011ba65-906f-483c-9b3d-e796b798fab0",
   "name": "",
   "prefabId": "",
-  "x": 184,
-  "y": 36,
-  "symbol": "trigger_1",
+  "x": 0,
+  "y": 50,
+  "symbol": "trigger_4",
   "prefabScriptOverrides": {},
-  "width": 2,
-  "height": 6,
+  "width": 148,
+  "height": 2,
   "script": [
+    {
+      "command": "EVENT_SCENE_UPDATE_PAUSE",
+      "args": {},
+      "id": "1fec798e-ef0b-4a7e-ab55-f004d53d5728"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "player",
+        "spriteStateId": "Death",
+        "loopAnim": false
+      },
+      "id": "f7b15f43-5358-4a87-9f93-8f58e4859f54"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_FRAME",
+      "args": {
+        "actorId": "$self$",
+        "frame": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "73e4af23-157c-4bbc-b0ba-ce88077016a6"
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": {
+          "type": "number",
+          "value": 0.2
+        },
+        "frames": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "1a30f67b-b584-4675-bbda-7255135f1625"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_FRAME",
+      "args": {
+        "actorId": "$self$",
+        "frame": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "54d9c100-2c06-4df8-b6d4-b9c2e8678e86"
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": {
+          "type": "number",
+          "value": 0.5
+        },
+        "frames": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "60d12e7c-4eab-4e5a-bbc8-0283a4f244fc"
+    },
     {
       "command": "EVENT_FADE_OUT",
       "args": {
         "speed": 1
       },
-      "id": "516e2414-6511-48a1-8f5d-c92172cc28ad"
+      "id": "c7ef127d-4e17-4bac-8012-c48de368a6e1"
     },
     {
       "command": "EVENT_SWITCH_SCENE",
@@ -23,27 +87,17 @@
         "sceneId": "7cc33f7d-ebe9-4622-a505-a17cbc2b53a2",
         "x": {
           "type": "number",
-          "value": 0
+          "value": 3
         },
         "y": {
           "type": "number",
           "value": 41
         },
         "direction": "",
-        "fadeSpeed": "2"
+        "fadeSpeed": 1,
+        "__collapse": false
       },
-      "id": "813f1d17-34d2-49cb-875f-32f8042e5c31"
-    },
-    {
-      "command": "EVENT_ACTOR_SET_DIRECTION",
-      "args": {
-        "actorId": "$self$",
-        "direction": {
-          "type": "direction",
-          "value": "right"
-        }
-      },
-      "id": "d358b1ff-80dd-4d3f-b87f-15906ed92c85"
+      "id": "79e9fde7-1145-47cc-a172-803ac77a2df2"
     }
   ],
   "leaveScript": [],

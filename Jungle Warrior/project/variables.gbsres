@@ -107,9 +107,24 @@
       "symbol": "var_is_player_detected"
     },
     {
+      "id": "21",
+      "name": "animals rescued",
+      "symbol": "var_animals_rescued"
+    },
+    {
       "id": "22",
       "name": "Enemies Killed",
       "symbol": "var_enemies_killed"
+    },
+    {
+      "id": "70",
+      "name": "people",
+      "symbol": "var_people"
+    },
+    {
+      "id": "83",
+      "name": "peopleadded",
+      "symbol": "var_peopleadded_0"
     },
     {
       "id": "511",
@@ -239,47 +254,37 @@
     {
       "id": "7df2ed09-4ae9-4535-a1fb-7e91bd69e395__L0",
       "name": "PlayerDetected",
-      "symbol": "var_playerdetected"
+      "symbol": "var_playerdetected_1"
     },
     {
       "id": "7df2ed09-4ae9-4535-a1fb-7e91bd69e395__L1",
       "name": "Direction",
-      "symbol": "var_direction"
+      "symbol": "var_direction_1"
     },
     {
       "id": "7df2ed09-4ae9-4535-a1fb-7e91bd69e395__L2",
       "name": "Origin_x",
-      "symbol": "var_origin_x"
+      "symbol": "var_origin_x_1"
     },
     {
       "id": "7df2ed09-4ae9-4535-a1fb-7e91bd69e395__L3",
       "name": "Origin_Y",
-      "symbol": "var_origin_y"
+      "symbol": "var_origin_y_1"
     },
     {
       "id": "7df2ed09-4ae9-4535-a1fb-7e91bd69e395__L4",
       "name": "DIstance to roam Right",
-      "symbol": "var_distance_to_roam_right"
+      "symbol": "var_distance_to_roam_right__0"
     },
     {
       "id": "7df2ed09-4ae9-4535-a1fb-7e91bd69e395__L5",
       "name": "Distance to roam Left",
-      "symbol": "var_distance_to_roam_left"
+      "symbol": "var_distance_to_roam_left_1"
     },
     {
-      "id": "21",
-      "name": "animals rescued",
-      "symbol": "var_animals_rescued"
-    },
-    {
-      "id": "70",
-      "name": "people",
-      "symbol": "var_people"
-    },
-    {
-      "id": "83",
-      "name": "peopleadded",
-      "symbol": "var_peopleadded_0"
+      "id": "23",
+      "name": "Level Number",
+      "symbol": "var_level_number"
     }
   ],
   "constants": []

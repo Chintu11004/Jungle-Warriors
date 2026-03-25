@@ -1,166 +1,119 @@
 {
   "_resourceType": "scene",
-  "id": "7cc33f7d-ebe9-4622-a505-a17cbc2b53a2",
-  "_index": 6,
-  "name": "Scene 7",
-  "backgroundId": "d95aba6c-07ea-4d5f-a79c-a892c81e53b8",
+  "id": "f38a9cda-5c1c-4d59-aaaf-6ec0fc1a984d",
+  "_index": 7,
+  "name": "Scene 8",
+  "backgroundId": "96367245-e438-4424-b346-1b3da8aae70c",
   "tilesetId": "",
-  "width": 186,
-  "height": 62,
-  "type": "PLATFORM",
+  "width": 20,
+  "height": 18,
+  "type": "TOPDOWN",
   "colorModeOverride": "none",
   "paletteIds": [
-    "default-bg-2",
-    "64e90f2e-92b5-4869-a6ee-b8080b0c9dc2",
-    "9f040423-1b1c-4155-a7c5-8ac23d9dba67",
-    "2ebac764-bebb-4707-920b-2a975675b2cb",
-    "5dafcf6e-b1d8-4c6b-b105-32d877f561e4",
-    "b550d28a-9cb7-4f19-82fb-d839725f2419",
-    "6eb4949c-705f-412a-9db3-9895af2fe45e",
-    "8376f314-0927-4218-9bbe-f3bc53412e11"
+    "6bcbdeb2-ca87-4c30-b142-509cec8119be"
   ],
   "spritePaletteIds": [],
-  "collisions": "00899+0f18+003+0f3+009c+0f18+003+0f3+009c+0f2+00!0f2+0016+0f2+0071+102+00f+01e+00d+0f2+00!0f2+0016+0f2+0071+102+002a+0f2+00!0f2+0016+0f2+002b+01e+002a+01e+102+002a+0f2+00!0f2+0016+0f2+0071+102+002a+0f5+0016+0f2+0028+102+0047+102+002a+0f5+0016+0f2+0028+102+0014+01e+0025+102+002a+0f5+0016+0f2+001a+01e+102+0047+102+002a+0f5+008+01e+0f2+0028+102+0047+102+002a+0f2+00!0f2+0016+0f2+0028+102+0047+104+0028+0f2+00!0f2+0016+0f2+0028+102+0047+104+0028+0f2+00!0f2+0016+0f2+0028+102+0047+104+008+011c+004+0f2+00!0f2+0016+0f2+0028+102+0049+102+0028+0f2+00!0f2+0016+0f2+0073+102+0026+102+0f2+00!0f2+0112+004+0f2+0073+102+0026+102+0f2+00!0f2+0016+0f2+0073+102+0026+102+0f2+00!0f2+0016+0f2+0073+102+0026+102+0f2+00!0f2+0016+0f2+006b+102+006+102+0026+102+0f2+00!0f2+0016+0f2+006b+102+006+102+0026+102+0f2+00!0f2+0016+0f2+006b+102+006+102+0026+102+0f2+00!0f2+0016+0f2+006b+102+002e+102+0f2+00!0f2+0016+0f2+006b+102+002e+102+0f2+00!0f2+0016+0f2+006b+102+002e+102+0f2+00!0f2+0016+0f2+006b+102+002e+102+0f2+00!0f2+0016+0f2+006b+102+00!017+0028+0f2+00!0f2+0016+0f3+006a+102+0030+0f2+00!0f2+024+0f15+006a+102+0029+0f9+00!0f2+0039+01e+003c+102+0029+0f9+00!0f2+00ae+0f5+005+0f2+001a+01e+0086+0f2+008+0f2+0057+01e+0049+0f2+008+0f2+00ae+0f2+008+0f2+00ae+0f2+007+0f3+00ae+0f2+007+0f3+00ae+0f2+007+0ff+30!00a1+0f18+00!30!00a0+0fc+003+0f7+002+0f2+30!00b7+0f2+00!30!00b8+0f2+30!00b7+0f2+00!30!00b8+0f2+30!00b7+0f2+00!30!00b8+0f2+30!00b7+0f2+00!30!00b8+0f6+00b4+0f6+0022e+",
+  "collisions": "00168+",
   "autoFadeSpeed": 1,
-  "symbol": "scene_1",
-  "x": 1608,
-  "y": 904,
+  "symbol": "scene_8",
+  "x": 1584,
+  "y": 88,
   "script": [
     {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "command": "EVENT_SET_VALUE",
       "args": {
-        "actor": "$self$"
+        "variable": "83",
+        "value": {
+          "type": "rnd",
+          "value": {
+            "type": "number",
+            "value": 5
+          }
+        }
       },
-      "id": "bb37a0c7-fa52-45fb-8597-1aaad7880961"
+      "id": "aff08894-c2c1-4c33-8a90-69c4ab2c583d"
     },
     {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "command": "EVENT_INC_VALUE",
       "args": {
-        "actor": "ae3b7f05-86fd-46e7-a05e-6ece87a29d5f"
+        "variable": "83"
       },
-      "id": "58be9551-e1c8-4a18-b68a-ecfae9313588"
+      "id": "fee0df86-240f-4f7c-9e6c-e7fc1714ce6a"
     },
     {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "command": "EVENT_ACTOR_DEACTIVATE",
       "args": {
-        "actor": "d32beef7-79b4-4ff4-bf12-e0243b0f324f"
+        "actorId": "$self$"
       },
-      "id": "49d870fe-3a93-470f-b8cd-c17a71d829da"
+      "id": "e85969fd-aa9f-4b7b-a161-03df7855309a"
     },
     {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "command": "EVENT_TEXT",
       "args": {
-        "actor": "9a1c22e6-441c-40f0-acaf-e26484bb24ec"
+        "text": [
+          "Great work! You\nfreed all animals,",
+          "and helped quell all\nenemies!",
+          "You have 100% cleared\nthis zone!",
+          "The government is\npleased to help, so",
+          "they are sending you \n$83$ more folks\nto help protect the",
+          "newly cleared zone!\nAssign them wisely!"
+        ],
+        "__section": "text",
+        "avatarId": "",
+        "minHeight": 4,
+        "maxHeight": 7,
+        "textX": 1,
+        "textY": 1,
+        "textHeight": 5,
+        "position": "bottom",
+        "clearPrevious": true,
+        "showFrame": "true",
+        "speedIn": -1,
+        "speedOut": -1,
+        "closeWhen": "key",
+        "closeButton": "a",
+        "closeDelayTime": 0.5,
+        "closeDelayFrames": 30
       },
-      "id": "0683e22e-ec5f-46dc-9345-512140622b64"
+      "id": "1e24e9b3-6a91-48a1-93e0-c74d5290abfc"
     },
     {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "command": "EVENT_SET_VALUE",
       "args": {
-        "actor": "2faa494f-c838-4299-9dae-23209305efb1"
+        "variable": "70",
+        "value": {
+          "type": "add",
+          "valueA": {
+            "type": "variable",
+            "value": "83"
+          },
+          "valueB": {
+            "type": "variable",
+            "value": "70"
+          }
+        }
       },
-      "id": "377998fb-a3e3-474e-9a58-a7653a22786f"
+      "id": "b1d746e7-23f5-4786-b381-c5db1e66b60f"
     },
     {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "command": "EVENT_SWITCH_SCENE",
       "args": {
-        "actor": "aaa582af-c22c-4e59-9610-f79cdbe45c60"
-      },
-      "id": "58d556e4-0472-4b9c-b0ca-04a2b465aee4"
-    },
-    {
-      "command": "EVENT_DEFERRED_ACTOR_LOAD",
-      "args": {
-        "actor": "140a9a96-03e4-40c1-b246-8fc8797fad44"
-      },
-      "id": "6fad6ef2-adf2-48d9-902b-e8ea49eeb33a"
-    },
-    {
-      "command": "EVENT_CAMERA_SET_BOUNDS",
-      "args": {
+        "sceneId": "337e8040-3695-4c98-bff9-21e14373d9de",
         "x": {
           "type": "number",
-          "value": 0
+          "value": 15
         },
         "y": {
           "type": "number",
-          "value": 0
+          "value": 9
         },
-        "width": {
-          "type": "number",
-          "value": 208
-        },
-        "height": {
-          "type": "number",
-          "value": 48
-        }
+        "direction": "",
+        "fadeSpeed": 4
       },
-      "id": "1d8f049b-2bc3-4873-bae9-7910b04b2647"
-    },
-    {
-      "command": "EVENT_REGISTER_ROPE_ACTOR",
-      "args": {
-        "actor": "140a9a96-03e4-40c1-b246-8fc8797fad44"
-      },
-      "id": "ab5c8b94-7339-4aea-9cdd-86ac91b18b8d"
-    },
-    {
-      "command": "EVENT_REGISTER_ROPE_ACTOR",
-      "args": {
-        "actor": "aaa582af-c22c-4e59-9610-f79cdbe45c60"
-      },
-      "id": "0a1f6a92-6797-4501-95af-b9200983ba1d"
-    },
-    {
-      "command": "EVENT_SET_INPUT_SCRIPT",
-      "args": {
-        "input": [
-          "start"
-        ],
-        "override": true,
-        "__scriptTabs": "press",
-        "__collapse": false
-      },
-      "children": {
-        "true": [
-          {
-            "command": "EVENT_REMOVE_INPUT_SCRIPT",
-            "args": {
-              "input": [
-                "start"
-              ]
-            },
-            "id": "a0dd934d-3ef2-47c6-863b-022c14d64984"
-          },
-          {
-            "command": "EVENT_SCENE_PUSH_STATE",
-            "args": {},
-            "id": "97b921bc-6be3-43ff-8637-2289119c5903"
-          },
-          {
-            "command": "EVENT_SWITCH_SCENE",
-            "args": {
-              "sceneId": "e8bf0db0-d23a-4a03-873f-b9094c9d66c8",
-              "x": {
-                "type": "number",
-                "value": 0
-              },
-              "y": {
-                "type": "number",
-                "value": 0
-              },
-              "direction": "",
-              "fadeSpeed": 1
-            },
-            "id": "a82e143f-76c8-48d5-814f-85f2a79626de"
-          }
-        ]
-      },
-      "id": "1f49e376-ec10-4566-9764-d0bca84fbb44"
+      "id": "9388e0ac-cd31-4f22-a3a2-3b31fb7b2f1a"
     }
   ],
   "playerHit1Script": [],
   "playerHit2Script": [],
-  "playerHit3Script": [],
-  "playerSpriteSheetId": "c91b8ed9-7012-42b0-ace7-b8bb32a9b64d"
+  "playerHit3Script": []
 }
