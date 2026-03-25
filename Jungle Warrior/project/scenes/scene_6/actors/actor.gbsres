@@ -15,7 +15,7 @@
   "collisionGroup": "1",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
-  "symbol": "actor_2",
+  "symbol": "actor_3",
   "script": [
     {
       "command": "EVENT_SCENE_UPDATE_PAUSE",

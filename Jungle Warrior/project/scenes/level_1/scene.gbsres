@@ -29,7 +29,7 @@
     {
       "command": "EVENT_GROUP",
       "args": {
-        "__collapse": true,
+        "__collapse": false,
         "__label": "Loading actors"
       },
       "children": {
@@ -37,7 +37,7 @@
           {
             "command": "EVENT_DEFERRED_ACTOR_LOAD",
             "args": {
-              "actor": "9dabdcaf-194c-45ca-a633-86c39bbb1314",
+              "actor": "0502e161-3408-4c83-b5a6-ce81257eb1ba",
               "__collapse": false,
               "__comment": false
             },
@@ -74,7 +74,7 @@
             "command": "EVENT_DEFERRED_ACTOR_LOAD",
             "args": {
               "actor": "c6b33538-4d68-43a9-9518-645173f14ecd",
-              "__collapse": false,
+              "__collapse": true,
               "__comment": true
             },
             "id": "bc6dde09-77a9-4cd2-acef-5c97ef3c11c7"

@@ -1,6 +1,6 @@
 {
   "_resourceType": "actor",
-  "id": "d77efaa6-7466-4a4c-a9a5-301d11aaf5c5",
+  "id": "0502e161-3408-4c83-b5a6-ce81257eb1ba",
   "name": "Shooting Enemy Prefab",
   "frame": 0,
   "animate": false,
@@ -23,7 +23,7 @@
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
-  "x": 26,
+  "x": 28,
   "y": 39,
   "_index": 6
 }
