@@ -1,0 +1,105 @@
+{
+  "_resourceType": "trigger",
+  "id": "86b0bfcd-7b89-4d9c-9913-18e3f8f2987e",
+  "name": "",
+  "prefabId": "",
+  "x": 127,
+  "y": 60,
+  "symbol": "trigger_20",
+  "prefabScriptOverrides": {},
+  "width": 33,
+  "height": 4,
+  "script": [
+    {
+      "command": "EVENT_SCENE_UPDATE_PAUSE",
+      "args": {},
+      "id": "3233fdf8-cb94-41f9-a0bb-f57998993a48"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "player",
+        "spriteStateId": "Death",
+        "loopAnim": false
+      },
+      "id": "18c8c3e8-0b7e-44fa-aa79-ffb374eb9242"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_FRAME",
+      "args": {
+        "actorId": "$self$",
+        "frame": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "c920144d-4819-4e37-91bc-d120bff20cc6"
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": {
+          "type": "number",
+          "value": 0.2
+        },
+        "frames": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "2d1fe7e1-0919-426c-bb58-729917fd90c1"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_FRAME",
+      "args": {
+        "actorId": "$self$",
+        "frame": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "bed609d9-e1a5-4f18-91a5-e6130f85ccb4"
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": {
+          "type": "number",
+          "value": 0.5
+        },
+        "frames": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "a7dfb165-ae35-4c37-8ed0-e3475ec19d9b"
+    },
+    {
+      "command": "EVENT_FADE_OUT",
+      "args": {
+        "speed": 1
+      },
+      "id": "e2ba89b9-be00-4124-93ac-df1a23559e4c"
+    },
+    {
+      "command": "EVENT_SWITCH_SCENE",
+      "args": {
+        "sceneId": "2fe46d18-f866-41e0-b46b-7a949c0a82f1",
+        "x": {
+          "type": "number",
+          "value": 0
+        },
+        "y": {
+          "type": "number",
+          "value": 22
+        },
+        "direction": "",
+        "fadeSpeed": 1,
+        "__collapse": false
+      },
+      "id": "b8b54d3c-ec2a-4fdd-9fab-97f74e496a0f"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 0
+}
