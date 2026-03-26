@@ -853,6 +853,13 @@ OP_VM_ACTOR_GET_POS             = 0x3A
         .db OP_VM_ACTOR_GET_POS, #>IDX, #<IDX
 .endm
 
+OP_VM_ACTOR_PERM_DESPAWN        = 0x3B
+;-- Permanently despawns actor until full scene reload.
+; @param ACTOR Variable that contains the actor number.
+.macro VM_ACTOR_PERM_DESPAWN ACTOR
+        .db OP_VM_ACTOR_PERM_DESPAWN, #>ACTOR, #<ACTOR
+.endm
+
 OP_VM_ACTOR_GET_DIR             = 0x3C
 ;-- Gets actor direction.
 ; @param IDX Variable that contains the actor number.

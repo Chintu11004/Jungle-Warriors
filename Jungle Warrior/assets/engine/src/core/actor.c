@@ -363,6 +363,8 @@ static void activate_actor_impl(actor_t *actor) {
         return;
     }
 #endif
+    UBYTE actor_idx = (UBYTE)(actor - actors);
+    if (actor_idx < MAX_ACTORS && actor_perm_despawn[actor_idx]) return;
     if (CHK_FLAG(actor->flags, ACTOR_FLAG_ACTIVE | ACTOR_FLAG_DISABLED)) return;
 
     // Check if on screen before activating to avoid flash of offscreen actors

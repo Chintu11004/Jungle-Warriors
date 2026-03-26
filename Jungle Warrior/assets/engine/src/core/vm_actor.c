@@ -367,7 +367,11 @@ void vm_actor_move_cancel(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
 
 void vm_actor_activate(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
     UBYTE * n_actor = VM_REF_TO_PTR(idx);
-    actor_t * actor = actors + *n_actor;
+    UBYTE actor_idx = *n_actor;
+    actor_t * actor = actors + actor_idx;
+    if (actor_idx < MAX_ACTORS && actor_perm_despawn[actor_idx]) {
+        return;
+    }
     if (actor == &PLAYER) {
         CLR_FLAG(actor->flags, ACTOR_FLAG_HIDDEN);
     } else {
@@ -376,15 +380,30 @@ void vm_actor_activate(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
     }
 }
 
-void vm_actor_deactivate(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
-    UBYTE * n_actor = VM_REF_TO_PTR(idx);
-    actor_t * actor = actors + *n_actor;
+static void vm_actor_deactivate_impl(actor_t *actor, UBYTE actor_idx, UBYTE set_perm_despawn) {
     if (actor == &PLAYER) {
         SET_FLAG(actor->flags, ACTOR_FLAG_HIDDEN);
     } else {
+        if (set_perm_despawn && actor_idx < MAX_ACTORS) {
+            actor_perm_despawn[actor_idx] = 1;
+        }
         SET_FLAG(actor->flags, ACTOR_FLAG_DISABLED);
         deactivate_actor(actor);
     }
+}
+
+void vm_actor_deactivate(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
+    UBYTE * n_actor = VM_REF_TO_PTR(idx);
+    UBYTE actor_idx = *n_actor;
+    actor_t * actor = actors + actor_idx;
+    vm_actor_deactivate_impl(actor, actor_idx, FALSE);
+}
+
+void vm_actor_perm_despawn(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
+    UBYTE * n_actor = VM_REF_TO_PTR(idx);
+    UBYTE actor_idx = *n_actor;
+    actor_t * actor = actors + actor_idx;
+    vm_actor_deactivate_impl(actor, actor_idx, TRUE);
 }
 
 void vm_actor_begin_update(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {

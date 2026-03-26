@@ -29,6 +29,7 @@ extern scene_stack_item_t * scene_stack_ptr;
 
 #define MAX_SCENE_SPRITES   64
 extern UBYTE scene_sprites_base_tiles[MAX_SCENE_SPRITES];
+extern UBYTE actor_perm_despawn[];
 
 void load_init(void) BANKED;
 UBYTE load_scene(const scene_t * scene, UBYTE bank, UBYTE init_data) BANKED;

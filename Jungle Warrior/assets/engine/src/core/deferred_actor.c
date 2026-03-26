@@ -40,6 +40,7 @@ UBYTE deferred_actor_load(void *THIS_void, UBYTE start, UWORD *stack_frame) OLDC
     /* 0 = player; 1 = first NPC — never use deferred unload path; load still ok if needed */
     if (actor_idx == 0 || actor_idx >= actors_len) return TRUE;
     if (actor_idx == 1) return TRUE;  /* actors[1]: VRAM from load_scene, never deferred */
+    if (actor_perm_despawn[actor_idx]) return TRUE;
     actor_t * actor = actors + actor_idx;
     if (actor->reserve_tiles) return TRUE;  /* skip reserved actors */
     {

@@ -56,6 +56,7 @@ scene_stack_item_t scene_stack[SCENE_STACK_SIZE];
 scene_stack_item_t * scene_stack_ptr;
 
 UBYTE scene_sprites_base_tiles[MAX_SCENE_SPRITES];
+UBYTE actor_perm_despawn[MAX_ACTORS];
 
 typedef struct {
     UBYTE ref_count;       /* Number of actors using this tile region; 0 = slot free */
@@ -261,6 +262,8 @@ UBYTE load_actor_sprite(actor_t * actor) BANKED {
      * base_tile == DEFERRED_SLOT_FREE means never-used; else previously used (reuse if tile_count >= n_tiles).
      */
     if (!actor->reserve_tiles && actor != &actors[1]) {
+        UBYTE actor_idx = (UBYTE)(actor - actors);
+        if (actor_idx < MAX_ACTORS && actor_perm_despawn[actor_idx]) return 0;
         UBYTE n_tiles = spritesheet_get_tile_count(actor->sprite.ptr, actor->sprite.bank);
         if (!n_tiles) return 0;
 
@@ -496,6 +499,7 @@ UBYTE load_scene(const scene_t * scene, UBYTE bank, UBYTE init_data) BANKED {
     sprites_len     = MIN(scn.n_sprites,        MAX_SCENE_SPRITES);
     if (init_data) {
         memset(scene_sprites_base_tiles, SCENE_SPRITE_UNLOADED, sizeof(scene_sprites_base_tiles));
+        memset(actor_perm_despawn, 0, sizeof(actor_perm_despawn));
         deferred_slots_reset();
         deferred_allocated_delta = 0;
     }
