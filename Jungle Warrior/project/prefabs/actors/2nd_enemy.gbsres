@@ -1110,20 +1110,19 @@
   ],
   "hit1Script": [
     {
-      "command": "EVENT_ACTOR_DEACTIVATE",
-      "args": {
-        "actorId": "$self$"
-      },
-      "id": "3a8a7932-082f-4acf-b05b-58964a2a76f4",
-      "children": {}
-    },
-    {
       "command": "EVENT_INC_VALUE",
       "args": {
         "variable": "22"
       },
       "id": "a55c6bfb-6c6f-4429-b3fa-946ff4093f66",
       "children": {}
+    },
+    {
+      "command": "PT_EVENT_ACTOR_PERMANENT_DESPAWN",
+      "args": {
+        "actorId": "$self$"
+      },
+      "id": "d9b8702f-96c7-4797-bca9-140c2f489239"
     }
   ],
   "hit2Script": [],

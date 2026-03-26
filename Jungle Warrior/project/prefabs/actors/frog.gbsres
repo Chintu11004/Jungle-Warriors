@@ -9,7 +9,7 @@
   "animSpeed": 15,
   "paletteId": "",
   "persistent": false,
-  "collisionGroup": "1",
+  "collisionGroup": "2",
   "collisionExtraFlags": [],
   "script": [
     {

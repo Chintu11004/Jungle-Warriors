@@ -1,0 +1,23 @@
+{
+  "_resourceType": "trigger",
+  "id": "e53ba03c-0efd-486e-9d78-5564e6d87e7b",
+  "name": "",
+  "prefabId": "",
+  "x": 126,
+  "y": 8,
+  "symbol": "trigger_28",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 48,
+  "script": [
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "560a17be-2ad8-46cd-b22b-2940c8d72d93"
+      },
+      "id": "6a4a0793-6fad-44ce-a204-4b680bc68723"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 4
+}

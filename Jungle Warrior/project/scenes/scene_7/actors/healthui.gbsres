@@ -8,7 +8,7 @@
   "prefabId": "",
   "direction": "down",
   "moveSpeed": 1,
-  "animSpeed": 15,
+  "animSpeed": 255,
   "paletteId": "",
   "isPinned": true,
   "persistent": false,

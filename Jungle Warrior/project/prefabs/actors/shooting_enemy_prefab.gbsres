@@ -200,7 +200,7 @@
                 "type": "number",
                 "value": 1
               },
-              "__collapse": true,
+              "__collapse": false,
               "value2": {
                 "type": "number",
                 "value": 2
@@ -239,7 +239,7 @@
                     ],
                     "lockDirection": [],
                     "moveType": "horizontal",
-                    "__collapse": true,
+                    "__collapse": false,
                     "units": "tiles"
                   },
                   "id": "b7b8c480-dd69-4456-95a9-fb26304bc5d6",
@@ -265,7 +265,7 @@
                       "value": "L3"
                     },
                     "__collapseElse": false,
-                    "__collapse": true
+                    "__collapse": false
                   },
                   "children": {
                     "true": [
@@ -1120,20 +1120,19 @@
   ],
   "hit1Script": [
     {
-      "command": "EVENT_ACTOR_DEACTIVATE",
-      "args": {
-        "actorId": "$self$"
-      },
-      "id": "d14a9480-641b-4492-9eec-d62efe815b5b",
-      "children": {}
-    },
-    {
       "command": "EVENT_INC_VALUE",
       "args": {
         "variable": "22"
       },
       "id": "a3179de4-11cc-4431-9739-7b2ef56fbb29",
       "children": {}
+    },
+    {
+      "command": "PT_EVENT_ACTOR_PERMANENT_DESPAWN",
+      "args": {
+        "actorId": "$self$"
+      },
+      "id": "8898d109-d968-4d8c-a8af-8d4d3b3a7983"
     }
   ],
   "hit2Script": [],
