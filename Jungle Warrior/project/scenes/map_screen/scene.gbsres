@@ -152,7 +152,7 @@
         ],
         "override": true,
         "__scriptTabs": "press",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -196,7 +196,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Did player assign enough people?",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [

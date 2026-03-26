@@ -273,7 +273,8 @@
               "value": {
                 "type": "number",
                 "value": 3
-              }
+              },
+              "__collapse": true
             },
             "id": "cf0656fa-b3ba-4bfe-bd88-7b437d2d655a"
           }
@@ -284,14 +285,16 @@
     {
       "command": "EVENT_REGISTER_ROPE_ACTOR",
       "args": {
-        "actor": "5f90007b-3b2c-426a-ab1d-32c277d16f0e"
+        "actor": "5f90007b-3b2c-426a-ab1d-32c277d16f0e",
+        "__collapse": true
       },
       "id": "674e987d-57aa-4da8-a5dc-6a1490707f33"
     },
     {
       "command": "EVENT_REGISTER_ROPE_ACTOR",
       "args": {
-        "actor": "e184e2de-a1ef-4168-a7cf-473540371b5e"
+        "actor": "e184e2de-a1ef-4168-a7cf-473540371b5e",
+        "__collapse": true
       },
       "id": "f6d23aab-063e-4397-9d2b-72e282b6ce5a"
     },

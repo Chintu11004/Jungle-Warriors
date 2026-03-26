@@ -19,7 +19,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "loading all actors",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "true": [

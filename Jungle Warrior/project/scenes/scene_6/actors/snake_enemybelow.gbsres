@@ -1,11 +1,11 @@
 {
   "_resourceType": "actor",
-  "id": "1e3fb732-6900-47e2-94cf-26a02ac3a3dc",
-  "name": "End Goal Sign",
+  "id": "c47f99e2-72c7-4619-9048-c9bfba630039",
+  "name": "Snake Enemybelow",
   "frame": 0,
   "animate": false,
   "spriteSheetId": "743e9fbe-6c47-41f5-b20d-4f41d19c4005",
-  "prefabId": "1ebea65b-3265-49d4-bad5-6ce737df635a",
+  "prefabId": "a60fe8d6-aab5-4daa-a98f-6908cbba4c95",
   "direction": "down",
   "moveSpeed": 1,
   "animSpeed": 15,
@@ -15,7 +15,7 @@
   "collisionGroup": "",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
-  "symbol": "actor_51",
+  "symbol": "actor_10",
   "script": [],
   "startScript": [],
   "updateScript": [],
@@ -23,7 +23,7 @@
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
-  "x": 154,
-  "y": 6,
-  "_index": 17
+  "x": 138,
+  "y": 52,
+  "_index": 4
 }

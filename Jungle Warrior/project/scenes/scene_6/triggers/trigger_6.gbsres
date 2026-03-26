@@ -26,6 +26,13 @@
       "command": "EVENT_SET_DIALOGUE_FRAME",
       "args": {},
       "id": "7a7020df-d7d1-4684-8e0c-8916949e6782"
+    },
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "e119c88b-f8ad-4725-8d80-8dd3ed7a57af"
+      },
+      "id": "edfce7a5-214c-41ac-a1e9-55b1e263ce65"
     }
   ],
   "leaveScript": [],
