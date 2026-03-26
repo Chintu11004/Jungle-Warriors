@@ -1,11 +1,11 @@
 {
   "_resourceType": "actor",
-  "id": "66541635-9a04-4542-abef-7209bebfc4ae",
-  "name": "Snake Enemy",
+  "id": "560a17be-2ad8-46cd-b22b-2940c8d72d93",
+  "name": "Frog",
   "frame": 0,
   "animate": false,
   "spriteSheetId": "743e9fbe-6c47-41f5-b20d-4f41d19c4005",
-  "prefabId": "a60fe8d6-aab5-4daa-a98f-6908cbba4c95",
+  "prefabId": "cfd46368-e15a-4ce5-bbe5-31e4c6fd9f22",
   "direction": "down",
   "moveSpeed": 1,
   "animSpeed": 15,
@@ -15,7 +15,7 @@
   "collisionGroup": "",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
-  "symbol": "actor_27",
+  "symbol": "actor_10",
   "script": [],
   "startScript": [],
   "updateScript": [],
@@ -23,7 +23,7 @@
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
-  "x": 87,
-  "y": 62,
-  "_index": 2
+  "x": 137,
+  "y": 52,
+  "_index": 8
 }

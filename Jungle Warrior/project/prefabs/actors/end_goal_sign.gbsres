@@ -136,7 +136,7 @@
                   },
                   "valueB": {
                     "type": "number",
-                    "value": 12
+                    "value": 8
                   }
                 },
                 "valueB": {
@@ -147,7 +147,7 @@
                   },
                   "valueB": {
                     "type": "number",
-                    "value": 3
+                    "value": 5
                   }
                 }
               },
@@ -220,7 +220,7 @@
                   },
                   "valueB": {
                     "type": "number",
-                    "value": 8
+                    "value": 12
                   }
                 },
                 "valueB": {

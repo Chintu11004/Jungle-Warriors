@@ -1,0 +1,40 @@
+{
+  "_resourceType": "actor",
+  "id": "36793fc0-c826-40d5-b234-26e7f5311749",
+  "name": "Frog",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "743e9fbe-6c47-41f5-b20d-4f41d19c4005",
+  "prefabId": "cfd46368-e15a-4ce5-bbe5-31e4c6fd9f22",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {
+    "ee3f0b3b-8597-4f7d-a1e3-234d46b7198b": {
+      "id": "ee3f0b3b-8597-4f7d-a1e3-234d46b7198b",
+      "args": {
+        "text": [
+          "You have freed a South\nAmerican Common\nToad from its cage!",
+          "\"I like to hide during\nthe day and be active\nat night, but with all this\nnoise from this mine it\nis hard to do that!\"",
+          "The Toad returned\nback to its habitat."
+        ]
+      }
+    }
+  },
+  "symbol": "actor_27",
+  "script": [],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "coordinateType": "tiles",
+  "x": 115,
+  "y": 7,
+  "_index": 15
+}

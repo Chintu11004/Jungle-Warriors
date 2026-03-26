@@ -134,10 +134,53 @@
               "actor": "1b104fba-0a93-47a6-8d6b-b54a46575096"
             },
             "id": "ca462349-73c9-428b-91a1-c48aa0633ccc"
+          },
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "a781b72e-555b-4b1e-934f-7022fdc2c38c"
+            },
+            "id": "4f4776db-5a1a-433c-9018-9cd0dd2c6d03"
+          },
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "36793fc0-c826-40d5-b234-26e7f5311749"
+            },
+            "id": "df817d9a-5beb-4bf0-a986-f36ad23a2fbd"
+          },
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "77f69257-4cd7-4b09-977d-818c5c21ea13"
+            },
+            "id": "6d00affb-3ee5-4c05-ad4d-b75f17bc2f04"
+          },
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "c55ad88c-9440-419a-be05-6759453f48f1"
+            },
+            "id": "795a12b3-01a6-4cac-883a-bc3f87b1ef4e"
+          },
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "81c96986-a754-4e6d-8756-41fc1e2a8eaf"
+            },
+            "id": "44e1145c-30ea-445a-ada9-9f03a6dc2e6e"
           }
         ]
       },
       "id": "0b178ddc-ae5b-4943-81d1-65794b0465d3"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "92dbf5f0-ecc4-4fad-b816-b2a45db599ca",
+        "__collapse": true
+      },
+      "id": "dd09ba2b-40d2-4fd6-9104-46a00e095363"
     },
     {
       "command": "EVENT_SET_INPUT_SCRIPT",

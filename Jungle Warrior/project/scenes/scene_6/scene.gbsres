@@ -88,6 +88,20 @@
               "actor": "23aac5fb-1ae2-41dd-8527-0282ed208cf4"
             },
             "id": "9ae060bd-7a0b-4be6-a33e-ab9334ab6323"
+          },
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "d0faaed4-64c3-4ead-bed2-ea39888475b7"
+            },
+            "id": "103f40d3-c088-4ade-a046-88ce931b8112"
+          },
+          {
+            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "args": {
+              "actor": "560a17be-2ad8-46cd-b22b-2940c8d72d93"
+            },
+            "id": "fd01f209-29bf-4aa0-9040-49ed37dd0c3e"
           }
         ]
       },
@@ -115,6 +129,14 @@
         "__collapse": true
       },
       "id": "95a504c6-d416-429d-b79e-30b3afa0e161"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "92dbf5f0-ecc4-4fad-b816-b2a45db599ca",
+        "__collapse": true
+      },
+      "id": "e064631a-187a-4a20-9840-d1ba7c38d683"
     },
     {
       "command": "EVENT_SET_INPUT_SCRIPT",
@@ -167,7 +189,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Common Scipt for level setup",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "true": [

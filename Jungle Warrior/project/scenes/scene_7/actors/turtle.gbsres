@@ -1,0 +1,42 @@
+{
+  "_resourceType": "actor",
+  "id": "5f90007b-3b2c-426a-ab1d-32c277d16f0e",
+  "name": "Turtle",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "743e9fbe-6c47-41f5-b20d-4f41d19c4005",
+  "prefabId": "6048c75f-b335-4897-b848-60693a385eda",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {
+    "390d36b7-cad2-4b4c-a1aa-db3a6a3b038d": {
+      "id": "390d36b7-cad2-4b4c-a1aa-db3a6a3b038d",
+      "args": {
+        "text": [
+          "You have freed a Mata\nMata Turtle from its \ncage!",
+          "\"I'm not sure how I got\nup here, but I'm ready",
+          "to head back to the\nbasin!\"",
+          "The turtle returned\nback to its habitat."
+        ],
+        "__section": "text"
+      }
+    }
+  },
+  "symbol": "actor_21",
+  "script": [],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "coordinateType": "tiles",
+  "x": 25,
+  "y": 19,
+  "_index": 10
+}

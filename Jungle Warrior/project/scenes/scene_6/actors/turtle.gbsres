@@ -1,11 +1,11 @@
 {
   "_resourceType": "actor",
-  "id": "cbbb064e-74bb-4fe4-a327-ba08b0646a48",
-  "name": "Snake Enemy",
+  "id": "d0faaed4-64c3-4ead-bed2-ea39888475b7",
+  "name": "Turtle",
   "frame": 0,
   "animate": false,
   "spriteSheetId": "743e9fbe-6c47-41f5-b20d-4f41d19c4005",
-  "prefabId": "a60fe8d6-aab5-4daa-a98f-6908cbba4c95",
+  "prefabId": "6048c75f-b335-4897-b848-60693a385eda",
   "direction": "down",
   "moveSpeed": 1,
   "animSpeed": 15,
@@ -23,7 +23,7 @@
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
-  "x": 14,
+  "x": 12,
   "y": 25,
-  "_index": 2
+  "_index": 7
 }

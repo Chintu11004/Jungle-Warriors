@@ -20,7 +20,8 @@
       "args": {
         "actorId": "$self$",
         "spriteStateId": "2nd enemy",
-        "loopAnim": true
+        "loopAnim": true,
+        "__collapse": false
       },
       "id": "f43e1ce6-b7a9-41d4-affd-d9d9362afbfc",
       "children": {}
@@ -233,7 +234,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "AI Chase Behvaiour",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "true": [

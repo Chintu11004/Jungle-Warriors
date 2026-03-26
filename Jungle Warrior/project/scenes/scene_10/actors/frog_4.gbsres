@@ -1,0 +1,41 @@
+{
+  "_resourceType": "actor",
+  "id": "c55ad88c-9440-419a-be05-6759453f48f1",
+  "name": "Frog",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "743e9fbe-6c47-41f5-b20d-4f41d19c4005",
+  "prefabId": "cfd46368-e15a-4ce5-bbe5-31e4c6fd9f22",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {
+    "ee3f0b3b-8597-4f7d-a1e3-234d46b7198b": {
+      "id": "ee3f0b3b-8597-4f7d-a1e3-234d46b7198b",
+      "args": {
+        "text": [
+          "You have freed a \nCommon Big Headed \nFrog from its cage!",
+          "\"I blend in really well\nwith my environment,",
+          "but these miners were\nstill able to find me\nsomehow.\"",
+          "The Common Big Headed\nFrog returned\nback to its habitat."
+        ]
+      }
+    }
+  },
+  "symbol": "actor_50",
+  "script": [],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "coordinateType": "tiles",
+  "x": 102,
+  "y": 17,
+  "_index": 17
+}

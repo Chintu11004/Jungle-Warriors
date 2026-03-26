@@ -1,11 +1,11 @@
 {
   "_resourceType": "actor",
-  "id": "e184e2de-a1ef-4168-a7cf-473540371b5e",
-  "name": "Snake Enemy",
+  "id": "77f69257-4cd7-4b09-977d-818c5c21ea13",
+  "name": "Frog",
   "frame": 0,
   "animate": false,
   "spriteSheetId": "743e9fbe-6c47-41f5-b20d-4f41d19c4005",
-  "prefabId": "a60fe8d6-aab5-4daa-a98f-6908cbba4c95",
+  "prefabId": "cfd46368-e15a-4ce5-bbe5-31e4c6fd9f22",
   "direction": "down",
   "moveSpeed": 1,
   "animSpeed": 15,
@@ -15,18 +15,18 @@
   "collisionGroup": "",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {
-    "99edf33f-d0c1-46ea-aa41-1f46e7229bb2": {
-      "id": "99edf33f-d0c1-46ea-aa41-1f46e7229bb2",
+    "ee3f0b3b-8597-4f7d-a1e3-234d46b7198b": {
+      "id": "ee3f0b3b-8597-4f7d-a1e3-234d46b7198b",
       "args": {
         "text": [
-          "You have freed an\nEmerald Tree Boa from \nits cage!",
-          "\"Ssssnake... where's the\nnnnnearessstt tree?\"",
-          "The snake slithered\nback to its habitat."
+          "You have freed a Glass\nFrog from its cage!",
+          "\"Being translucent has\nit's benefits!\"",
+          "The Glass Frog \nreturned\nback to its habitat."
         ]
       }
     }
   },
-  "symbol": "actor_22",
+  "symbol": "actor_28",
   "script": [],
   "startScript": [],
   "updateScript": [],
@@ -34,7 +34,7 @@
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
-  "x": 149,
-  "y": 38,
-  "_index": 11
+  "x": 86,
+  "y": 62,
+  "_index": 16
 }

@@ -1,34 +1,32 @@
 {
   "_resourceType": "actorPrefab",
-  "id": "a60fe8d6-aab5-4daa-a98f-6908cbba4c95",
-  "name": "Snake Enemy",
+  "id": "cfd46368-e15a-4ce5-bbe5-31e4c6fd9f22",
+  "name": "Frog",
   "frame": 0,
   "animate": false,
-  "spriteSheetId": "7deb7e83-6fa3-4d3e-96e0-798da357fa14",
+  "spriteSheetId": "5ba78cd3-8770-4340-816e-8894067b00a1",
   "moveSpeed": 1,
   "animSpeed": 15,
   "paletteId": "",
   "persistent": false,
   "collisionGroup": "1",
   "collisionExtraFlags": [],
-  "prefabScriptOverrides": {},
-  "_index": 0,
   "script": [
     {
       "command": "EVENT_SCENE_UPDATE_PAUSE",
       "args": {},
-      "id": "c65d8226-9c92-43b2-a9d5-6a12cc95d945",
+      "id": "53b763e2-cfc3-4764-9c09-ebac85c87599",
       "children": {}
     },
     {
       "command": "EVENT_ACTOR_SET_STATE",
       "args": {
         "actorId": "$self$",
-        "spriteStateId": "default escape",
+        "spriteStateId": "frog escape",
         "loopAnim": false,
         "__collapse": false
       },
-      "id": "761fdc03-cd81-407a-9f7f-1e7c32359e09",
+      "id": "330da98a-aa2d-4697-8c0c-8fce9c083442",
       "children": {}
     },
     {
@@ -43,17 +41,17 @@
           "value": 1
         }
       },
-      "id": "82707c71-d8ce-443c-bd3f-3e6f4ab4d190",
+      "id": "f435081d-688a-44fa-97a0-d4cbb010d347",
       "children": {}
     },
     {
       "command": "EVENT_TEXT",
       "args": {
         "text": [
-          "You have freed a Green\nAnaconda from its cage!",
-          "\"Ssssnake... those evil\nlllloggers pppput me",
-          "here, ssssss. Thhhhhan\nks for helping me!\"",
-          "The snake slithered\nback to its habitat."
+          "You have freed a Cane\nToad from its cage!",
+          "\"Thanks! Don't worry,\nwhile I am poisonous,\nI won't poison you!",
+          "You are my new friend!\"",
+          "The Cane Toad returned\nback to its habitat."
         ],
         "__section": "text",
         "avatarId": "",
@@ -72,7 +70,7 @@
         "closeDelayTime": 0.5,
         "closeDelayFrames": 30
       },
-      "id": "99edf33f-d0c1-46ea-aa41-1f46e7229bb2",
+      "id": "ee3f0b3b-8597-4f7d-a1e3-234d46b7198b",
       "children": {}
     },
     {
@@ -80,7 +78,7 @@
       "args": {
         "variable": "21"
       },
-      "id": "5b682f46-2aad-4ddc-8276-0591d0b1e360",
+      "id": "538208e4-98d4-45fa-aa2f-bf87556d9cf4",
       "children": {}
     },
     {
@@ -88,12 +86,12 @@
       "args": {
         "actorId": "$self$"
       },
-      "id": "0cd159ee-8877-4a42-977c-916f0ecfa379"
+      "id": "f1f2804d-03fc-4b83-b14c-e86d3188da6e"
     },
     {
       "command": "EVENT_SCENE_UPDATE_RESUME",
       "args": {},
-      "id": "b8beea13-4069-41db-abc7-a0ed66e04173",
+      "id": "8a57919c-bed8-4cc8-8dfb-03c520def7da",
       "children": {}
     }
   ],
@@ -105,19 +103,8 @@
         "spriteStateId": "",
         "loopAnim": true
       },
-      "id": "a3c71530-7bf0-4f2f-8844-d0372bfa2d48",
+      "id": "7d5d4b88-d3b7-4b74-9f52-a7db8f2fdca6",
       "children": {}
-    },
-    {
-      "command": "EVENT_ACTOR_SET_FRAME",
-      "args": {
-        "actorId": "$self$",
-        "frame": {
-          "type": "number",
-          "value": 0
-        }
-      },
-      "id": "eb83591f-24ff-4372-85d2-8b4f3f41e55f"
     }
   ],
   "updateScript": [],
