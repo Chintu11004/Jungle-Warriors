@@ -78,7 +78,7 @@
                 "type": "number",
                 "value": 6
               },
-              "__collapse": true
+              "__collapse": false
             },
             "id": "fe634bd2-74d6-4338-b3e7-f2928132470c",
             "children": {}
@@ -129,7 +129,7 @@
           "type": "number",
           "value": 0
         },
-        "__collapse": true
+        "__collapse": false
       },
       "id": "4117f897-007b-4349-9557-58dcbc546c98",
       "children": {}

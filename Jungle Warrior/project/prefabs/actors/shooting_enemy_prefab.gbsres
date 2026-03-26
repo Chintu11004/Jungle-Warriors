@@ -17,7 +17,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Seting up variables",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "true": [
@@ -107,7 +107,7 @@
           "type": "number",
           "value": 0
         },
-        "__collapse": true
+        "__collapse": false
       },
       "id": "90a560ff-ddf3-4d3f-bf03-d25e381b9c26",
       "children": {}

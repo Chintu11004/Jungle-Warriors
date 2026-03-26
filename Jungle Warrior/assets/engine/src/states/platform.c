@@ -301,6 +301,10 @@ INT16 plat_rope_ang_vel;       // angular velocity of the object
 UBYTE plat_rope_swing_speed;   // controls the swing speed of the rope
 BYTE plat_rope_start_side;    // 1 = start at go left-ro-right, -1 = go right-to-left
 UBYTE plat_rope_actor;         // the actor id for the rope actor
+/* Same-rope re-grab only: rope metasprite actor index is unique per rope */
+#define PLAT_ROPE_SAME_GRAB_FRAMES 60U
+UBYTE plat_rope_same_grab_cooldown;
+UBYTE plat_rope_last_exit_actor;
 #define PLAT_ROPE_RESET_MAX 5
 rope_actor_t plat_rope_resetPositions_array[PLAT_ROPE_RESET_MAX];
 UBYTE plat_rope_array_size;
@@ -440,7 +444,15 @@ inline UBYTE dash_input_pressed(void)
 
 #endif
 
+UBYTE plat_rope_same_grab_blocked(UBYTE rope_actor_idx) BANKED {
+    if (plat_rope_same_grab_cooldown == 0)
+        return 0;
+    return (rope_actor_idx == plat_rope_last_exit_actor) ? 1 : 0;
+}
+
 void rope_trigger_enter(UWORD anchor_x, UWORD anchor_y, UBYTE block_length, UBYTE max_angle_degrees, UBYTE swing_speed, UBYTE start_side, UBYTE actor_idx) BANKED{
+    if (plat_rope_same_grab_blocked(actor_idx))
+        return;
     plat_rope_anchor_x = TILE_TO_SUBPX(anchor_x);// + 128; // we want midpoint of a block
     plat_rope_anchor_y = TILE_TO_SUBPX(anchor_y);
     plat_rope_block_length = block_length;
@@ -559,6 +571,7 @@ void platform_init(void) BANKED
     plat_nocontrol_h_timer = 0;
     did_interact_actor = FALSE;
     plat_anim_dirty = FALSE;
+    plat_rope_same_grab_cooldown = 0;
 
 #ifdef FEAT_PLATFORM_DROP_THROUGH
     plat_drop_timer = 0;
@@ -616,6 +629,8 @@ void platform_update(void) BANKED
         plat_next_state = BLANK_STATE;
     }
 #endif
+
+    COUNTER_DECREMENT(plat_rope_same_grab_cooldown);
 
     // State transitions
 
@@ -2642,6 +2657,8 @@ static void state_enter_rope(void) {
 }
 
 static void state_exit_rope(void) {
+    plat_rope_last_exit_actor = plat_rope_actor;
+    plat_rope_same_grab_cooldown = PLAT_ROPE_SAME_GRAB_FRAMES;
     plat_rope_mask = 0;
     plat_callback_execute(ROPE_END);
 }

@@ -32,5 +32,6 @@ extern state_e plat_next_state;
 void platform_init(void) BANKED;
 void platform_update(void) BANKED;
 void rope_trigger_enter(UWORD anchor_x, UWORD anchor_y, UBYTE block_length, UBYTE max_angle_degrees, UBYTE swing_speed, UBYTE start_side, UBYTE actor_idx) BANKED;
+UBYTE plat_rope_same_grab_blocked(UBYTE rope_actor_idx) BANKED;
 
 #endif

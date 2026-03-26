@@ -21,19 +21,43 @@ BANKREF(ROPE_SWING)
     On start == TRUE : initialise the rope state.
     Each frame       : yield (waitable = 1) and return FALSE while still swinging.
     Returns TRUE     : once the player has left ROPE_STATE — VM then pops the 7 stack slots.
+
+    If same-rope re-grab cooldown is active (same rope actor id as last dismount), returns TRUE
+    immediately (invoke completes, stack popped) so the script does not sit inside VM_INVOKE for
+    many frames — cooldown still counts down in platform_update only, same PLAT_ROPE_SAME_GRAB_FRAMES.
+    Retrigger next frame / next loop iteration is a no-op until cooldown clears. Other rope actors
+    are unaffected.
 */
+static UBYTE rope_swing_pending;
+
 UBYTE rope_swing_update(void *THIS_void, UBYTE start, UWORD *stack_frame) OLDCALL BANKED {
     SCRIPT_CTX *THIS = (SCRIPT_CTX *)THIS_void;
 
-    if (start) {
-        UWORD anchor_x      = stack_frame[0];
-        UWORD anchor_y      = stack_frame[1];
-        UBYTE block_length  = (UBYTE)stack_frame[2];
-        UBYTE max_angle     = (UBYTE)stack_frame[3];
-        UBYTE speed_factor  = (UBYTE)stack_frame[4];
-        UBYTE start_side    = (UBYTE)stack_frame[5];
-        UBYTE actor_idx     = (UBYTE)stack_frame[6];
-        rope_trigger_enter(anchor_x, anchor_y, block_length, max_angle, speed_factor, start_side, actor_idx);
+    if (plat_state == ROPE_STATE) {
+        rope_swing_pending = 0;
+        THIS->waitable = 1;
+        return FALSE;
+    }
+
+    if (start)
+        rope_swing_pending = 1;
+
+    if (rope_swing_pending) {
+        UWORD anchor_x = stack_frame[0];
+        UWORD anchor_y = stack_frame[1];
+        UBYTE actor_idx = (UBYTE)stack_frame[6];
+        if (plat_rope_same_grab_blocked(actor_idx)) {
+            rope_swing_pending = 0;
+            return TRUE;
+        }
+        {
+            UBYTE block_length = (UBYTE)stack_frame[2];
+            UBYTE max_angle = (UBYTE)stack_frame[3];
+            UBYTE speed_factor = (UBYTE)stack_frame[4];
+            UBYTE start_side = (UBYTE)stack_frame[5];
+            rope_trigger_enter(anchor_x, anchor_y, block_length, max_angle, speed_factor, start_side, actor_idx);
+        }
+        rope_swing_pending = 0;
     }
 
     if (plat_state != ROPE_STATE) {

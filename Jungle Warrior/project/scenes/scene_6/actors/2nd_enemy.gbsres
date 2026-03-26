@@ -5,8 +5,8 @@
   "frame": 0,
   "animate": false,
   "spriteSheetId": "743e9fbe-6c47-41f5-b20d-4f41d19c4005",
-  "prefabId": "7df2ed09-4ae9-4535-a1fb-7e91bd69e395",
-  "direction": "down",
+  "prefabId": "4457dff6-cb70-480e-bef5-2fc2b40fadef",
+  "direction": "right",
   "moveSpeed": 1,
   "animSpeed": 15,
   "paletteId": "",
@@ -14,7 +14,17 @@
   "persistent": false,
   "collisionGroup": "",
   "collisionExtraFlags": [],
-  "prefabScriptOverrides": {},
+  "prefabScriptOverrides": {
+    "eb0404a0-360f-4706-ba94-576838e18a2e": {
+      "id": "eb0404a0-360f-4706-ba94-576838e18a2e",
+      "args": {
+        "value": {
+          "type": "number",
+          "value": 3
+        }
+      }
+    }
+  },
   "symbol": "actor_19",
   "script": [],
   "startScript": [],
