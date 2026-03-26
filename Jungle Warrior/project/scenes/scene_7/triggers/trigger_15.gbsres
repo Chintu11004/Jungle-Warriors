@@ -31,6 +31,27 @@
         }
       },
       "id": "5892b8a1-9650-450b-b97c-14e18b2dbd20"
+    },
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "8db7b103-58db-4f92-ab9c-fad12b19aa4d"
+      },
+      "id": "10ff35da-f23b-4621-8f83-a2319799360d"
+    },
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "ed8be11d-f564-422b-b3c7-e50b6a56abc0"
+      },
+      "id": "8e0fa035-ae53-41ee-bed7-eb27a2914694"
+    },
+    {
+      "command": "EVENT_REGISTER_ROPE_ACTOR",
+      "args": {
+        "actor": "ed8be11d-f564-422b-b3c7-e50b6a56abc0"
+      },
+      "id": "9012ef45-77d7-4019-905e-0ab86248233e"
     }
   ],
   "leaveScript": [],

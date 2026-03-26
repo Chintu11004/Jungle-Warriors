@@ -6,7 +6,7 @@
   "animate": false,
   "spriteSheetId": "743e9fbe-6c47-41f5-b20d-4f41d19c4005",
   "prefabId": "",
-  "direction": "down",
+  "direction": "right",
   "moveSpeed": 1,
   "animSpeed": 255,
   "paletteId": "",
@@ -25,5 +25,5 @@
   "coordinateType": "tiles",
   "x": 55,
   "y": 31,
-  "_index": 6
+  "_index": 5
 }

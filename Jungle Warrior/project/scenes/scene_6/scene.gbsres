@@ -153,7 +153,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Common Scipt for level setup",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "true": [

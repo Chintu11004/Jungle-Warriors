@@ -28,49 +28,57 @@
   "script": [
     {
       "command": "EVENT_GROUP",
-      "args": {},
+      "args": {
+        "__collapse": true
+      },
       "children": {
         "true": [
           {
-            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "command": "EVENT_REGISTER_ROPE_ACTOR",
             "args": {
-              "actor": "b5e5098d-5e6d-4853-ba6f-85e2aa1fd173",
-              "__collapse": false
+              "actor": "fd1d2383-9225-4d9f-b51f-c8a187c83476"
             },
-            "id": "bb37a0c7-fa52-45fb-8597-1aaad7880961"
+            "id": "cc573ff1-8e25-4a63-81bc-7356945ccc63"
           },
           {
-            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "command": "EVENT_REGISTER_ROPE_ACTOR",
             "args": {
-              "actor": "7e59ac35-a384-4876-be04-22e6873ae7f8",
-              "__collapse": false
+              "actor": "d3276613-8904-4474-b8fe-0573db876461"
             },
-            "id": "58be9551-e1c8-4a18-b68a-ecfae9313588"
+            "id": "17a2787a-9bf2-430c-9bea-8797dd6f7da1"
           },
           {
-            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "command": "EVENT_REGISTER_ROPE_ACTOR",
             "args": {
-              "actor": "b5e5098d-5e6d-4853-ba6f-85e2aa1fd173",
-              "__collapse": false
+              "actor": "c65e39f9-9537-400f-a3dd-567e5a8d26fc"
             },
-            "id": "49d870fe-3a93-470f-b8cd-c17a71d829da"
+            "id": "af43df9e-88ae-4c09-aafb-4da4a6f2d4ba"
           },
           {
-            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "command": "EVENT_REGISTER_ROPE_ACTOR",
             "args": {
-              "actor": "b2f53b2d-4d98-4747-8d77-cb9afa8b55a0",
-              "__collapse": false
+              "actor": "dee6e65f-7085-46e7-b16a-7d8ee8a82e1b"
             },
-            "id": "0683e22e-ec5f-46dc-9345-512140622b64"
+            "id": "588aa648-9ced-4c6e-b0f1-1031786a152f"
           },
           {
-            "command": "EVENT_DEFERRED_ACTOR_LOAD",
+            "command": "EVENT_REGISTER_ROPE_ACTOR",
             "args": {
-              "actor": "8db7b103-58db-4f92-ab9c-fad12b19aa4d",
-              "__collapse": false
+              "actor": "268348f4-af7f-42a3-bde6-2e24d7227526"
             },
-            "id": "377998fb-a3e3-474e-9a58-a7653a22786f"
-          },
+            "id": "8f036c2c-c021-4b5e-b466-cb32461bfb0d"
+          }
+        ]
+      },
+      "id": "37c48fa1-b609-4a6e-a547-dce9dd1c77a0"
+    },
+    {
+      "command": "EVENT_GROUP",
+      "args": {
+        "__collapse": true
+      },
+      "children": {
+        "true": [
           {
             "command": "EVENT_DEFERRED_ACTOR_LOAD",
             "args": {
@@ -82,7 +90,7 @@
           {
             "command": "EVENT_DEFERRED_ACTOR_LOAD",
             "args": {
-              "actor": "140a9a96-03e4-40c1-b246-8fc8797fad44",
+              "actor": "d3276613-8904-4474-b8fe-0573db876461",
               "__collapse": false
             },
             "id": "6fad6ef2-adf2-48d9-902b-e8ea49eeb33a"
@@ -90,21 +98,21 @@
           {
             "command": "EVENT_DEFERRED_ACTOR_LOAD",
             "args": {
-              "actor": "5f90007b-3b2c-426a-ab1d-32c277d16f0e"
+              "actor": "c65e39f9-9537-400f-a3dd-567e5a8d26fc"
             },
             "id": "6243bc18-8a6c-4049-9908-bfdcc5df258a"
           },
           {
             "command": "EVENT_DEFERRED_ACTOR_LOAD",
             "args": {
-              "actor": "e184e2de-a1ef-4168-a7cf-473540371b5e"
+              "actor": "dee6e65f-7085-46e7-b16a-7d8ee8a82e1b"
             },
             "id": "6b7fcb61-5e82-4311-b2c3-e782501bcd34"
           },
           {
             "command": "EVENT_DEFERRED_ACTOR_LOAD",
             "args": {
-              "actor": "ed8be11d-f564-422b-b3c7-e50b6a56abc0"
+              "actor": "268348f4-af7f-42a3-bde6-2e24d7227526"
             },
             "id": "171dc027-c677-4880-b19a-8f41c671b740"
           }
@@ -199,18 +207,6 @@
       "children": {
         "true": [
           {
-            "command": "EVENT_SET_VALUE",
-            "args": {
-              "variable": "18",
-              "value": {
-                "type": "number",
-                "value": 4
-              },
-              "__collapse": false
-            },
-            "id": "8266cbb1-79b8-4947-8376-9aac33ad2871"
-          },
-          {
             "command": "EVENT_SET_PLATFORMER_CALLBACK_SCRIPT",
             "args": {
               "event": "knockbackStart",
@@ -223,7 +219,8 @@
                   "command": "EVENT_CALL_CUSTOM_EVENT",
                   "args": {
                     "customEventId": "a910691b-cedc-463c-8633-b81c735893f9",
-                    "$actor[0]$": "df7118b4-870d-4ad2-8149-1183421be21c"
+                    "$actor[0]$": "f03eecbb-ff44-4920-9383-39407be7c178",
+                    "__comment": false
                   },
                   "id": "219ea9d4-f13b-47cb-808e-d89ade327613"
                 }
@@ -283,11 +280,49 @@
         ]
       },
       "id": "f3707e05-76ef-4467-b0f4-ab8c76970dd2"
+    },
+    {
+      "command": "EVENT_REGISTER_ROPE_ACTOR",
+      "args": {
+        "actor": "5f90007b-3b2c-426a-ab1d-32c277d16f0e"
+      },
+      "id": "674e987d-57aa-4da8-a5dc-6a1490707f33"
+    },
+    {
+      "command": "EVENT_REGISTER_ROPE_ACTOR",
+      "args": {
+        "actor": "e184e2de-a1ef-4168-a7cf-473540371b5e"
+      },
+      "id": "f6d23aab-063e-4397-9d2b-72e282b6ce5a"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "81daf0f4-6d57-4b0a-976d-a2b499989b38",
+        "$actor[0]$": "f03eecbb-ff44-4920-9383-39407be7c178"
+      },
+      "id": "56d2a7b0-0eed-4acc-8c26-bca39fd29d15"
     }
   ],
-  "playerHit1Script": [],
+  "playerHit1Script": [
+    {
+      "command": "EVENT_PLATFORMER_STATE_SET",
+      "args": {
+        "state": "knockback"
+      },
+      "id": "f9fd8043-3386-41e4-b2a8-3567268c077b"
+    }
+  ],
   "playerHit2Script": [],
-  "playerHit3Script": [],
+  "playerHit3Script": [
+    {
+      "command": "EVENT_PLATFORMER_STATE_SET",
+      "args": {
+        "state": "knockback"
+      },
+      "id": "271b2f5b-7d37-42c3-b6ae-2fec8a619f3f"
+    }
+  ],
   "playerSpriteSheetId": "c91b8ed9-7012-42b0-ace7-b8bb32a9b64d",
   "autoFadeEventCollapse": true
 }

@@ -31,6 +31,13 @@
         }
       },
       "id": "403e4421-bc00-418c-9a3e-40dcfac5531a"
+    },
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "$self$"
+      },
+      "id": "38bda9f0-144f-47b7-9886-6791ef10bb7f"
     }
   ],
   "leaveScript": [],

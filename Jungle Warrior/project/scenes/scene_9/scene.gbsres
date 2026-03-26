@@ -31,8 +31,8 @@
       "args": {
         "text": [
           "The government is\ndisappointed...",
-          "You did not rescue $animalsrescuedinverted\nand you failed to",
-          "quell $enemieskilledinverted enemies.\nWe are all in this together,\nso make sure to do \na good job!"
+          "You only rescued $21$\nand you only...",
+          "...quelled $22$ enemies.\nWe are all in this \ntogether, so make sure\nto do a good job!"
         ],
         "__section": "text",
         "avatarId": "",

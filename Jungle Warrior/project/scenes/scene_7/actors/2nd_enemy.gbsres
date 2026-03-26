@@ -1,6 +1,6 @@
 {
   "_resourceType": "actor",
-  "id": "a6ae22e8-5f2c-476a-820d-dccd87b316ee",
+  "id": "b2f53b2d-4d98-4747-8d77-cb9afa8b55a0",
   "name": "2nd Enemy",
   "frame": 0,
   "animate": false,
@@ -15,21 +15,21 @@
   "collisionGroup": "",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {
-    "fe634bd2-74d6-4338-b3e7-f2928132470c": {
-      "id": "fe634bd2-74d6-4338-b3e7-f2928132470c",
-      "args": {
-        "value": {
-          "type": "number",
-          "value": 12
-        }
-      }
-    },
     "5da95c8a-2da6-43b0-8edb-298f809a4288": {
       "id": "5da95c8a-2da6-43b0-8edb-298f809a4288",
       "args": {
         "value": {
           "type": "number",
-          "value": 1
+          "value": 11
+        }
+      }
+    },
+    "fe634bd2-74d6-4338-b3e7-f2928132470c": {
+      "id": "fe634bd2-74d6-4338-b3e7-f2928132470c",
+      "args": {
+        "value": {
+          "type": "number",
+          "value": 16
         }
       }
     },
@@ -43,7 +43,7 @@
       }
     }
   },
-  "symbol": "actor_23",
+  "symbol": "actor_24",
   "script": [],
   "startScript": [],
   "updateScript": [],
@@ -51,7 +51,7 @@
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
-  "x": 61,
-  "y": 18,
+  "x": 134,
+  "y": 23,
   "_index": 1
 }

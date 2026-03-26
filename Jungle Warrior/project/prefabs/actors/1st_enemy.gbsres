@@ -9,7 +9,7 @@
   "animSpeed": 31,
   "paletteId": "",
   "persistent": false,
-  "collisionGroup": "2",
+  "collisionGroup": "3",
   "collisionExtraFlags": [],
   "script": [
     {
@@ -121,7 +121,7 @@
       "command": "EVENT_COMMENT",
       "args": {
         "text": "Temp 0 is a variable that is essentially a flag. It determines if an enemy can exceed the bounds during chase.\nIf it's 0, the enemy can exceed the bounds. If it's 1, the enemy CANNOT exceed the bounds set in \"On Init\"",
-        "__collapse": false
+        "__collapse": true
       },
       "id": "4b2af064-f348-4ec6-9aee-08929f1166c5",
       "children": {}
@@ -134,7 +134,7 @@
           "type": "number",
           "value": 0
         },
-        "__collapse": false
+        "__collapse": true
       },
       "id": "50ca6fa4-54b8-43c1-9d95-94bd79962384",
       "children": {}

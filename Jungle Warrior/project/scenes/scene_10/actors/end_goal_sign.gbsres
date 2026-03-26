@@ -1,12 +1,12 @@
 {
   "_resourceType": "actor",
-  "id": "81c96986-a754-4e6d-8756-41fc1e2a8eaf",
+  "id": "1e3fb732-6900-47e2-94cf-26a02ac3a3dc",
   "name": "End Goal Sign",
   "frame": 0,
   "animate": false,
   "spriteSheetId": "743e9fbe-6c47-41f5-b20d-4f41d19c4005",
   "prefabId": "1ebea65b-3265-49d4-bad5-6ce737df635a",
-  "direction": "right",
+  "direction": "down",
   "moveSpeed": 1,
   "animSpeed": 15,
   "paletteId": "",
@@ -23,7 +23,7 @@
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
-  "x": 157,
+  "x": 154,
   "y": 6,
-  "_index": 12
+  "_index": 17
 }

@@ -1,6 +1,6 @@
 {
   "_resourceType": "actor",
-  "id": "b2f53b2d-4d98-4747-8d77-cb9afa8b55a0",
+  "id": "af4e0f57-2258-4dfb-82e2-aef72423cae3",
   "name": "2nd Enemy",
   "frame": 0,
   "animate": false,
@@ -15,24 +15,6 @@
   "collisionGroup": "",
   "collisionExtraFlags": [],
   "prefabScriptOverrides": {
-    "5da95c8a-2da6-43b0-8edb-298f809a4288": {
-      "id": "5da95c8a-2da6-43b0-8edb-298f809a4288",
-      "args": {
-        "value": {
-          "type": "number",
-          "value": 11
-        }
-      }
-    },
-    "fe634bd2-74d6-4338-b3e7-f2928132470c": {
-      "id": "fe634bd2-74d6-4338-b3e7-f2928132470c",
-      "args": {
-        "value": {
-          "type": "number",
-          "value": 16
-        }
-      }
-    },
     "4117f897-007b-4349-9557-58dcbc546c98": {
       "id": "4117f897-007b-4349-9557-58dcbc546c98",
       "args": {
@@ -41,9 +23,27 @@
           "value": 1
         }
       }
+    },
+    "fe634bd2-74d6-4338-b3e7-f2928132470c": {
+      "id": "fe634bd2-74d6-4338-b3e7-f2928132470c",
+      "args": {
+        "value": {
+          "type": "number",
+          "value": 9
+        }
+      }
+    },
+    "5da95c8a-2da6-43b0-8edb-298f809a4288": {
+      "id": "5da95c8a-2da6-43b0-8edb-298f809a4288",
+      "args": {
+        "value": {
+          "type": "number",
+          "value": 4
+        }
+      }
     }
   },
-  "symbol": "actor_24",
+  "symbol": "actor_23",
   "script": [],
   "startScript": [],
   "updateScript": [],
@@ -51,7 +51,7 @@
   "hit2Script": [],
   "hit3Script": [],
   "coordinateType": "tiles",
-  "x": 134,
-  "y": 23,
-  "_index": 2
+  "x": 45,
+  "y": 15,
+  "_index": 11
 }

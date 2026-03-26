@@ -1,7 +1,7 @@
 {
   "_resourceType": "actor",
   "id": "4f6c10e9-e9a8-4830-8fbf-1f07de12cab0",
-  "name": "",
+  "name": "healthui",
   "frame": 0,
   "animate": false,
   "spriteSheetId": "51f59acc-a997-436c-81e9-fb1a6a2501da",
@@ -10,7 +10,7 @@
   "moveSpeed": 1,
   "animSpeed": 255,
   "paletteId": "",
-  "isPinned": false,
+  "isPinned": true,
   "persistent": false,
   "collisionGroup": "",
   "collisionExtraFlags": [],
