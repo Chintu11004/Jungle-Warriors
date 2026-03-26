@@ -256,6 +256,14 @@
         ]
       },
       "id": "592616b1-665c-4838-a617-f6e7fe3a321f"
+    },
+    {
+      "command": "EVENT_REGISTER_ROPE_ACTOR",
+      "args": {
+        "actor": "2739c9dc-a924-4c8f-9f5a-48f153d2e075",
+        "__collapse": true
+      },
+      "id": "d5bb6aae-6cf7-4056-97d6-03a53424f2c9"
     }
   ],
   "playerHit1Script": [

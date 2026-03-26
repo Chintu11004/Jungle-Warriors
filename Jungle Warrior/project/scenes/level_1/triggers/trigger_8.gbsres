@@ -39,6 +39,13 @@
         "actor": "593e701c-2493-4641-adc7-e8f6569cff5f"
       },
       "id": "02c4ae91-7fab-4c37-b40c-07798a0fdf13"
+    },
+    {
+      "command": "EVENT_DEFERRED_ACTOR_LOAD",
+      "args": {
+        "actor": "2739c9dc-a924-4c8f-9f5a-48f153d2e075"
+      },
+      "id": "bb2c274f-04f4-42bd-94cc-43c27e85051b"
     }
   ],
   "leaveScript": [],

@@ -23,6 +23,7 @@ typedef struct {
     UBYTE rope_max_angle;
     UBYTE rope_block_length_swing_speed;
     UBYTE rope_actor_index;
+    BYTE rope_start_side; /* 1 or -1, same convention as plat_rope_start_side */
 } rope_actor_t;
 
 extern state_e plat_state;
@@ -30,6 +31,6 @@ extern state_e plat_next_state;
 
 void platform_init(void) BANKED;
 void platform_update(void) BANKED;
-void rope_trigger_enter(UWORD anchor_x, UWORD anchor_y, UBYTE block_length, UBYTE max_angle_degrees, UBYTE swing_speed, UBYTE actor_idx) BANKED;
+void rope_trigger_enter(UWORD anchor_x, UWORD anchor_y, UBYTE block_length, UBYTE max_angle_degrees, UBYTE swing_speed, UBYTE start_side, UBYTE actor_idx) BANKED;
 
 #endif

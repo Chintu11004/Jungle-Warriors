@@ -1836,22 +1836,25 @@ OP_VM_PRINT_OVERLAY     = 0x8D
 ; @param LENGTH      Rope length in tiles (1–20).
 ; @param MAX_ANGLE   Maximum swing angle in degrees (30–90).
 ; @param SWING_SPEED Swing speed factor (1–5, higher = slower).
+; @param START_SIDE  0 = swing starts at -max angle (default), 1 = at +max angle (mirrored).
 ;
-; Stack frame inside rope_swing_update (PARAMS = .ARG4 = -5):
+; Stack frame inside rope_swing_update (PARAMS = .ARG6 = -7):
 ;   stack_frame[0] = ANCHOR_X     (first pushed, deepest)
 ;   stack_frame[1] = ANCHOR_Y
 ;   stack_frame[2] = LENGTH
 ;   stack_frame[3] = MAX_ANGLE
-;   stack_frame[4] = SWING_SPEED 
-;   stack_frame[4] = ACTOR  (last pushed, top = ARG0)
-.macro VM_ROPE_SWING ANCHOR_X, ANCHOR_Y, LENGTH, MAX_ANGLE, SWING_SPEED, ACTOR_IDX
+;   stack_frame[4] = SWING_SPEED
+;   stack_frame[5] = START_SIDE
+;   stack_frame[6] = ACTOR
+.macro VM_ROPE_SWING ANCHOR_X, ANCHOR_Y, LENGTH, MAX_ANGLE, SWING_SPEED, START_SIDE, ACTOR_IDX
         VM_PUSH_CONST ANCHOR_X
         VM_PUSH_CONST ANCHOR_Y
         VM_PUSH_CONST LENGTH
         VM_PUSH_CONST MAX_ANGLE
         VM_PUSH_CONST SWING_SPEED
+        VM_PUSH_CONST START_SIDE
         VM_PUSH_CONST ACTOR_IDX
-        VM_INVOKE BANK(ROPE_SWING), _rope_swing_update, 6, .ARG5
+        VM_INVOKE BANK(ROPE_SWING), _rope_swing_update, 7, .ARG6
 .endm
 
 ;-- Deferred Actor Load — loads sprite tiles for one deferred actor.
