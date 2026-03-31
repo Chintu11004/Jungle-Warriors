@@ -16,7 +16,8 @@
         "frequency": 200,
         "duration": 0.5,
         "wait": true,
-        "effect": 5
+        "effect": 5,
+        "__collapse": true
       },
       "id": "02b3c7c1-bc63-4a72-a1fa-993bbc579614"
     },
@@ -30,7 +31,8 @@
         "frames": {
           "type": "number",
           "value": 1
-        }
+        },
+        "__collapse": true
       },
       "id": "89139fdb-ee25-4902-9a35-9a9cbf70c80a"
     },
@@ -48,7 +50,8 @@
       "args": {
         "actorId": "$self$",
         "spriteStateId": "Death",
-        "loopAnim": true
+        "loopAnim": true,
+        "__collapse": true
       },
       "id": "25424570-da8d-4d5a-a452-79c671249acd"
     },
@@ -113,7 +116,7 @@
           "type": "number",
           "value": 1
         },
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true0": [

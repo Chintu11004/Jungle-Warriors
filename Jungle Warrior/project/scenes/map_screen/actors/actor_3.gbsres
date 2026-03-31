@@ -337,6 +337,24 @@
                                 "__collapse": false
                               },
                               "id": "5faddf09-6164-4668-a0af-e067f365dc02"
+                            },
+                            {
+                              "command": "EVENT_SET_VALUE",
+                              "args": {
+                                "variable": "83",
+                                "value": {
+                                  "type": "sub",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "83"
+                                  },
+                                  "valueB": {
+                                    "type": "variable",
+                                    "value": "L0"
+                                  }
+                                }
+                              },
+                              "id": "d04afcc3-ca8b-40cf-90df-5cb003cb08e2"
                             }
                           ],
                           "false": [

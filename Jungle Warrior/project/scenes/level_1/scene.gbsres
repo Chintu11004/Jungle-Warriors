@@ -29,7 +29,7 @@
     {
       "command": "EVENT_GROUP",
       "args": {
-        "__collapse": false,
+        "__collapse": true,
         "__label": "Loading actors"
       },
       "children": {
@@ -155,15 +155,6 @@
       "id": "fa90ed79-832c-434d-a621-0aee053d30e4"
     },
     {
-      "command": "EVENT_CALL_CUSTOM_EVENT",
-      "args": {
-        "customEventId": "81daf0f4-6d57-4b0a-976d-a2b499989b38",
-        "$actor[0]$": "f35b9684-3cd3-490b-a0d7-984d3e267b24",
-        "__collapse": true
-      },
-      "id": "c83df141-82f6-41bb-93c3-70580a008bd8"
-    },
-    {
       "command": "EVENT_SET_VALUE",
       "args": {
         "variable": "23",
@@ -178,7 +169,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Common Scipt for level setup",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "true": [
@@ -256,6 +247,15 @@
         ]
       },
       "id": "592616b1-665c-4838-a617-f6e7fe3a321f"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "81daf0f4-6d57-4b0a-976d-a2b499989b38",
+        "$actor[0]$": "f35b9684-3cd3-490b-a0d7-984d3e267b24",
+        "__collapse": false
+      },
+      "id": "c83df141-82f6-41bb-93c3-70580a008bd8"
     }
   ],
   "playerHit1Script": [

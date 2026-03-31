@@ -11,31 +11,16 @@
   "height": 1,
   "script": [
     {
-      "command": "EVENT_IF_INPUT",
+      "command": "EVENT_ROPE_SWING",
       "args": {
-        "input": [
-          "a"
-        ],
-        "__collapseElse": true
+        "rope_anchor_x": 88,
+        "rope_anchor_y": 32,
+        "rope_length": 11,
+        "rope_max_angle": 60,
+        "rope_swing_speed_factor": 3,
+        "rope_actor": "c65e39f9-9537-400f-a3dd-567e5a8d26fc"
       },
-      "children": {
-        "true": [
-          {
-            "command": "EVENT_ROPE_SWING",
-            "args": {
-              "rope_anchor_x": 88,
-              "rope_anchor_y": 32,
-              "rope_length": 11,
-              "rope_max_angle": 60,
-              "rope_swing_speed_factor": 3,
-              "rope_actor": "c65e39f9-9537-400f-a3dd-567e5a8d26fc"
-            },
-            "id": "f0e87505-10d2-45e9-9563-d58b1fa40ea7"
-          }
-        ],
-        "false": []
-      },
-      "id": "c78f5409-5633-4ac4-9bb0-e6f9a082ee1f"
+      "id": "f0e87505-10d2-45e9-9563-d58b1fa40ea7"
     }
   ],
   "leaveScript": [],

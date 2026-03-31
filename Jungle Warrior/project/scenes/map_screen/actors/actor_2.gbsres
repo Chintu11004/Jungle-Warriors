@@ -41,7 +41,7 @@
           }
         },
         "__collapseElse": false,
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "true": [
@@ -71,7 +71,7 @@
                 "You have assigned...",
                 "$03$ people to defend\nthis area."
               ],
-              "__section": "layout",
+              "__section": "text",
               "avatarId": "",
               "minHeight": 4,
               "maxHeight": 7,
@@ -105,7 +105,7 @@
                 }
               },
               "__collapseElse": false,
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -130,7 +130,8 @@
                     "closeWhen": "key",
                     "closeButton": "a",
                     "closeDelayTime": 0.5,
-                    "closeDelayFrames": 30
+                    "closeDelayFrames": 30,
+                    "__collapse": true
                   },
                   "id": "e97ca255-ed5a-4c56-b038-8f6302f1f13c"
                 }
@@ -337,6 +338,24 @@
                                 "__collapse": true
                               },
                               "id": "ab5ae172-1259-4464-8786-5b6cffd4d540"
+                            },
+                            {
+                              "command": "EVENT_SET_VALUE",
+                              "args": {
+                                "variable": "83",
+                                "value": {
+                                  "type": "sub",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "83"
+                                  },
+                                  "valueB": {
+                                    "type": "variable",
+                                    "value": "L0"
+                                  }
+                                }
+                              },
+                              "id": "99cfb477-bbb2-4959-9428-919a584f6b4d"
                             }
                           ],
                           "false": [
