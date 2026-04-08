@@ -14,7 +14,18 @@
   "persistent": false,
   "collisionGroup": "",
   "collisionExtraFlags": [],
-  "prefabScriptOverrides": {},
+  "prefabScriptOverrides": {
+    "65df1050-b21b-42e1-9899-823d4c4b4ea0": {
+      "id": "65df1050-b21b-42e1-9899-823d4c4b4ea0",
+      "args": {
+        "text": [
+          "When you see a rope",
+          "Press the up or down\narrow key to grab it",
+          "Press the Z key to jump!"
+        ]
+      }
+    }
+  },
   "symbol": "actor_12",
   "script": [],
   "startScript": [],

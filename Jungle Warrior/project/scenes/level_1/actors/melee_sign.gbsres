@@ -14,7 +14,17 @@
   "persistent": false,
   "collisionGroup": "",
   "collisionExtraFlags": [],
-  "prefabScriptOverrides": {},
+  "prefabScriptOverrides": {
+    "6a37c9d2-55e7-4000-b6c8-4528dec715c3": {
+      "id": "6a37c9d2-55e7-4000-b6c8-4528dec715c3",
+      "args": {
+        "text": [
+          "When you're close to\nenemies",
+          "Press the X key \nto subdue them."
+        ]
+      }
+    }
+  },
   "symbol": "actor_11",
   "script": [],
   "startScript": [],

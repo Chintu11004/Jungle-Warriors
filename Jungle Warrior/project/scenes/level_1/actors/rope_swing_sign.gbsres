@@ -14,7 +14,18 @@
   "persistent": false,
   "collisionGroup": "",
   "collisionExtraFlags": [],
-  "prefabScriptOverrides": {},
+  "prefabScriptOverrides": {
+    "0b6fe2fb-43e2-4a1c-b24e-d7e1858f8d05": {
+      "id": "0b6fe2fb-43e2-4a1c-b24e-d7e1858f8d05",
+      "args": {
+        "text": [
+          "When jumping to a rope,\nyou will immediately start",
+          "to swing on it!",
+          "Press Z to jump out of \nthe swing."
+        ]
+      }
+    }
+  },
   "symbol": "actor_15",
   "script": [],
   "startScript": [],
